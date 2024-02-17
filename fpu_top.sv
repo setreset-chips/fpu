@@ -6,7 +6,6 @@ module fpu_top (
 );
 
 	logic [31:0] regFile [4:0];
-
 // 4-Stage Pipeline
 // Stage 1: Fetch Operands (Only for Memory)
 // Stage 2: Decode
@@ -15,6 +14,11 @@ module fpu_top (
 	
 	always @ () begin // Stage 1: Fetch Operands
 		
+		
+		
+	end
+	always_ff @ (posedge clk, posedge s1flag) begin // Stage 1 Register
+	
 	end
 	
 endmodule
