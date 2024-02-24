@@ -12,7 +12,6 @@ module FMA (
 	logic [47:0] mantissa_mul_out;
 	logic [24:0] sum_mants;
 	
-	int i, offset;
 	
 	always_comb begin
 		mantissa_a = {1'b1, a_fp[22:0]};
@@ -23,41 +22,103 @@ module FMA (
 		exp_out = a_fp[30:23] + b_fp[30:23] - 8'h7F;
 		mantissa_mul_out = mantissa_a * mantissa_b;
 		mantissa_mul_norm = mantissa_mul_out[47:24];
-		i = 0;
 		
-		case (mantissa_mul_norm)
-			24'b1??????????????????????? : offset = 1;
-			24'b01?????????????????????? : offset = 2;
-			24'b001????????????????????? : offset = 3;
-			24'b0001???????????????????? : offset = 4;
-			24'b00001??????????????????? : offset = 5;
-			24'b000001?????????????????? : offset = 6;
-			24'b0000001????????????????? : offset = 7;
-			24'b00000001???????????????? : offset = 8;
-			24'b000000001??????????????? : offset = 9;
-			24'b0000000001?????????????? : offset = 10;
-			24'b00000000001????????????? : offset = 11;
-			24'b000000000001???????????? : offset = 12;
-			24'b0000000000001??????????? : offset = 13;
-			24'b00000000000001?????????? : offset = 14;
-			24'b000000000000001????????? : offset = 15;
-			24'b0000000000000001???????? : offset = 16;
-			24'b00000000000000001??????? : offset = 17;
-			24'b000000000000000001?????? : offset = 18;
-			24'b0000000000000000001????? : offset = 19;
-			24'b00000000000000000001???? : offset = 20;
-			24'b000000000000000000001??? : offset = 21;
-			24'b0000000000000000000001?? : offset = 22;
-			24'b00000000000000000000001? : offset = 23;
-			24'b000000000000000000000001 : offset = 24;
-			default: offset = 0;
-		endcase;
-		mantissa_mul_norm = mantissa_mul_norm << offset;
-		exp_out = exp_out - (offset-1);
+		if (mantissa_mul_norm[23]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 1;
+			
+		end else if (mantissa_mul_norm[22]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 2;
+			exp_out = exp_out - 1;
 		
+		end else if (mantissa_mul_norm[21]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 3;
+			exp_out = exp_out - 2;
+		end else if (mantissa_mul_norm[20]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 4;
+			exp_out = exp_out - 3;
+		
+		end else if (mantissa_mul_norm[19]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 5;
+			exp_out = exp_out - 4;
+		
+		end else if (mantissa_mul_norm[18]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 6;
+			exp_out = exp_out - 5;
+		
+		end else if (mantissa_mul_norm[17]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 7;
+			exp_out = exp_out - 6;
+		
+		end else if (mantissa_mul_norm[16]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 8;
+			exp_out = exp_out - 7;
+		
+		end else if (mantissa_mul_norm[15]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 9;
+			exp_out = exp_out - 8;
+		
+		end else if (mantissa_mul_norm[14]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 10;
+			exp_out = exp_out - 9;
+		
+		end else if (mantissa_mul_norm[13]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 11;
+			exp_out = exp_out - 10;
+		
+		end else if (mantissa_mul_norm[12]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 12;
+			exp_out = exp_out - 11;
+		
+		end else if (mantissa_mul_norm[11]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 13;
+			exp_out = exp_out - 12;
+		
+		end else if (mantissa_mul_norm[10]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 14;
+			exp_out = exp_out - 13;
+		
+		end else if (mantissa_mul_norm[9]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 15;
+			exp_out = exp_out - 14;
+		
+		end else if (mantissa_mul_norm[8]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 16;
+			exp_out = exp_out - 15;
+		
+		end else if (mantissa_mul_norm[7]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 17;
+			exp_out = exp_out - 16;
+		
+		end else if (mantissa_mul_norm[6]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 18;
+			exp_out = exp_out - 17;
+		
+		end else if (mantissa_mul_norm[5]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 19;
+			exp_out = exp_out - 18;
+		
+		end else if (mantissa_mul_norm[4]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 20;
+			exp_out = exp_out - 19;
+		
+		end else if (mantissa_mul_norm[3]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 21;
+			exp_out = exp_out - 20;
+		
+		end else if (mantissa_mul_norm[2]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 22;
+			exp_out = exp_out - 21;
+		
+		end else if (mantissa_mul_norm[1]) begin
+			mantissa_mul_norm = mantissa_mul_norm << 23;
+			exp_out = exp_out - 22;
+		end
+		exp_out = exp_out + 1;
+		//out_mul = {sign_out, exp_out, mantissa_mul_norm[23:1]};
 		//num1 = mul_out
 		//num2 = c_fp
 		// largerMag - 1: c > mul_out, 0: mul_out >= c
+		mantissa_mul_norm = {1'b1, mantissa_mul_norm[23:1]}; // reassign mantissa
 		
 		if(exp_out < c_fp[30:23]) begin
    			final_exp = c_fp[30:23];
@@ -102,35 +163,97 @@ module FMA (
   	 		final_exp = final_exp+1;
   	 	end
   	 	
-  	 	case (final_mantissa)
-			24'b1??????????????????????? : offset = 1;
-			24'b01?????????????????????? : offset = 2;
-			24'b001????????????????????? : offset = 3;
-			24'b0001???????????????????? : offset = 4;
-			24'b00001??????????????????? : offset = 5;
-			24'b000001?????????????????? : offset = 6;
-			24'b0000001????????????????? : offset = 7;
-			24'b00000001???????????????? : offset = 8;
-			24'b000000001??????????????? : offset = 9;
-			24'b0000000001?????????????? : offset = 10;
-			24'b00000000001????????????? : offset = 11;
-			24'b000000000001???????????? : offset = 12;
-			24'b0000000000001??????????? : offset = 13;
-			24'b00000000000001?????????? : offset = 14;
-			24'b000000000000001????????? : offset = 15;
-			24'b0000000000000001???????? : offset = 16;
-			24'b00000000000000001??????? : offset = 17;
-			24'b000000000000000001?????? : offset = 18;
-			24'b0000000000000000001????? : offset = 19;
-			24'b00000000000000000001???? : offset = 20;
-			24'b000000000000000000001??? : offset = 21;
-			24'b0000000000000000000001?? : offset = 22;
-			24'b00000000000000000000001? : offset = 23;
-			24'b000000000000000000000001 : offset = 24;
-			default: offset = 0;
-		endcase;
-		final_mantissa = final_mantissa << offset;
-		final_exp = final_exp - (offset-1);
+  	 	if (final_mantissa[23]) begin
+			final_mantissa = final_mantissa << 1;
+			
+		end else if (final_mantissa[22]) begin
+			final_mantissa = final_mantissa << 2;
+			final_exp = final_exp - 1;
+		
+		end else if (final_mantissa[21]) begin
+			final_mantissa = final_mantissa << 3;
+			final_exp = final_exp - 2;
+		end else if (final_mantissa[20]) begin
+			final_mantissa = final_mantissa << 4;
+			final_exp = final_exp - 3;
+		
+		end else if (final_mantissa[19]) begin
+			final_mantissa = final_mantissa << 5;
+			final_exp = final_exp - 4;
+		
+		end else if (final_mantissa[18]) begin
+			final_mantissa = final_mantissa << 6;
+			final_exp = final_exp - 5;
+		
+		end else if (final_mantissa[17]) begin
+			final_mantissa = final_mantissa << 7;
+			final_exp = final_exp - 6;
+		
+		end else if (final_mantissa[16]) begin
+			final_mantissa = final_mantissa << 8;
+			final_exp = final_exp - 7;
+		
+		end else if (final_mantissa[15]) begin
+			final_mantissa = final_mantissa << 9;
+			final_exp = final_exp - 8;
+		
+		end else if (final_mantissa[14]) begin
+			final_mantissa = final_mantissa << 10;
+			final_exp = final_exp - 9;
+		
+		end else if (final_mantissa[13]) begin
+			final_mantissa = final_mantissa << 11;
+			final_exp = final_exp - 10;
+		
+		end else if (final_mantissa[12]) begin
+			final_mantissa = final_mantissa << 12;
+			final_exp = final_exp - 11;
+		
+		end else if (final_mantissa[11]) begin
+			final_mantissa = final_mantissa << 13;
+			final_exp = final_exp - 12;
+		
+		end else if (final_mantissa[10]) begin
+			final_mantissa = final_mantissa << 14;
+			final_exp = final_exp - 13;
+		
+		end else if (final_mantissa[9]) begin
+			final_mantissa = final_mantissa << 15;
+			final_exp = final_exp - 14;
+		
+		end else if (final_mantissa[8]) begin
+			final_mantissa = final_mantissa << 16;
+			final_exp = final_exp - 15;
+		
+		end else if (final_mantissa[7]) begin
+			final_mantissa = final_mantissa << 17;
+			final_exp = final_exp - 16;
+		
+		end else if (final_mantissa[6]) begin
+			final_mantissa = final_mantissa << 18;
+			final_exp = final_exp - 17;
+		
+		end else if (final_mantissa[5]) begin
+			final_mantissa = final_mantissa << 19;
+			final_exp = final_exp - 18;
+		
+		end else if (final_mantissa[4]) begin
+			final_mantissa = final_mantissa << 20;
+			final_exp = final_exp - 19;
+		
+		end else if (final_mantissa[3]) begin
+			final_mantissa = final_mantissa << 21;
+			final_exp = final_exp - 20;
+		
+		end else if (final_mantissa[2]) begin
+			final_mantissa = final_mantissa << 22;
+			final_exp = final_exp - 21;
+		
+		end else if (final_mantissa[1]) begin
+			final_mantissa = final_mantissa << 23;
+			final_exp = final_exp - 22;
+		end
+  	 	
 		
 	end
 	

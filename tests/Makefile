@@ -4,4 +4,4 @@ fsqrt:
 	
 FMA:
 	verilator -I../ -Wall -Wno-fatal --trace --cc --exe --build tb_fma.cpp ../FMA.sv 
-	./obj_dir/Vfma
+	./obj_dir/VFMA
