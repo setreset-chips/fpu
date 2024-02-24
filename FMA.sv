@@ -14,9 +14,9 @@ module FMA (
 	
 	
 	always_comb begin
-		mantissa_a = (a_fp == 32'b0) ? 23'b0 : {1'b1, a_fp[22:0]};
-		mantissa_b = (b_fp == 32'b0) ? 23'b0 : {1'b1, b_fp[22:0]};
-		mantissa_c = (c_fp == 32'b0) ? 23'b0 : {1'b1, c_fp[22:0]};
+		mantissa_a = (a_fp == 32'b0) ? 24'b0 : {1'b1, a_fp[22:0]};
+		mantissa_b = (b_fp == 32'b0) ? 24'b0 : {1'b1, b_fp[22:0]};
+		mantissa_c = (c_fp == 32'b0) ? 24'b0 : {1'b1, c_fp[22:0]};
 	
 		sign_out = a_fp[31] ^ b_fp[31];
 		exp_out = a_fp[30:23] + b_fp[30:23] - 8'h7F;
