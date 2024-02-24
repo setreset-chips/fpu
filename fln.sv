@@ -8,23 +8,19 @@ module fln (
 	assign nanFlag = num1[31];
 	logic [31:0] op1 = {1'b0, num1[30:0]};
 	
-	logic [31:0] temp1, temp2, temp3i, temp3, temp4, temp5, temp6, temp7, temp8;
-	fadd fa0(op1, 32'h3F800000, op1);
-	finv fi0(op1,temp1);
-	fmul fm0(temp1, temp1, temp2);
-	fmul fm1(temp1, temp2, temp3i);
-	fmul fm2(temp3i, 32'h40000000, temp3);
-	fmul fm3(temp3i, temp1, temp4);
-	fmul fm4(temp4, 32'h40C00000, temp4);
-	fmul fm5(temp3i, temp2, temp5);
-	fmul fm6(temp5, 32'h41C00000, temp5);
-	//temp1-temp2+temp3-temp4+temp5
-   	fadd fa0(temp1, {~temp2[31], temp2[30:0]}, temp6);
-   	fadd fa1(temp3, {~temp4[31], temp4[30:0]}, temp7);
-   	fadd fa2(temp6, temp7, temp8);
-   	fadd fa3(temp8, temp5, temp8);
-  
+	logic [31:0] temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, op1i, temp9, temp10;
+	fadd fa0(op1, 32'hBF800000, op1i); // term 1 of the taylor expansion - (x-1) (op1i)
+	fmul fm0(op1i, op1i, temp1); // Term 2 intermediate - (x-1)^2
+  	fmul fm1(temp1, 32'hBF000000, temp2); // Term 2 - -0.5 * (x-1)^2 (term2)
+  	fmul fm2(temp1, op1i, temp3); // Term 3 intermediate - (x-1)^3
+  	fmul fm3(temp3, 32'h3EAAAAAB, temp4); // Term 3 - (1/3) * (x-1)^3 (temp4)
+  	fmul fm4(temp3, op1i, temp5); // Term 4 intermediate - (x-1)^4
+  	FMA fma1(temp5, 32'hBE800000, temp4, temp6); // Term 4 - -0.25 * (x-1)^4 + term4
+  	fadd fa1(temp6, temp2, temp7);
+  	fadd fa2(temp7, op1i, temp8);
+ 	fmul fm5(temp4, op1i, temp9);
+ 	FMA fma2(temp9, 32'h3E4CCCCD, temp8, temp10);
    	
-   	assign out1 = nanFlag ? 32'h7FC00000 : temp8;
+   	assign out1 = nanFlag ? 32'h7FC00000 : temp10;
    	
 endmodule;

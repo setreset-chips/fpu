@@ -260,7 +260,7 @@ module FMA (
 		else begin
 			final_exp = final_exp - 1;
 		end
-		$display("%b", {~sign_out, final_exp, final_mantissa[23:1]});
+		//$display("%b", {~sign_out, final_exp, final_mantissa[23:1]});
 	end
 	
 	assign out_fp = {~sign_out, final_exp, final_mantissa[23:1]};

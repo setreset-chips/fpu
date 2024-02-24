@@ -2,7 +2,7 @@
 #include <verilated.h>
 #include <iostream>
 #include <verilated_vcd_c.h>
-#include "Vfln.h"
+#include "Vfadd.h"
 #include <bitset>
 #include <math.h>
 
@@ -16,19 +16,21 @@ float int32_to_float_32(uint32_t val) {
 
 
  int main (int argc, char** argv, char** env) {
- 	Vfln *vdq = new Vfln;
- 	float f_a = 1.56;
+ 	Vfadd *vdq = new Vfadd;
+ 	float f_a = -7.1;
+ 	float f_b = 4.2;
  	
 	vdq->num1 = *((uint32_t*)(&f_a));
+	vdq->num2 = *((uint32_t*)(&f_b));
 		
  	while (cnt < MAX_TIME) {
  		vdq->eval();
  		cnt++;
  	}
  	
-	uint32_t output = vdq->out1;
+	uint32_t output = vdq->out_num;
 
 	printf("Calculated: %f\n", int32_to_float_32(output));
-	printf("Actual: %f\n", log(f_a));
+	printf("Actual: %f\n", f_a+f_b);
  	exit(0);
  }
