@@ -18,8 +18,8 @@ float int32_to_float_32(uint32_t val) {
  int main (int argc, char** argv, char** env) {
  	VFMA *vdq = new VFMA;
  	float f_a = 0;
- 	float f_b = 5;
- 	float f_c = 75;
+ 	float f_b = 0;
+ 	float f_c = 0;
  	
 	vdq->a_fp = *((uint32_t*)(&f_a));
 	vdq->b_fp = *((uint32_t*)(&f_b));

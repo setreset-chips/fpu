@@ -14,9 +14,9 @@ module FMA (
 	
 	
 	always_comb begin
-		mantissa_a = {1'b1, a_fp[22:0]};
-		mantissa_b = {1'b1, b_fp[22:0]};
-		mantissa_c = {1'b1, c_fp[22:0]};
+		mantissa_a = (a_fp == 32'b0) ? 23'b0 : {1'b1, a_fp[22:0]};
+		mantissa_b = (b_fp == 32'b0) ? 23'b0 : {1'b1, b_fp[22:0]};
+		mantissa_c = (c_fp == 32'b0) ? 23'b0 : {1'b1, c_fp[22:0]};
 	
 		sign_out = a_fp[31] ^ b_fp[31];
 		exp_out = a_fp[30:23] + b_fp[30:23] - 8'h7F;
@@ -113,12 +113,15 @@ module FMA (
 			mantissa_mul_norm = mantissa_mul_norm << 23;
 			exp_out = exp_out - 22;
 		end
+		else begin
+			exp_out = 8'b11111111;
+		end
 		exp_out = exp_out + 1;
 		//out_mul = {sign_out, exp_out, mantissa_mul_norm[23:1]};
 		//num1 = mul_out
 		//num2 = c_fp
 		// largerMag - 1: c > mul_out, 0: mul_out >= c
-		mantissa_mul_norm = {1'b1, mantissa_mul_norm[23:1]}; // reassign mantissa
+		mantissa_mul_norm = (a_fp == 32'b0 || b_fp == 32'b0) ? 23'b0 : {1'b1, mantissa_mul_norm[23:1]}; // reassign mantissa
 		
 		if(exp_out < c_fp[30:23]) begin
    			final_exp = c_fp[30:23];
@@ -162,6 +165,7 @@ module FMA (
   	 		final_mantissa = sum_mants[24:1];
   	 		final_exp = final_exp+1;
   	 	end
+  	 	
   	 	
   	 	if (final_mantissa[23]) begin
 			final_mantissa = final_mantissa << 1;
@@ -253,8 +257,10 @@ module FMA (
 			final_mantissa = final_mantissa << 23;
 			final_exp = final_exp - 22;
 		end
-  	 	
-		
+		else begin
+			final_exp = final_exp - 1;
+		end
+		$display("%b", {~sign_out, final_exp, final_mantissa[23:1]});
 	end
 	
 	assign out_fp = {~sign_out, final_exp, final_mantissa[23:1]};
