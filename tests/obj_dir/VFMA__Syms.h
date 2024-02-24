@@ -7,7 +7,7 @@
 #ifndef _VFMA__SYMS_H_
 #define _VFMA__SYMS_H_  // guard
 
-#include "verilated.h"
+#include "verilated_heavy.h"
 
 // INCLUDE MODULE CLASSES
 #include "VFMA.h"

@@ -70,12 +70,18 @@ VL_INLINE_OPT void VFMA::_combo__TOP__1(VFMA__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    VFMA::_combo__TOP__1\n"); );
     VFMA* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    vlTOPp->FMA__DOT__mantissa_a = (0x800000U | (0x7fffffU 
-                                                 & vlTOPp->a_fp));
-    vlTOPp->FMA__DOT__mantissa_b = (0x800000U | (0x7fffffU 
-                                                 & vlTOPp->b_fp));
-    vlTOPp->FMA__DOT__mantissa_c = (0x800000U | (0x7fffffU 
-                                                 & vlTOPp->c_fp));
+    vlTOPp->FMA__DOT__mantissa_a = ((0U == vlTOPp->a_fp)
+                                     ? 0U : (0x800000U 
+                                             | (0x7fffffU 
+                                                & vlTOPp->a_fp)));
+    vlTOPp->FMA__DOT__mantissa_b = ((0U == vlTOPp->b_fp)
+                                     ? 0U : (0x800000U 
+                                             | (0x7fffffU 
+                                                & vlTOPp->b_fp)));
+    vlTOPp->FMA__DOT__mantissa_c = ((0U == vlTOPp->c_fp)
+                                     ? 0U : (0x800000U 
+                                             | (0x7fffffU 
+                                                & vlTOPp->c_fp)));
     vlTOPp->FMA__DOT__sign_out = (1U & ((vlTOPp->a_fp 
                                          ^ vlTOPp->b_fp) 
                                         >> 0x1fU));
@@ -355,6 +361,8 @@ VL_INLINE_OPT void VFMA::_combo__TOP__1(VFMA__Syms* __restrict vlSymsp) {
                                                                                 (0xffU 
                                                                                 & ((IData)(vlTOPp->FMA__DOT__exp_out) 
                                                                                 - (IData)(0x16U)));
+                                                                                } else {
+                                                                                vlTOPp->FMA__DOT__exp_out = 0xffU;
                                                                                 }
                                                                                 }
                                                                                 }
@@ -380,10 +388,13 @@ VL_INLINE_OPT void VFMA::_combo__TOP__1(VFMA__Syms* __restrict vlSymsp) {
     }
     vlTOPp->FMA__DOT__exp_out = (0xffU & ((IData)(1U) 
                                           + (IData)(vlTOPp->FMA__DOT__exp_out)));
-    vlTOPp->FMA__DOT__mantissa_mul_norm = (0x800000U 
-                                           | (0x7fffffU 
-                                              & (vlTOPp->FMA__DOT__mantissa_mul_norm 
-                                                 >> 1U)));
+    vlTOPp->FMA__DOT__mantissa_mul_norm = (((0U == vlTOPp->a_fp) 
+                                            | (0U == vlTOPp->b_fp))
+                                            ? 0U : 
+                                           (0x800000U 
+                                            | (0x7fffffU 
+                                               & (vlTOPp->FMA__DOT__mantissa_mul_norm 
+                                                  >> 1U))));
     if (((IData)(vlTOPp->FMA__DOT__exp_out) < (0xffU 
                                                & (vlTOPp->c_fp 
                                                   >> 0x17U)))) {
@@ -748,6 +759,12 @@ VL_INLINE_OPT void VFMA::_combo__TOP__1(VFMA__Syms* __restrict vlSymsp) {
                                                                                 (0xffU 
                                                                                 & ((IData)(vlTOPp->FMA__DOT__final_exp) 
                                                                                 - (IData)(0x16U)));
+                                                                                } else {
+                                                                                vlTOPp->FMA__DOT__final_exp 
+                                                                                = 
+                                                                                (0xffU 
+                                                                                & ((IData)(vlTOPp->FMA__DOT__final_exp) 
+                                                                                - (IData)(1U)));
                                                                                 }
                                                                                 }
                                                                                 }
@@ -771,6 +788,12 @@ VL_INLINE_OPT void VFMA::_combo__TOP__1(VFMA__Syms* __restrict vlSymsp) {
             }
         }
     }
+    VL_WRITEF("%b\n",32,((0x80000000U & ((~ (IData)(vlTOPp->FMA__DOT__sign_out)) 
+                                         << 0x1fU)) 
+                         | (((IData)(vlTOPp->FMA__DOT__final_exp) 
+                             << 0x17U) | (0x7fffffU 
+                                          & (vlTOPp->FMA__DOT__final_mantissa 
+                                             >> 1U)))));
     vlTOPp->out_fp = ((0x80000000U & ((~ (IData)(vlTOPp->FMA__DOT__sign_out)) 
                                       << 0x1fU)) | 
                       (((IData)(vlTOPp->FMA__DOT__final_exp) 

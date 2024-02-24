@@ -2,7 +2,7 @@
 #include <verilated.h>
 #include <iostream>
 #include <verilated_vcd_c.h>
-#include "VFMA.h"
+#include "Vfln.h"
 #include <bitset>
 #include <math.h>
 
@@ -16,27 +16,19 @@ float int32_to_float_32(uint32_t val) {
 
 
  int main (int argc, char** argv, char** env) {
- 	VFMA *vdq = new VFMA;
- 	float f_a = 0;
- 	float f_b = 5;
- 	float f_c = 75;
+ 	Vfln *vdq = new Vfln;
+ 	float f_a = 1.56;
  	
-	vdq->a_fp = *((uint32_t*)(&f_a));
-	vdq->b_fp = *((uint32_t*)(&f_b));
-	vdq->c_fp = *((uint32_t*)(&f_c));
+	vdq->num1 = *((uint32_t*)(&f_a));
 		
  	while (cnt < MAX_TIME) {
  		vdq->eval();
  		cnt++;
  	}
  	
-	uint32_t output = vdq->out_fp;
-	//uint32_t output_mul = vdq->out_mul;
+	uint32_t output = vdq->out1;
 
-	//printf("Actual: %f\n", s);
 	printf("Calculated: %f\n", int32_to_float_32(output));
-	printf("Actual: %f\n", (f_a*f_b)+f_c);
-	//printf("Mul Res: %f\n", int32_to_float_32(output_mul));
- 	//l_trace->close();
+	printf("Actual: %f\n", ln(f_a));
  	exit(0);
  }
