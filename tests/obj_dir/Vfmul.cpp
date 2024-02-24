@@ -369,6 +369,10 @@ VL_INLINE_OPT void Vfmul::_combo__TOP__1(Vfmul__Syms* __restrict vlSymsp) {
     }
     vlTOPp->fmul__DOT__expF = (0xffU & ((IData)(1U) 
                                         + (IData)(vlTOPp->fmul__DOT__expF)));
+    vlTOPp->fmul__DOT__mantissa = (0x7fffffU & (vlTOPp->fmul__DOT__mantissa 
+                                                >> 1U));
+    vlTOPp->fmul__DOT__expF = (0xffU & ((IData)(1U) 
+                                        + (IData)(vlTOPp->fmul__DOT__expF)));
     vlTOPp->out_mul = ((0x80000000U & (vlTOPp->num1 
                                        ^ vlTOPp->num2)) 
                        | (((IData)(vlTOPp->fmul__DOT__expF) 

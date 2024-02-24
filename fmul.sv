@@ -126,10 +126,9 @@ module fmul (
 				mantissaProd = mantissaProd << 1;
 				expF = expF-1;
 			end
-		end
-		mantissa = mantissa << 1;
+		end*/
+		mantissa = mantissa >> 1;
 		expF = expF+1;
-		mantissa[0] = mantissaProd[24];*/
 		
 		out_mul = {sign, expF, mantissa};
 	end
