@@ -13,3 +13,7 @@ fln:
 fadd:
 	verilator -I../ -Wall -Wno-fatal --trace --cc --exe --build tb_fadd.cpp ../fadd.sv 
 	./obj_dir/Vfadd
+
+fmul:
+	verilator -I../ -Wall -Wno-fatal --trace --cc --exe --build tb_fmul.cpp ../fmul.sv 
+	./obj_dir/Vfmul
