@@ -21,10 +21,10 @@ module fmul (
 		mantissa = mantissaProd[47:25];
 		i = 0;
 		
-		if (mantissa[23]) begin
-			mantissa = mantissa << 1;
-			
-		end else if (mantissa[22]) begin
+		//if (mantissa[23]) begin
+			//mantissa = mantissa << 1;
+		// end else	
+		if (mantissa[22]) begin
 			mantissa = mantissa << 2;
 			expF = expF - 1;
 		
@@ -115,18 +115,6 @@ module fmul (
 			expF = 8'b11111111;
 		end
 		expF = expF + 1;
-		
-		/*for (i = 0; i < 23; i++) begin //do this routine a max of 23 times in case the answer is zero
-			if (mantissa[22] == 1'b1) begin // if we have encountered a one we are done bc we can make the final silent bit
-				i = 23; 
-			end
-			else begin // if we haven't encountered a one then we have to continue left shifting to find a one for the silent bit.
-				mantissa = mantissa << 1;
-				mantissa[0] = mantissaProd[24];
-				mantissaProd = mantissaProd << 1;
-				expF = expF-1;
-			end
-		end*/
 		mantissa = mantissa >> 1;
 		expF = expF+1;
 		

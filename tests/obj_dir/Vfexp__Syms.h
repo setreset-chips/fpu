@@ -4,16 +4,16 @@
 // Internal details; most calling programs do not need this header,
 // unless using verilator public meta comments.
 
-#ifndef _VFMA__SYMS_H_
-#define _VFMA__SYMS_H_  // guard
+#ifndef _VFEXP__SYMS_H_
+#define _VFEXP__SYMS_H_  // guard
 
 #include "verilated.h"
 
 // INCLUDE MODULE CLASSES
-#include "VFMA.h"
+#include "Vfexp.h"
 
 // SYMS CLASS
-class VFMA__Syms : public VerilatedSyms {
+class Vfexp__Syms : public VerilatedSyms {
   public:
     
     // LOCAL STATE
@@ -23,11 +23,11 @@ class VFMA__Syms : public VerilatedSyms {
     bool __Vm_didInit;
     
     // SUBCELL STATE
-    VFMA*                          TOPp;
+    Vfexp*                         TOPp;
     
     // CREATORS
-    VFMA__Syms(VFMA* topp, const char* namep);
-    ~VFMA__Syms() {}
+    Vfexp__Syms(Vfexp* topp, const char* namep);
+    ~Vfexp__Syms() {}
     
     // METHODS
     inline const char* name() { return __Vm_namep; }

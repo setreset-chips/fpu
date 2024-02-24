@@ -17,3 +17,7 @@ fadd:
 fmul:
 	verilator -I../ -Wall -Wno-fatal --trace --cc --exe --build tb_fmul.cpp ../fmul.sv 
 	./obj_dir/Vfmul
+	
+fexp:
+	verilator -I../ -Wall -Wno-fatal --trace --cc --exe --build tb_fexp.cpp ../fexp.sv 
+	./obj_dir/Vfexp

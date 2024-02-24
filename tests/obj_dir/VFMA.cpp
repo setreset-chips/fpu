@@ -788,12 +788,6 @@ VL_INLINE_OPT void VFMA::_combo__TOP__1(VFMA__Syms* __restrict vlSymsp) {
             }
         }
     }
-    VL_WRITEF("%b\n",32,((0x80000000U & ((~ (IData)(vlTOPp->FMA__DOT__sign_out)) 
-                                         << 0x1fU)) 
-                         | (((IData)(vlTOPp->FMA__DOT__final_exp) 
-                             << 0x17U) | (0x7fffffU 
-                                          & (vlTOPp->FMA__DOT__final_mantissa 
-                                             >> 1U)))));
     vlTOPp->out_fp = ((0x80000000U & ((~ (IData)(vlTOPp->FMA__DOT__sign_out)) 
                                       << 0x1fU)) | 
                       (((IData)(vlTOPp->FMA__DOT__final_exp) 

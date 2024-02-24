@@ -121,7 +121,7 @@ module FMA (
 		//num1 = mul_out
 		//num2 = c_fp
 		// largerMag - 1: c > mul_out, 0: mul_out >= c
-		mantissa_mul_norm = (a_fp == 32'b0 || b_fp == 32'b0) ? 23'b0 : {1'b1, mantissa_mul_norm[23:1]}; // reassign mantissa
+		mantissa_mul_norm = (a_fp == 32'b0 || b_fp == 32'b0) ? 24'b0 : {1'b1, mantissa_mul_norm[23:1]}; // reassign mantissa
 		
 		if(exp_out < c_fp[30:23]) begin
    			final_exp = c_fp[30:23];

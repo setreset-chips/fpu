@@ -8,7 +8,7 @@
 #ifndef _VFMA_H_
 #define _VFMA_H_  // guard
 
-#include "verilated_heavy.h"
+#include "verilated.h"
 
 //==========
 
