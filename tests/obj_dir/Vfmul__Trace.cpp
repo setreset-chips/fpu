@@ -24,7 +24,7 @@ void Vfmul::traceChgSub0(void* userp, VerilatedVcd* tracep) {
     {
         if (VL_UNLIKELY(vlTOPp->__Vm_traceActivity[1U])) {
             tracep->chgCData(oldp+0,(vlTOPp->fmul__DOT__expF),8);
-            tracep->chgIData(oldp+1,(vlTOPp->fmul__DOT__mantissa),23);
+            tracep->chgIData(oldp+1,(vlTOPp->fmul__DOT__mantissa),24);
             tracep->chgQData(oldp+2,(vlTOPp->fmul__DOT__mantissaProd),48);
         }
         tracep->chgIData(oldp+4,(vlTOPp->num1),32);

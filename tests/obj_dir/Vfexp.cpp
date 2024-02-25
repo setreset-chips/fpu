@@ -374,9 +374,6 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
     }
     vlTOPp->fexp__DOT__fm0__DOT__expF = (0xffU & ((IData)(1U) 
                                                   + (IData)(vlTOPp->fexp__DOT__fm0__DOT__expF)));
-    vlTOPp->fexp__DOT__fm0__DOT__mantissa = (0x7fffffU 
-                                             & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                                >> 1U));
     vlTOPp->fexp__DOT__fm0__DOT__expF = (0xffU & ((IData)(1U) 
                                                   + (IData)(vlTOPp->fexp__DOT__fm0__DOT__expF)));
     vlTOPp->fexp__DOT__temp2 = (((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
@@ -1050,9 +1047,6 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
     }
     vlTOPp->fexp__DOT__fm1__DOT__expF = (0xffU & ((IData)(1U) 
                                                   + (IData)(vlTOPp->fexp__DOT__fm1__DOT__expF)));
-    vlTOPp->fexp__DOT__fm1__DOT__mantissa = (0x7fffffU 
-                                             & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                                >> 1U));
     vlTOPp->fexp__DOT__fm1__DOT__expF = (0xffU & ((IData)(1U) 
                                                   + (IData)(vlTOPp->fexp__DOT__fm1__DOT__expF)));
     vlTOPp->fexp__DOT__temp4 = ((0x80000000U & (vlTOPp->fexp__DOT__temp2 
@@ -1369,9 +1363,6 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
     }
     vlTOPp->fexp__DOT__fm2__DOT__expF = (0xffU & ((IData)(1U) 
                                                   + (IData)(vlTOPp->fexp__DOT__fm2__DOT__expF)));
-    vlTOPp->fexp__DOT__fm2__DOT__mantissa = (0x7fffffU 
-                                             & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                                >> 1U));
     vlTOPp->fexp__DOT__fm2__DOT__expF = (0xffU & ((IData)(1U) 
                                                   + (IData)(vlTOPp->fexp__DOT__fm2__DOT__expF)));
     vlTOPp->fexp__DOT__temp6 = ((0x80000000U & (vlTOPp->fexp__DOT__temp4 
@@ -2393,9 +2384,6 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
     }
     vlTOPp->fexp__DOT__fm3__DOT__expF = (0xffU & ((IData)(1U) 
                                                   + (IData)(vlTOPp->fexp__DOT__fm3__DOT__expF)));
-    vlTOPp->fexp__DOT__fm3__DOT__mantissa = (0x7fffffU 
-                                             & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                                >> 1U));
     vlTOPp->fexp__DOT__fm3__DOT__expF = (0xffU & ((IData)(1U) 
                                                   + (IData)(vlTOPp->fexp__DOT__fm3__DOT__expF)));
     vlTOPp->fexp__DOT__temp8 = ((0x80000000U & (vlTOPp->fexp__DOT__temp6 

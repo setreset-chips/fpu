@@ -6,7 +6,7 @@ module fmul (
 	
 	logic sign;
 	logic [7:0] expF;
-	logic [22:0] mantissa;
+	logic [23:0] mantissa;
 	logic [23:0] mantissa1, mantissa2;
 	logic [47:0] mantissaProd;
 	assign mantissa1 = (num1 == 32'b0) ? 24'b0 : {1'b1, num1[22:0]};
@@ -18,12 +18,12 @@ module fmul (
 	always_comb begin
 		mantissaProd = mantissa1*mantissa2;
 		expF = (num1[30:23] + num2[30:23]) - 8'h7F;
-		mantissa = mantissaProd[47:25];
+		mantissa = mantissaProd[47:24];
 		i = 0;
 		
-		//if (mantissa[23]) begin
-			//mantissa = mantissa << 1;
-		// end else	
+		if (mantissa[23]) begin
+			mantissa = mantissa << 1;
+		 end else	
 		if (mantissa[22]) begin
 			mantissa = mantissa << 2;
 			expF = expF - 1;
@@ -115,10 +115,10 @@ module fmul (
 			expF = 8'b11111111;
 		end
 		expF = expF + 1;
-		mantissa = mantissa >> 1;
-		expF = expF+1;
+		//mantissa = mantissa >> 1;
+		//expF = expF+1;
 		
-		out_mul = {sign, expF, mantissa};
+		out_mul = {sign, expF, mantissa[23:1]};
 	end
 
 endmodule

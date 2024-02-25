@@ -56,7 +56,7 @@ void Vfmul::_ctor_var_reset() {
     num2 = VL_RAND_RESET_I(32);
     out_mul = VL_RAND_RESET_I(32);
     fmul__DOT__expF = VL_RAND_RESET_I(8);
-    fmul__DOT__mantissa = VL_RAND_RESET_I(23);
+    fmul__DOT__mantissa = VL_RAND_RESET_I(24);
     fmul__DOT__mantissaProd = VL_RAND_RESET_Q(48);
     { int __Vi0=0; for (; __Vi0<2; ++__Vi0) {
             __Vm_traceActivity[__Vi0] = VL_RAND_RESET_I(1);

@@ -52,7 +52,7 @@ void Vfmul::traceInitSub0(void* userp, VerilatedVcd* tracep) {
         tracep->declBus(c+7,"fmul out_mul", false,-1, 31,0);
         tracep->declBit(c+8,"fmul sign", false,-1);
         tracep->declBus(c+1,"fmul expF", false,-1, 7,0);
-        tracep->declBus(c+2,"fmul mantissa", false,-1, 22,0);
+        tracep->declBus(c+2,"fmul mantissa", false,-1, 23,0);
         tracep->declBus(c+9,"fmul mantissa1", false,-1, 23,0);
         tracep->declBus(c+10,"fmul mantissa2", false,-1, 23,0);
         tracep->declQuad(c+3,"fmul mantissaProd", false,-1, 47,0);
@@ -86,7 +86,7 @@ void Vfmul::traceFullSub0(void* userp, VerilatedVcd* tracep) {
     // Body
     {
         tracep->fullCData(oldp+1,(vlTOPp->fmul__DOT__expF),8);
-        tracep->fullIData(oldp+2,(vlTOPp->fmul__DOT__mantissa),23);
+        tracep->fullIData(oldp+2,(vlTOPp->fmul__DOT__mantissa),24);
         tracep->fullQData(oldp+3,(vlTOPp->fmul__DOT__mantissaProd),48);
         tracep->fullIData(oldp+5,(vlTOPp->num1),32);
         tracep->fullIData(oldp+6,(vlTOPp->num2),32);

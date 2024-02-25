@@ -31,7 +31,7 @@ VL_MODULE(Vfmul) {
     // LOCAL SIGNALS
     // Internals; generally not touched by application code
     CData/*7:0*/ fmul__DOT__expF;
-    IData/*22:0*/ fmul__DOT__mantissa;
+    IData/*23:0*/ fmul__DOT__mantissa;
     QData/*47:0*/ fmul__DOT__mantissaProd;
     
     // LOCAL VARIABLES
