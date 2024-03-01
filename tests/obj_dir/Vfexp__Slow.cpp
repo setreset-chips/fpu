@@ -73,7 +73,7 @@ void Vfexp::_ctor_var_reset() {
     fexp__DOT__fa0__DOT__sumMants = VL_RAND_RESET_I(25);
     fexp__DOT__fa0__DOT__i = 0;
     fexp__DOT__fm0__DOT__expF = VL_RAND_RESET_I(8);
-    fexp__DOT__fm0__DOT__mantissa = VL_RAND_RESET_I(23);
+    fexp__DOT__fm0__DOT__mantissa = VL_RAND_RESET_I(24);
     fexp__DOT__fm0__DOT__mantissaProd = VL_RAND_RESET_Q(48);
     fexp__DOT__fma0__DOT__sign_out = VL_RAND_RESET_I(1);
     fexp__DOT__fma0__DOT__largerMag = VL_RAND_RESET_I(1);
@@ -86,7 +86,7 @@ void Vfexp::_ctor_var_reset() {
     fexp__DOT__fma0__DOT__mantissa_mul_out = VL_RAND_RESET_Q(48);
     fexp__DOT__fma0__DOT__sum_mants = VL_RAND_RESET_I(25);
     fexp__DOT__fm1__DOT__expF = VL_RAND_RESET_I(8);
-    fexp__DOT__fm1__DOT__mantissa = VL_RAND_RESET_I(23);
+    fexp__DOT__fm1__DOT__mantissa = VL_RAND_RESET_I(24);
     fexp__DOT__fm1__DOT__mantissaProd = VL_RAND_RESET_Q(48);
     fexp__DOT__fma1__DOT__sign_out = VL_RAND_RESET_I(1);
     fexp__DOT__fma1__DOT__largerMag = VL_RAND_RESET_I(1);
@@ -99,7 +99,7 @@ void Vfexp::_ctor_var_reset() {
     fexp__DOT__fma1__DOT__mantissa_mul_out = VL_RAND_RESET_Q(48);
     fexp__DOT__fma1__DOT__sum_mants = VL_RAND_RESET_I(25);
     fexp__DOT__fm2__DOT__expF = VL_RAND_RESET_I(8);
-    fexp__DOT__fm2__DOT__mantissa = VL_RAND_RESET_I(23);
+    fexp__DOT__fm2__DOT__mantissa = VL_RAND_RESET_I(24);
     fexp__DOT__fm2__DOT__mantissaProd = VL_RAND_RESET_Q(48);
     fexp__DOT__fma2__DOT__sign_out = VL_RAND_RESET_I(1);
     fexp__DOT__fma2__DOT__largerMag = VL_RAND_RESET_I(1);
@@ -112,7 +112,7 @@ void Vfexp::_ctor_var_reset() {
     fexp__DOT__fma2__DOT__mantissa_mul_out = VL_RAND_RESET_Q(48);
     fexp__DOT__fma2__DOT__sum_mants = VL_RAND_RESET_I(25);
     fexp__DOT__fm3__DOT__expF = VL_RAND_RESET_I(8);
-    fexp__DOT__fm3__DOT__mantissa = VL_RAND_RESET_I(23);
+    fexp__DOT__fm3__DOT__mantissa = VL_RAND_RESET_I(24);
     fexp__DOT__fm3__DOT__mantissaProd = VL_RAND_RESET_Q(48);
     fexp__DOT__fma3__DOT__sign_out = VL_RAND_RESET_I(1);
     fexp__DOT__fma3__DOT__largerMag = VL_RAND_RESET_I(1);

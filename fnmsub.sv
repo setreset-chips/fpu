@@ -16,7 +16,7 @@ module fnmsub (
 		assign in3 = var3;
 	
 	
-		fmul fmul1(.var1(in1), .var2(in2), .res(out));
+		fmul fmul1(.num1(in1), .num2(in2), .out_mul(out));
 		fsub fsub1(.var1(in1), .var2(in2), .res(out2));
 
 		assign res = out2;

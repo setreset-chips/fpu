@@ -79,7 +79,7 @@ void Vfexp::traceInitSub0(void* userp, VerilatedVcd* tracep) {
         tracep->declBus(c+2,"fexp fm0 out_mul", false,-1, 31,0);
         tracep->declBit(c+83,"fexp fm0 sign", false,-1);
         tracep->declBus(c+18,"fexp fm0 expF", false,-1, 7,0);
-        tracep->declBus(c+19,"fexp fm0 mantissa", false,-1, 22,0);
+        tracep->declBus(c+19,"fexp fm0 mantissa", false,-1, 23,0);
         tracep->declBus(c+84,"fexp fm0 mantissa1", false,-1, 23,0);
         tracep->declBus(c+84,"fexp fm0 mantissa2", false,-1, 23,0);
         tracep->declQuad(c+20,"fexp fm0 mantissaProd", false,-1, 47,0);
@@ -104,7 +104,7 @@ void Vfexp::traceInitSub0(void* userp, VerilatedVcd* tracep) {
         tracep->declBus(c+4,"fexp fm1 out_mul", false,-1, 31,0);
         tracep->declBit(c+85,"fexp fm1 sign", false,-1);
         tracep->declBus(c+33,"fexp fm1 expF", false,-1, 7,0);
-        tracep->declBus(c+34,"fexp fm1 mantissa", false,-1, 22,0);
+        tracep->declBus(c+34,"fexp fm1 mantissa", false,-1, 23,0);
         tracep->declBus(c+35,"fexp fm1 mantissa1", false,-1, 23,0);
         tracep->declBus(c+84,"fexp fm1 mantissa2", false,-1, 23,0);
         tracep->declQuad(c+36,"fexp fm1 mantissaProd", false,-1, 47,0);
@@ -129,7 +129,7 @@ void Vfexp::traceInitSub0(void* userp, VerilatedVcd* tracep) {
         tracep->declBus(c+6,"fexp fm2 out_mul", false,-1, 31,0);
         tracep->declBit(c+86,"fexp fm2 sign", false,-1);
         tracep->declBus(c+49,"fexp fm2 expF", false,-1, 7,0);
-        tracep->declBus(c+50,"fexp fm2 mantissa", false,-1, 22,0);
+        tracep->declBus(c+50,"fexp fm2 mantissa", false,-1, 23,0);
         tracep->declBus(c+51,"fexp fm2 mantissa1", false,-1, 23,0);
         tracep->declBus(c+84,"fexp fm2 mantissa2", false,-1, 23,0);
         tracep->declQuad(c+52,"fexp fm2 mantissaProd", false,-1, 47,0);
@@ -154,7 +154,7 @@ void Vfexp::traceInitSub0(void* userp, VerilatedVcd* tracep) {
         tracep->declBus(c+8,"fexp fm3 out_mul", false,-1, 31,0);
         tracep->declBit(c+87,"fexp fm3 sign", false,-1);
         tracep->declBus(c+65,"fexp fm3 expF", false,-1, 7,0);
-        tracep->declBus(c+66,"fexp fm3 mantissa", false,-1, 22,0);
+        tracep->declBus(c+66,"fexp fm3 mantissa", false,-1, 23,0);
         tracep->declBus(c+67,"fexp fm3 mantissa1", false,-1, 23,0);
         tracep->declBus(c+84,"fexp fm3 mantissa2", false,-1, 23,0);
         tracep->declQuad(c+68,"fexp fm3 mantissaProd", false,-1, 47,0);
@@ -220,7 +220,7 @@ void Vfexp::traceFullSub0(void* userp, VerilatedVcd* tracep) {
         tracep->fullIData(oldp+16,(vlTOPp->fexp__DOT__fa0__DOT__finalMant),24);
         tracep->fullIData(oldp+17,(vlTOPp->fexp__DOT__fa0__DOT__sumMants),25);
         tracep->fullCData(oldp+18,(vlTOPp->fexp__DOT__fm0__DOT__expF),8);
-        tracep->fullIData(oldp+19,(vlTOPp->fexp__DOT__fm0__DOT__mantissa),23);
+        tracep->fullIData(oldp+19,(vlTOPp->fexp__DOT__fm0__DOT__mantissa),24);
         tracep->fullQData(oldp+20,(vlTOPp->fexp__DOT__fm0__DOT__mantissaProd),48);
         tracep->fullBit(oldp+22,(vlTOPp->fexp__DOT__fma0__DOT__sign_out));
         tracep->fullBit(oldp+23,(vlTOPp->fexp__DOT__fma0__DOT__largerMag));
@@ -233,7 +233,7 @@ void Vfexp::traceFullSub0(void* userp, VerilatedVcd* tracep) {
         tracep->fullQData(oldp+30,(vlTOPp->fexp__DOT__fma0__DOT__mantissa_mul_out),48);
         tracep->fullIData(oldp+32,(vlTOPp->fexp__DOT__fma0__DOT__sum_mants),25);
         tracep->fullCData(oldp+33,(vlTOPp->fexp__DOT__fm1__DOT__expF),8);
-        tracep->fullIData(oldp+34,(vlTOPp->fexp__DOT__fm1__DOT__mantissa),23);
+        tracep->fullIData(oldp+34,(vlTOPp->fexp__DOT__fm1__DOT__mantissa),24);
         tracep->fullIData(oldp+35,(((0U == vlTOPp->fexp__DOT__temp2)
                                      ? 0U : (0x800000U 
                                              | (0x7fffffU 
@@ -250,7 +250,7 @@ void Vfexp::traceFullSub0(void* userp, VerilatedVcd* tracep) {
         tracep->fullQData(oldp+46,(vlTOPp->fexp__DOT__fma1__DOT__mantissa_mul_out),48);
         tracep->fullIData(oldp+48,(vlTOPp->fexp__DOT__fma1__DOT__sum_mants),25);
         tracep->fullCData(oldp+49,(vlTOPp->fexp__DOT__fm2__DOT__expF),8);
-        tracep->fullIData(oldp+50,(vlTOPp->fexp__DOT__fm2__DOT__mantissa),23);
+        tracep->fullIData(oldp+50,(vlTOPp->fexp__DOT__fm2__DOT__mantissa),24);
         tracep->fullIData(oldp+51,(((0U == vlTOPp->fexp__DOT__temp4)
                                      ? 0U : (0x800000U 
                                              | (0x7fffffU 
@@ -267,7 +267,7 @@ void Vfexp::traceFullSub0(void* userp, VerilatedVcd* tracep) {
         tracep->fullQData(oldp+62,(vlTOPp->fexp__DOT__fma2__DOT__mantissa_mul_out),48);
         tracep->fullIData(oldp+64,(vlTOPp->fexp__DOT__fma2__DOT__sum_mants),25);
         tracep->fullCData(oldp+65,(vlTOPp->fexp__DOT__fm3__DOT__expF),8);
-        tracep->fullIData(oldp+66,(vlTOPp->fexp__DOT__fm3__DOT__mantissa),23);
+        tracep->fullIData(oldp+66,(vlTOPp->fexp__DOT__fm3__DOT__mantissa),24);
         tracep->fullIData(oldp+67,(((0U == vlTOPp->fexp__DOT__temp6)
                                      ? 0U : (0x800000U 
                                              | (0x7fffffU 

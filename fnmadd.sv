@@ -15,8 +15,8 @@ module fnmadd (
 	assign in2 = var2;
 	assign in3 = var3;
 	
-	fmul fmul1(.var1(in1), .var2(in2), .res(out));
-	fadd fadd1(.var1(out), .var2(in3), .res(out2));	
+	fmul fmul1(.num1(in1), .num2(in2), .out_mul(out));
+	fadd fadd1(.num1(out), .num2(in3), .out_num(out2));	
 		
 	assign res = out2;
 

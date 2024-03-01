@@ -94,215 +94,226 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
                                                    (vlTOPp->exp 
                                                     >> 0x17U)) 
                                                   - (IData)(0x7fU)));
-    vlTOPp->fexp__DOT__fm0__DOT__mantissa = (0x7fffffU 
+    vlTOPp->fexp__DOT__fm0__DOT__mantissa = (0xffffffU 
                                              & (IData)(
                                                        (vlTOPp->fexp__DOT__fm0__DOT__mantissaProd 
-                                                        >> 0x19U)));
-    if ((0x400000U & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
-        vlTOPp->fexp__DOT__fm0__DOT__mantissa = (0x7fffffU 
+                                                        >> 0x18U)));
+    if ((0x800000U & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
+        vlTOPp->fexp__DOT__fm0__DOT__mantissa = (0xffffffU 
                                                  & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                                    << 2U));
-        vlTOPp->fexp__DOT__fm0__DOT__expF = (0xffU 
-                                             & ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
-                                                - (IData)(1U)));
+                                                    << 1U));
     } else {
-        if ((0x200000U & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
+        if ((0x400000U & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
             vlTOPp->fexp__DOT__fm0__DOT__mantissa = 
-                (0x7fffffU & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                              << 3U));
+                (0xffffffU & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
+                              << 2U));
             vlTOPp->fexp__DOT__fm0__DOT__expF = (0xffU 
                                                  & ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
-                                                    - (IData)(2U)));
+                                                    - (IData)(1U)));
         } else {
-            if ((0x100000U & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
+            if ((0x200000U & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
                 vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                    = (0x7fffffU & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                    << 4U));
+                    = (0xffffffU & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
+                                    << 3U));
                 vlTOPp->fexp__DOT__fm0__DOT__expF = 
                     (0xffU & ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
-                              - (IData)(3U)));
+                              - (IData)(2U)));
             } else {
-                if ((0x80000U & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
+                if ((0x100000U & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
                     vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                        = (0x7fffffU & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                        << 5U));
+                        = (0xffffffU & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
+                                        << 4U));
                     vlTOPp->fexp__DOT__fm0__DOT__expF 
                         = (0xffU & ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
-                                    - (IData)(4U)));
+                                    - (IData)(3U)));
                 } else {
-                    if ((0x40000U & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
+                    if ((0x80000U & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
                         vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                            = (0x7fffffU & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                            << 6U));
+                            = (0xffffffU & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
+                                            << 5U));
                         vlTOPp->fexp__DOT__fm0__DOT__expF 
                             = (0xffU & ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
-                                        - (IData)(5U)));
+                                        - (IData)(4U)));
                     } else {
-                        if ((0x20000U & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
+                        if ((0x40000U & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
                             vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                = (0x7fffffU & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                                << 7U));
+                                = (0xffffffU & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
+                                                << 6U));
                             vlTOPp->fexp__DOT__fm0__DOT__expF 
                                 = (0xffU & ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
-                                            - (IData)(6U)));
+                                            - (IData)(5U)));
                         } else {
-                            if ((0x10000U & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
+                            if ((0x20000U & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
                                 vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                    = (0x7fffffU & 
+                                    = (0xffffffU & 
                                        (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                        << 8U));
+                                        << 7U));
                                 vlTOPp->fexp__DOT__fm0__DOT__expF 
                                     = (0xffU & ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
-                                                - (IData)(7U)));
+                                                - (IData)(6U)));
                             } else {
-                                if ((0x8000U & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
+                                if ((0x10000U & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
                                     vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                        = (0x7fffffU 
+                                        = (0xffffffU 
                                            & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                              << 9U));
+                                              << 8U));
                                     vlTOPp->fexp__DOT__fm0__DOT__expF 
                                         = (0xffU & 
                                            ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
-                                            - (IData)(8U)));
+                                            - (IData)(7U)));
                                 } else {
-                                    if ((0x4000U & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
+                                    if ((0x8000U & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
                                         vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                            = (0x7fffffU 
+                                            = (0xffffffU 
                                                & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                                  << 0xaU));
+                                                  << 9U));
                                         vlTOPp->fexp__DOT__fm0__DOT__expF 
                                             = (0xffU 
                                                & ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
-                                                  - (IData)(9U)));
+                                                  - (IData)(8U)));
                                     } else {
-                                        if ((0x2000U 
+                                        if ((0x4000U 
                                              & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
                                             vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                                = (0x7fffffU 
+                                                = (0xffffffU 
                                                    & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                                      << 0xbU));
+                                                      << 0xaU));
                                             vlTOPp->fexp__DOT__fm0__DOT__expF 
                                                 = (0xffU 
                                                    & ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
-                                                      - (IData)(0xaU)));
+                                                      - (IData)(9U)));
                                         } else {
-                                            if ((0x1000U 
+                                            if ((0x2000U 
                                                  & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
                                                 vlTOPp->fexp__DOT__fm0__DOT__mantissa 
                                                     = 
-                                                    (0x7fffffU 
+                                                    (0xffffffU 
                                                      & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                                        << 0xcU));
+                                                        << 0xbU));
                                                 vlTOPp->fexp__DOT__fm0__DOT__expF 
                                                     = 
                                                     (0xffU 
                                                      & ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
-                                                        - (IData)(0xbU)));
+                                                        - (IData)(0xaU)));
                                             } else {
                                                 if (
-                                                    (0x800U 
+                                                    (0x1000U 
                                                      & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
                                                     vlTOPp->fexp__DOT__fm0__DOT__mantissa 
                                                         = 
-                                                        (0x7fffffU 
+                                                        (0xffffffU 
                                                          & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                                            << 0xdU));
+                                                            << 0xcU));
                                                     vlTOPp->fexp__DOT__fm0__DOT__expF 
                                                         = 
                                                         (0xffU 
                                                          & ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
-                                                            - (IData)(0xcU)));
+                                                            - (IData)(0xbU)));
                                                 } else {
                                                     if (
-                                                        (0x400U 
+                                                        (0x800U 
                                                          & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
                                                         vlTOPp->fexp__DOT__fm0__DOT__mantissa 
                                                             = 
-                                                            (0x7fffffU 
+                                                            (0xffffffU 
                                                              & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                                                << 0xeU));
+                                                                << 0xdU));
                                                         vlTOPp->fexp__DOT__fm0__DOT__expF 
                                                             = 
                                                             (0xffU 
                                                              & ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
-                                                                - (IData)(0xdU)));
+                                                                - (IData)(0xcU)));
                                                     } else {
                                                         if (
-                                                            (0x200U 
+                                                            (0x400U 
                                                              & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
                                                             vlTOPp->fexp__DOT__fm0__DOT__mantissa 
                                                                 = 
-                                                                (0x7fffffU 
+                                                                (0xffffffU 
                                                                  & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                                                    << 0xfU));
+                                                                    << 0xeU));
                                                             vlTOPp->fexp__DOT__fm0__DOT__expF 
                                                                 = 
                                                                 (0xffU 
                                                                  & ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
-                                                                    - (IData)(0xeU)));
+                                                                    - (IData)(0xdU)));
                                                         } else {
                                                             if (
-                                                                (0x100U 
+                                                                (0x200U 
                                                                  & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
                                                                 vlTOPp->fexp__DOT__fm0__DOT__mantissa 
                                                                     = 
-                                                                    (0x7fffffU 
+                                                                    (0xffffffU 
                                                                      & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                                                        << 0x10U));
+                                                                        << 0xfU));
                                                                 vlTOPp->fexp__DOT__fm0__DOT__expF 
                                                                     = 
                                                                     (0xffU 
                                                                      & ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
-                                                                        - (IData)(0xfU)));
+                                                                        - (IData)(0xeU)));
                                                             } else {
                                                                 if (
-                                                                    (0x80U 
+                                                                    (0x100U 
                                                                      & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
                                                                     vlTOPp->fexp__DOT__fm0__DOT__mantissa 
                                                                         = 
-                                                                        (0x7fffffU 
+                                                                        (0xffffffU 
                                                                          & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                                                            << 0x11U));
+                                                                            << 0x10U));
                                                                     vlTOPp->fexp__DOT__fm0__DOT__expF 
                                                                         = 
                                                                         (0xffU 
                                                                          & ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
-                                                                            - (IData)(0x10U)));
+                                                                            - (IData)(0xfU)));
                                                                 } else {
                                                                     if (
-                                                                        (0x40U 
+                                                                        (0x80U 
                                                                          & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
                                                                         vlTOPp->fexp__DOT__fm0__DOT__mantissa 
                                                                             = 
-                                                                            (0x7fffffU 
+                                                                            (0xffffffU 
                                                                              & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                                                                << 0x12U));
+                                                                                << 0x11U));
                                                                         vlTOPp->fexp__DOT__fm0__DOT__expF 
                                                                             = 
                                                                             (0xffU 
                                                                              & ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
-                                                                                - (IData)(0x11U)));
+                                                                                - (IData)(0x10U)));
                                                                     } else {
                                                                         if (
-                                                                            (0x20U 
+                                                                            (0x40U 
                                                                              & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
                                                                             vlTOPp->fexp__DOT__fm0__DOT__mantissa 
                                                                                 = 
-                                                                                (0x7fffffU 
+                                                                                (0xffffffU 
                                                                                 & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
-                                                                                << 0x13U));
+                                                                                << 0x12U));
                                                                             vlTOPp->fexp__DOT__fm0__DOT__expF 
                                                                                 = 
                                                                                 (0xffU 
                                                                                 & ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
-                                                                                - (IData)(0x12U)));
+                                                                                - (IData)(0x11U)));
                                                                         } else {
                                                                             if (
+                                                                                (0x20U 
+                                                                                & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
+                                                                                vlTOPp->fexp__DOT__fm0__DOT__mantissa 
+                                                                                = 
+                                                                                (0xffffffU 
+                                                                                & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
+                                                                                << 0x13U));
+                                                                                vlTOPp->fexp__DOT__fm0__DOT__expF 
+                                                                                = 
+                                                                                (0xffU 
+                                                                                & ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
+                                                                                - (IData)(0x12U)));
+                                                                            } else {
+                                                                                if (
                                                                                 (0x10U 
                                                                                 & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
                                                                                 vlTOPp->fexp__DOT__fm0__DOT__mantissa 
                                                                                 = 
-                                                                                (0x7fffffU 
+                                                                                (0xffffffU 
                                                                                 & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
                                                                                 << 0x14U));
                                                                                 vlTOPp->fexp__DOT__fm0__DOT__expF 
@@ -310,13 +321,13 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
                                                                                 (0xffU 
                                                                                 & ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
                                                                                 - (IData)(0x13U)));
-                                                                            } else {
+                                                                                } else {
                                                                                 if (
                                                                                 (8U 
                                                                                 & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
                                                                                 vlTOPp->fexp__DOT__fm0__DOT__mantissa 
                                                                                 = 
-                                                                                (0x7fffffU 
+                                                                                (0xffffffU 
                                                                                 & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
                                                                                 << 0x15U));
                                                                                 vlTOPp->fexp__DOT__fm0__DOT__expF 
@@ -330,7 +341,7 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
                                                                                 & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
                                                                                 vlTOPp->fexp__DOT__fm0__DOT__mantissa 
                                                                                 = 
-                                                                                (0x7fffffU 
+                                                                                (0xffffffU 
                                                                                 & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
                                                                                 << 0x16U));
                                                                                 vlTOPp->fexp__DOT__fm0__DOT__expF 
@@ -342,14 +353,19 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
                                                                                 if (
                                                                                 (2U 
                                                                                 & vlTOPp->fexp__DOT__fm0__DOT__mantissa)) {
+                                                                                vlTOPp->fexp__DOT__fm0__DOT__mantissa 
+                                                                                = 
+                                                                                (0xffffffU 
+                                                                                & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
+                                                                                << 0x17U));
                                                                                 vlTOPp->fexp__DOT__fm0__DOT__expF 
                                                                                 = 
                                                                                 (0xffU 
                                                                                 & ((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
                                                                                 - (IData)(0x16U)));
-                                                                                vlTOPp->fexp__DOT__fm0__DOT__mantissa = 0U;
                                                                                 } else {
                                                                                 vlTOPp->fexp__DOT__fm0__DOT__expF = 0xffU;
+                                                                                }
                                                                                 }
                                                                                 }
                                                                                 }
@@ -374,10 +390,10 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
     }
     vlTOPp->fexp__DOT__fm0__DOT__expF = (0xffU & ((IData)(1U) 
                                                   + (IData)(vlTOPp->fexp__DOT__fm0__DOT__expF)));
-    vlTOPp->fexp__DOT__fm0__DOT__expF = (0xffU & ((IData)(1U) 
-                                                  + (IData)(vlTOPp->fexp__DOT__fm0__DOT__expF)));
     vlTOPp->fexp__DOT__temp2 = (((IData)(vlTOPp->fexp__DOT__fm0__DOT__expF) 
-                                 << 0x17U) | vlTOPp->fexp__DOT__fm0__DOT__mantissa);
+                                 << 0x17U) | (0x7fffffU 
+                                              & (vlTOPp->fexp__DOT__fm0__DOT__mantissa 
+                                                 >> 1U)));
     vlTOPp->fexp__DOT__fa0__DOT__largerMag = 0U;
     vlTOPp->fexp__DOT__fa0__DOT__num1Exp = 0x7fU;
     vlTOPp->fexp__DOT__fa0__DOT__num2Exp = (0xffU & 
@@ -767,215 +783,226 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
                                                    (vlTOPp->exp 
                                                     >> 0x17U)) 
                                                   - (IData)(0x7fU)));
-    vlTOPp->fexp__DOT__fm1__DOT__mantissa = (0x7fffffU 
+    vlTOPp->fexp__DOT__fm1__DOT__mantissa = (0xffffffU 
                                              & (IData)(
                                                        (vlTOPp->fexp__DOT__fm1__DOT__mantissaProd 
-                                                        >> 0x19U)));
-    if ((0x400000U & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
-        vlTOPp->fexp__DOT__fm1__DOT__mantissa = (0x7fffffU 
+                                                        >> 0x18U)));
+    if ((0x800000U & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
+        vlTOPp->fexp__DOT__fm1__DOT__mantissa = (0xffffffU 
                                                  & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                                    << 2U));
-        vlTOPp->fexp__DOT__fm1__DOT__expF = (0xffU 
-                                             & ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
-                                                - (IData)(1U)));
+                                                    << 1U));
     } else {
-        if ((0x200000U & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
+        if ((0x400000U & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
             vlTOPp->fexp__DOT__fm1__DOT__mantissa = 
-                (0x7fffffU & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                              << 3U));
+                (0xffffffU & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
+                              << 2U));
             vlTOPp->fexp__DOT__fm1__DOT__expF = (0xffU 
                                                  & ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
-                                                    - (IData)(2U)));
+                                                    - (IData)(1U)));
         } else {
-            if ((0x100000U & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
+            if ((0x200000U & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
                 vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                    = (0x7fffffU & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                    << 4U));
+                    = (0xffffffU & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
+                                    << 3U));
                 vlTOPp->fexp__DOT__fm1__DOT__expF = 
                     (0xffU & ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
-                              - (IData)(3U)));
+                              - (IData)(2U)));
             } else {
-                if ((0x80000U & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
+                if ((0x100000U & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
                     vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                        = (0x7fffffU & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                        << 5U));
+                        = (0xffffffU & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
+                                        << 4U));
                     vlTOPp->fexp__DOT__fm1__DOT__expF 
                         = (0xffU & ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
-                                    - (IData)(4U)));
+                                    - (IData)(3U)));
                 } else {
-                    if ((0x40000U & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
+                    if ((0x80000U & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
                         vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                            = (0x7fffffU & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                            << 6U));
+                            = (0xffffffU & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
+                                            << 5U));
                         vlTOPp->fexp__DOT__fm1__DOT__expF 
                             = (0xffU & ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
-                                        - (IData)(5U)));
+                                        - (IData)(4U)));
                     } else {
-                        if ((0x20000U & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
+                        if ((0x40000U & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
                             vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                = (0x7fffffU & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                                << 7U));
+                                = (0xffffffU & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
+                                                << 6U));
                             vlTOPp->fexp__DOT__fm1__DOT__expF 
                                 = (0xffU & ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
-                                            - (IData)(6U)));
+                                            - (IData)(5U)));
                         } else {
-                            if ((0x10000U & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
+                            if ((0x20000U & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
                                 vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                    = (0x7fffffU & 
+                                    = (0xffffffU & 
                                        (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                        << 8U));
+                                        << 7U));
                                 vlTOPp->fexp__DOT__fm1__DOT__expF 
                                     = (0xffU & ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
-                                                - (IData)(7U)));
+                                                - (IData)(6U)));
                             } else {
-                                if ((0x8000U & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
+                                if ((0x10000U & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
                                     vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                        = (0x7fffffU 
+                                        = (0xffffffU 
                                            & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                              << 9U));
+                                              << 8U));
                                     vlTOPp->fexp__DOT__fm1__DOT__expF 
                                         = (0xffU & 
                                            ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
-                                            - (IData)(8U)));
+                                            - (IData)(7U)));
                                 } else {
-                                    if ((0x4000U & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
+                                    if ((0x8000U & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
                                         vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                            = (0x7fffffU 
+                                            = (0xffffffU 
                                                & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                                  << 0xaU));
+                                                  << 9U));
                                         vlTOPp->fexp__DOT__fm1__DOT__expF 
                                             = (0xffU 
                                                & ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
-                                                  - (IData)(9U)));
+                                                  - (IData)(8U)));
                                     } else {
-                                        if ((0x2000U 
+                                        if ((0x4000U 
                                              & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
                                             vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                                = (0x7fffffU 
+                                                = (0xffffffU 
                                                    & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                                      << 0xbU));
+                                                      << 0xaU));
                                             vlTOPp->fexp__DOT__fm1__DOT__expF 
                                                 = (0xffU 
                                                    & ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
-                                                      - (IData)(0xaU)));
+                                                      - (IData)(9U)));
                                         } else {
-                                            if ((0x1000U 
+                                            if ((0x2000U 
                                                  & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
                                                 vlTOPp->fexp__DOT__fm1__DOT__mantissa 
                                                     = 
-                                                    (0x7fffffU 
+                                                    (0xffffffU 
                                                      & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                                        << 0xcU));
+                                                        << 0xbU));
                                                 vlTOPp->fexp__DOT__fm1__DOT__expF 
                                                     = 
                                                     (0xffU 
                                                      & ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
-                                                        - (IData)(0xbU)));
+                                                        - (IData)(0xaU)));
                                             } else {
                                                 if (
-                                                    (0x800U 
+                                                    (0x1000U 
                                                      & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
                                                     vlTOPp->fexp__DOT__fm1__DOT__mantissa 
                                                         = 
-                                                        (0x7fffffU 
+                                                        (0xffffffU 
                                                          & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                                            << 0xdU));
+                                                            << 0xcU));
                                                     vlTOPp->fexp__DOT__fm1__DOT__expF 
                                                         = 
                                                         (0xffU 
                                                          & ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
-                                                            - (IData)(0xcU)));
+                                                            - (IData)(0xbU)));
                                                 } else {
                                                     if (
-                                                        (0x400U 
+                                                        (0x800U 
                                                          & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
                                                         vlTOPp->fexp__DOT__fm1__DOT__mantissa 
                                                             = 
-                                                            (0x7fffffU 
+                                                            (0xffffffU 
                                                              & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                                                << 0xeU));
+                                                                << 0xdU));
                                                         vlTOPp->fexp__DOT__fm1__DOT__expF 
                                                             = 
                                                             (0xffU 
                                                              & ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
-                                                                - (IData)(0xdU)));
+                                                                - (IData)(0xcU)));
                                                     } else {
                                                         if (
-                                                            (0x200U 
+                                                            (0x400U 
                                                              & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
                                                             vlTOPp->fexp__DOT__fm1__DOT__mantissa 
                                                                 = 
-                                                                (0x7fffffU 
+                                                                (0xffffffU 
                                                                  & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                                                    << 0xfU));
+                                                                    << 0xeU));
                                                             vlTOPp->fexp__DOT__fm1__DOT__expF 
                                                                 = 
                                                                 (0xffU 
                                                                  & ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
-                                                                    - (IData)(0xeU)));
+                                                                    - (IData)(0xdU)));
                                                         } else {
                                                             if (
-                                                                (0x100U 
+                                                                (0x200U 
                                                                  & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
                                                                 vlTOPp->fexp__DOT__fm1__DOT__mantissa 
                                                                     = 
-                                                                    (0x7fffffU 
+                                                                    (0xffffffU 
                                                                      & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                                                        << 0x10U));
+                                                                        << 0xfU));
                                                                 vlTOPp->fexp__DOT__fm1__DOT__expF 
                                                                     = 
                                                                     (0xffU 
                                                                      & ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
-                                                                        - (IData)(0xfU)));
+                                                                        - (IData)(0xeU)));
                                                             } else {
                                                                 if (
-                                                                    (0x80U 
+                                                                    (0x100U 
                                                                      & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
                                                                     vlTOPp->fexp__DOT__fm1__DOT__mantissa 
                                                                         = 
-                                                                        (0x7fffffU 
+                                                                        (0xffffffU 
                                                                          & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                                                            << 0x11U));
+                                                                            << 0x10U));
                                                                     vlTOPp->fexp__DOT__fm1__DOT__expF 
                                                                         = 
                                                                         (0xffU 
                                                                          & ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
-                                                                            - (IData)(0x10U)));
+                                                                            - (IData)(0xfU)));
                                                                 } else {
                                                                     if (
-                                                                        (0x40U 
+                                                                        (0x80U 
                                                                          & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
                                                                         vlTOPp->fexp__DOT__fm1__DOT__mantissa 
                                                                             = 
-                                                                            (0x7fffffU 
+                                                                            (0xffffffU 
                                                                              & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                                                                << 0x12U));
+                                                                                << 0x11U));
                                                                         vlTOPp->fexp__DOT__fm1__DOT__expF 
                                                                             = 
                                                                             (0xffU 
                                                                              & ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
-                                                                                - (IData)(0x11U)));
+                                                                                - (IData)(0x10U)));
                                                                     } else {
                                                                         if (
-                                                                            (0x20U 
+                                                                            (0x40U 
                                                                              & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
                                                                             vlTOPp->fexp__DOT__fm1__DOT__mantissa 
                                                                                 = 
-                                                                                (0x7fffffU 
+                                                                                (0xffffffU 
                                                                                 & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
-                                                                                << 0x13U));
+                                                                                << 0x12U));
                                                                             vlTOPp->fexp__DOT__fm1__DOT__expF 
                                                                                 = 
                                                                                 (0xffU 
                                                                                 & ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
-                                                                                - (IData)(0x12U)));
+                                                                                - (IData)(0x11U)));
                                                                         } else {
                                                                             if (
+                                                                                (0x20U 
+                                                                                & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
+                                                                                vlTOPp->fexp__DOT__fm1__DOT__mantissa 
+                                                                                = 
+                                                                                (0xffffffU 
+                                                                                & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
+                                                                                << 0x13U));
+                                                                                vlTOPp->fexp__DOT__fm1__DOT__expF 
+                                                                                = 
+                                                                                (0xffU 
+                                                                                & ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
+                                                                                - (IData)(0x12U)));
+                                                                            } else {
+                                                                                if (
                                                                                 (0x10U 
                                                                                 & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
                                                                                 vlTOPp->fexp__DOT__fm1__DOT__mantissa 
                                                                                 = 
-                                                                                (0x7fffffU 
+                                                                                (0xffffffU 
                                                                                 & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
                                                                                 << 0x14U));
                                                                                 vlTOPp->fexp__DOT__fm1__DOT__expF 
@@ -983,13 +1010,13 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
                                                                                 (0xffU 
                                                                                 & ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
                                                                                 - (IData)(0x13U)));
-                                                                            } else {
+                                                                                } else {
                                                                                 if (
                                                                                 (8U 
                                                                                 & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
                                                                                 vlTOPp->fexp__DOT__fm1__DOT__mantissa 
                                                                                 = 
-                                                                                (0x7fffffU 
+                                                                                (0xffffffU 
                                                                                 & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
                                                                                 << 0x15U));
                                                                                 vlTOPp->fexp__DOT__fm1__DOT__expF 
@@ -1003,7 +1030,7 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
                                                                                 & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
                                                                                 vlTOPp->fexp__DOT__fm1__DOT__mantissa 
                                                                                 = 
-                                                                                (0x7fffffU 
+                                                                                (0xffffffU 
                                                                                 & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
                                                                                 << 0x16U));
                                                                                 vlTOPp->fexp__DOT__fm1__DOT__expF 
@@ -1015,14 +1042,19 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
                                                                                 if (
                                                                                 (2U 
                                                                                 & vlTOPp->fexp__DOT__fm1__DOT__mantissa)) {
+                                                                                vlTOPp->fexp__DOT__fm1__DOT__mantissa 
+                                                                                = 
+                                                                                (0xffffffU 
+                                                                                & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
+                                                                                << 0x17U));
                                                                                 vlTOPp->fexp__DOT__fm1__DOT__expF 
                                                                                 = 
                                                                                 (0xffU 
                                                                                 & ((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
                                                                                 - (IData)(0x16U)));
-                                                                                vlTOPp->fexp__DOT__fm1__DOT__mantissa = 0U;
                                                                                 } else {
                                                                                 vlTOPp->fexp__DOT__fm1__DOT__expF = 0xffU;
+                                                                                }
                                                                                 }
                                                                                 }
                                                                                 }
@@ -1047,12 +1079,12 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
     }
     vlTOPp->fexp__DOT__fm1__DOT__expF = (0xffU & ((IData)(1U) 
                                                   + (IData)(vlTOPp->fexp__DOT__fm1__DOT__expF)));
-    vlTOPp->fexp__DOT__fm1__DOT__expF = (0xffU & ((IData)(1U) 
-                                                  + (IData)(vlTOPp->fexp__DOT__fm1__DOT__expF)));
     vlTOPp->fexp__DOT__temp4 = ((0x80000000U & (vlTOPp->fexp__DOT__temp2 
                                                 ^ vlTOPp->exp)) 
                                 | (((IData)(vlTOPp->fexp__DOT__fm1__DOT__expF) 
-                                    << 0x17U) | vlTOPp->fexp__DOT__fm1__DOT__mantissa));
+                                    << 0x17U) | (0x7fffffU 
+                                                 & (vlTOPp->fexp__DOT__fm1__DOT__mantissa 
+                                                    >> 1U))));
     vlTOPp->fexp__DOT__temp1 = ((0x80000000U & ((~ (IData)(vlTOPp->fexp__DOT__fa0__DOT__finalSign)) 
                                                 << 0x1fU)) 
                                 | (((IData)(vlTOPp->fexp__DOT__fa0__DOT__finalExp) 
@@ -1083,215 +1115,226 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
                                                    (vlTOPp->exp 
                                                     >> 0x17U)) 
                                                   - (IData)(0x7fU)));
-    vlTOPp->fexp__DOT__fm2__DOT__mantissa = (0x7fffffU 
+    vlTOPp->fexp__DOT__fm2__DOT__mantissa = (0xffffffU 
                                              & (IData)(
                                                        (vlTOPp->fexp__DOT__fm2__DOT__mantissaProd 
-                                                        >> 0x19U)));
-    if ((0x400000U & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
-        vlTOPp->fexp__DOT__fm2__DOT__mantissa = (0x7fffffU 
+                                                        >> 0x18U)));
+    if ((0x800000U & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
+        vlTOPp->fexp__DOT__fm2__DOT__mantissa = (0xffffffU 
                                                  & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                                    << 2U));
-        vlTOPp->fexp__DOT__fm2__DOT__expF = (0xffU 
-                                             & ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
-                                                - (IData)(1U)));
+                                                    << 1U));
     } else {
-        if ((0x200000U & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
+        if ((0x400000U & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
             vlTOPp->fexp__DOT__fm2__DOT__mantissa = 
-                (0x7fffffU & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                              << 3U));
+                (0xffffffU & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
+                              << 2U));
             vlTOPp->fexp__DOT__fm2__DOT__expF = (0xffU 
                                                  & ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
-                                                    - (IData)(2U)));
+                                                    - (IData)(1U)));
         } else {
-            if ((0x100000U & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
+            if ((0x200000U & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
                 vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                    = (0x7fffffU & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                    << 4U));
+                    = (0xffffffU & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
+                                    << 3U));
                 vlTOPp->fexp__DOT__fm2__DOT__expF = 
                     (0xffU & ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
-                              - (IData)(3U)));
+                              - (IData)(2U)));
             } else {
-                if ((0x80000U & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
+                if ((0x100000U & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
                     vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                        = (0x7fffffU & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                        << 5U));
+                        = (0xffffffU & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
+                                        << 4U));
                     vlTOPp->fexp__DOT__fm2__DOT__expF 
                         = (0xffU & ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
-                                    - (IData)(4U)));
+                                    - (IData)(3U)));
                 } else {
-                    if ((0x40000U & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
+                    if ((0x80000U & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
                         vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                            = (0x7fffffU & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                            << 6U));
+                            = (0xffffffU & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
+                                            << 5U));
                         vlTOPp->fexp__DOT__fm2__DOT__expF 
                             = (0xffU & ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
-                                        - (IData)(5U)));
+                                        - (IData)(4U)));
                     } else {
-                        if ((0x20000U & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
+                        if ((0x40000U & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
                             vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                = (0x7fffffU & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                                << 7U));
+                                = (0xffffffU & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
+                                                << 6U));
                             vlTOPp->fexp__DOT__fm2__DOT__expF 
                                 = (0xffU & ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
-                                            - (IData)(6U)));
+                                            - (IData)(5U)));
                         } else {
-                            if ((0x10000U & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
+                            if ((0x20000U & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
                                 vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                    = (0x7fffffU & 
+                                    = (0xffffffU & 
                                        (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                        << 8U));
+                                        << 7U));
                                 vlTOPp->fexp__DOT__fm2__DOT__expF 
                                     = (0xffU & ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
-                                                - (IData)(7U)));
+                                                - (IData)(6U)));
                             } else {
-                                if ((0x8000U & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
+                                if ((0x10000U & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
                                     vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                        = (0x7fffffU 
+                                        = (0xffffffU 
                                            & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                              << 9U));
+                                              << 8U));
                                     vlTOPp->fexp__DOT__fm2__DOT__expF 
                                         = (0xffU & 
                                            ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
-                                            - (IData)(8U)));
+                                            - (IData)(7U)));
                                 } else {
-                                    if ((0x4000U & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
+                                    if ((0x8000U & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
                                         vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                            = (0x7fffffU 
+                                            = (0xffffffU 
                                                & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                                  << 0xaU));
+                                                  << 9U));
                                         vlTOPp->fexp__DOT__fm2__DOT__expF 
                                             = (0xffU 
                                                & ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
-                                                  - (IData)(9U)));
+                                                  - (IData)(8U)));
                                     } else {
-                                        if ((0x2000U 
+                                        if ((0x4000U 
                                              & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
                                             vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                                = (0x7fffffU 
+                                                = (0xffffffU 
                                                    & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                                      << 0xbU));
+                                                      << 0xaU));
                                             vlTOPp->fexp__DOT__fm2__DOT__expF 
                                                 = (0xffU 
                                                    & ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
-                                                      - (IData)(0xaU)));
+                                                      - (IData)(9U)));
                                         } else {
-                                            if ((0x1000U 
+                                            if ((0x2000U 
                                                  & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
                                                 vlTOPp->fexp__DOT__fm2__DOT__mantissa 
                                                     = 
-                                                    (0x7fffffU 
+                                                    (0xffffffU 
                                                      & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                                        << 0xcU));
+                                                        << 0xbU));
                                                 vlTOPp->fexp__DOT__fm2__DOT__expF 
                                                     = 
                                                     (0xffU 
                                                      & ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
-                                                        - (IData)(0xbU)));
+                                                        - (IData)(0xaU)));
                                             } else {
                                                 if (
-                                                    (0x800U 
+                                                    (0x1000U 
                                                      & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
                                                     vlTOPp->fexp__DOT__fm2__DOT__mantissa 
                                                         = 
-                                                        (0x7fffffU 
+                                                        (0xffffffU 
                                                          & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                                            << 0xdU));
+                                                            << 0xcU));
                                                     vlTOPp->fexp__DOT__fm2__DOT__expF 
                                                         = 
                                                         (0xffU 
                                                          & ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
-                                                            - (IData)(0xcU)));
+                                                            - (IData)(0xbU)));
                                                 } else {
                                                     if (
-                                                        (0x400U 
+                                                        (0x800U 
                                                          & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
                                                         vlTOPp->fexp__DOT__fm2__DOT__mantissa 
                                                             = 
-                                                            (0x7fffffU 
+                                                            (0xffffffU 
                                                              & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                                                << 0xeU));
+                                                                << 0xdU));
                                                         vlTOPp->fexp__DOT__fm2__DOT__expF 
                                                             = 
                                                             (0xffU 
                                                              & ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
-                                                                - (IData)(0xdU)));
+                                                                - (IData)(0xcU)));
                                                     } else {
                                                         if (
-                                                            (0x200U 
+                                                            (0x400U 
                                                              & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
                                                             vlTOPp->fexp__DOT__fm2__DOT__mantissa 
                                                                 = 
-                                                                (0x7fffffU 
+                                                                (0xffffffU 
                                                                  & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                                                    << 0xfU));
+                                                                    << 0xeU));
                                                             vlTOPp->fexp__DOT__fm2__DOT__expF 
                                                                 = 
                                                                 (0xffU 
                                                                  & ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
-                                                                    - (IData)(0xeU)));
+                                                                    - (IData)(0xdU)));
                                                         } else {
                                                             if (
-                                                                (0x100U 
+                                                                (0x200U 
                                                                  & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
                                                                 vlTOPp->fexp__DOT__fm2__DOT__mantissa 
                                                                     = 
-                                                                    (0x7fffffU 
+                                                                    (0xffffffU 
                                                                      & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                                                        << 0x10U));
+                                                                        << 0xfU));
                                                                 vlTOPp->fexp__DOT__fm2__DOT__expF 
                                                                     = 
                                                                     (0xffU 
                                                                      & ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
-                                                                        - (IData)(0xfU)));
+                                                                        - (IData)(0xeU)));
                                                             } else {
                                                                 if (
-                                                                    (0x80U 
+                                                                    (0x100U 
                                                                      & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
                                                                     vlTOPp->fexp__DOT__fm2__DOT__mantissa 
                                                                         = 
-                                                                        (0x7fffffU 
+                                                                        (0xffffffU 
                                                                          & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                                                            << 0x11U));
+                                                                            << 0x10U));
                                                                     vlTOPp->fexp__DOT__fm2__DOT__expF 
                                                                         = 
                                                                         (0xffU 
                                                                          & ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
-                                                                            - (IData)(0x10U)));
+                                                                            - (IData)(0xfU)));
                                                                 } else {
                                                                     if (
-                                                                        (0x40U 
+                                                                        (0x80U 
                                                                          & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
                                                                         vlTOPp->fexp__DOT__fm2__DOT__mantissa 
                                                                             = 
-                                                                            (0x7fffffU 
+                                                                            (0xffffffU 
                                                                              & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                                                                << 0x12U));
+                                                                                << 0x11U));
                                                                         vlTOPp->fexp__DOT__fm2__DOT__expF 
                                                                             = 
                                                                             (0xffU 
                                                                              & ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
-                                                                                - (IData)(0x11U)));
+                                                                                - (IData)(0x10U)));
                                                                     } else {
                                                                         if (
-                                                                            (0x20U 
+                                                                            (0x40U 
                                                                              & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
                                                                             vlTOPp->fexp__DOT__fm2__DOT__mantissa 
                                                                                 = 
-                                                                                (0x7fffffU 
+                                                                                (0xffffffU 
                                                                                 & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
-                                                                                << 0x13U));
+                                                                                << 0x12U));
                                                                             vlTOPp->fexp__DOT__fm2__DOT__expF 
                                                                                 = 
                                                                                 (0xffU 
                                                                                 & ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
-                                                                                - (IData)(0x12U)));
+                                                                                - (IData)(0x11U)));
                                                                         } else {
                                                                             if (
+                                                                                (0x20U 
+                                                                                & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
+                                                                                vlTOPp->fexp__DOT__fm2__DOT__mantissa 
+                                                                                = 
+                                                                                (0xffffffU 
+                                                                                & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
+                                                                                << 0x13U));
+                                                                                vlTOPp->fexp__DOT__fm2__DOT__expF 
+                                                                                = 
+                                                                                (0xffU 
+                                                                                & ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
+                                                                                - (IData)(0x12U)));
+                                                                            } else {
+                                                                                if (
                                                                                 (0x10U 
                                                                                 & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
                                                                                 vlTOPp->fexp__DOT__fm2__DOT__mantissa 
                                                                                 = 
-                                                                                (0x7fffffU 
+                                                                                (0xffffffU 
                                                                                 & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
                                                                                 << 0x14U));
                                                                                 vlTOPp->fexp__DOT__fm2__DOT__expF 
@@ -1299,13 +1342,13 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
                                                                                 (0xffU 
                                                                                 & ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
                                                                                 - (IData)(0x13U)));
-                                                                            } else {
+                                                                                } else {
                                                                                 if (
                                                                                 (8U 
                                                                                 & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
                                                                                 vlTOPp->fexp__DOT__fm2__DOT__mantissa 
                                                                                 = 
-                                                                                (0x7fffffU 
+                                                                                (0xffffffU 
                                                                                 & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
                                                                                 << 0x15U));
                                                                                 vlTOPp->fexp__DOT__fm2__DOT__expF 
@@ -1319,7 +1362,7 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
                                                                                 & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
                                                                                 vlTOPp->fexp__DOT__fm2__DOT__mantissa 
                                                                                 = 
-                                                                                (0x7fffffU 
+                                                                                (0xffffffU 
                                                                                 & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
                                                                                 << 0x16U));
                                                                                 vlTOPp->fexp__DOT__fm2__DOT__expF 
@@ -1331,14 +1374,19 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
                                                                                 if (
                                                                                 (2U 
                                                                                 & vlTOPp->fexp__DOT__fm2__DOT__mantissa)) {
+                                                                                vlTOPp->fexp__DOT__fm2__DOT__mantissa 
+                                                                                = 
+                                                                                (0xffffffU 
+                                                                                & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
+                                                                                << 0x17U));
                                                                                 vlTOPp->fexp__DOT__fm2__DOT__expF 
                                                                                 = 
                                                                                 (0xffU 
                                                                                 & ((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
                                                                                 - (IData)(0x16U)));
-                                                                                vlTOPp->fexp__DOT__fm2__DOT__mantissa = 0U;
                                                                                 } else {
                                                                                 vlTOPp->fexp__DOT__fm2__DOT__expF = 0xffU;
+                                                                                }
                                                                                 }
                                                                                 }
                                                                                 }
@@ -1363,12 +1411,12 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
     }
     vlTOPp->fexp__DOT__fm2__DOT__expF = (0xffU & ((IData)(1U) 
                                                   + (IData)(vlTOPp->fexp__DOT__fm2__DOT__expF)));
-    vlTOPp->fexp__DOT__fm2__DOT__expF = (0xffU & ((IData)(1U) 
-                                                  + (IData)(vlTOPp->fexp__DOT__fm2__DOT__expF)));
     vlTOPp->fexp__DOT__temp6 = ((0x80000000U & (vlTOPp->fexp__DOT__temp4 
                                                 ^ vlTOPp->exp)) 
                                 | (((IData)(vlTOPp->fexp__DOT__fm2__DOT__expF) 
-                                    << 0x17U) | vlTOPp->fexp__DOT__fm2__DOT__mantissa));
+                                    << 0x17U) | (0x7fffffU 
+                                                 & (vlTOPp->fexp__DOT__fm2__DOT__mantissa 
+                                                    >> 1U))));
     vlTOPp->fexp__DOT__fma0__DOT__mantissa_a = ((0U 
                                                  == vlTOPp->fexp__DOT__temp2)
                                                  ? 0U
@@ -2104,215 +2152,226 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
                                                    (vlTOPp->exp 
                                                     >> 0x17U)) 
                                                   - (IData)(0x7fU)));
-    vlTOPp->fexp__DOT__fm3__DOT__mantissa = (0x7fffffU 
+    vlTOPp->fexp__DOT__fm3__DOT__mantissa = (0xffffffU 
                                              & (IData)(
                                                        (vlTOPp->fexp__DOT__fm3__DOT__mantissaProd 
-                                                        >> 0x19U)));
-    if ((0x400000U & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
-        vlTOPp->fexp__DOT__fm3__DOT__mantissa = (0x7fffffU 
+                                                        >> 0x18U)));
+    if ((0x800000U & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
+        vlTOPp->fexp__DOT__fm3__DOT__mantissa = (0xffffffU 
                                                  & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                                    << 2U));
-        vlTOPp->fexp__DOT__fm3__DOT__expF = (0xffU 
-                                             & ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
-                                                - (IData)(1U)));
+                                                    << 1U));
     } else {
-        if ((0x200000U & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
+        if ((0x400000U & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
             vlTOPp->fexp__DOT__fm3__DOT__mantissa = 
-                (0x7fffffU & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                              << 3U));
+                (0xffffffU & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
+                              << 2U));
             vlTOPp->fexp__DOT__fm3__DOT__expF = (0xffU 
                                                  & ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
-                                                    - (IData)(2U)));
+                                                    - (IData)(1U)));
         } else {
-            if ((0x100000U & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
+            if ((0x200000U & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
                 vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                    = (0x7fffffU & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                    << 4U));
+                    = (0xffffffU & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
+                                    << 3U));
                 vlTOPp->fexp__DOT__fm3__DOT__expF = 
                     (0xffU & ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
-                              - (IData)(3U)));
+                              - (IData)(2U)));
             } else {
-                if ((0x80000U & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
+                if ((0x100000U & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
                     vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                        = (0x7fffffU & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                        << 5U));
+                        = (0xffffffU & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
+                                        << 4U));
                     vlTOPp->fexp__DOT__fm3__DOT__expF 
                         = (0xffU & ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
-                                    - (IData)(4U)));
+                                    - (IData)(3U)));
                 } else {
-                    if ((0x40000U & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
+                    if ((0x80000U & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
                         vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                            = (0x7fffffU & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                            << 6U));
+                            = (0xffffffU & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
+                                            << 5U));
                         vlTOPp->fexp__DOT__fm3__DOT__expF 
                             = (0xffU & ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
-                                        - (IData)(5U)));
+                                        - (IData)(4U)));
                     } else {
-                        if ((0x20000U & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
+                        if ((0x40000U & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
                             vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                = (0x7fffffU & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                                << 7U));
+                                = (0xffffffU & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
+                                                << 6U));
                             vlTOPp->fexp__DOT__fm3__DOT__expF 
                                 = (0xffU & ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
-                                            - (IData)(6U)));
+                                            - (IData)(5U)));
                         } else {
-                            if ((0x10000U & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
+                            if ((0x20000U & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
                                 vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                    = (0x7fffffU & 
+                                    = (0xffffffU & 
                                        (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                        << 8U));
+                                        << 7U));
                                 vlTOPp->fexp__DOT__fm3__DOT__expF 
                                     = (0xffU & ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
-                                                - (IData)(7U)));
+                                                - (IData)(6U)));
                             } else {
-                                if ((0x8000U & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
+                                if ((0x10000U & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
                                     vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                        = (0x7fffffU 
+                                        = (0xffffffU 
                                            & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                              << 9U));
+                                              << 8U));
                                     vlTOPp->fexp__DOT__fm3__DOT__expF 
                                         = (0xffU & 
                                            ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
-                                            - (IData)(8U)));
+                                            - (IData)(7U)));
                                 } else {
-                                    if ((0x4000U & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
+                                    if ((0x8000U & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
                                         vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                            = (0x7fffffU 
+                                            = (0xffffffU 
                                                & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                                  << 0xaU));
+                                                  << 9U));
                                         vlTOPp->fexp__DOT__fm3__DOT__expF 
                                             = (0xffU 
                                                & ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
-                                                  - (IData)(9U)));
+                                                  - (IData)(8U)));
                                     } else {
-                                        if ((0x2000U 
+                                        if ((0x4000U 
                                              & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
                                             vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                                = (0x7fffffU 
+                                                = (0xffffffU 
                                                    & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                                      << 0xbU));
+                                                      << 0xaU));
                                             vlTOPp->fexp__DOT__fm3__DOT__expF 
                                                 = (0xffU 
                                                    & ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
-                                                      - (IData)(0xaU)));
+                                                      - (IData)(9U)));
                                         } else {
-                                            if ((0x1000U 
+                                            if ((0x2000U 
                                                  & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
                                                 vlTOPp->fexp__DOT__fm3__DOT__mantissa 
                                                     = 
-                                                    (0x7fffffU 
+                                                    (0xffffffU 
                                                      & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                                        << 0xcU));
+                                                        << 0xbU));
                                                 vlTOPp->fexp__DOT__fm3__DOT__expF 
                                                     = 
                                                     (0xffU 
                                                      & ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
-                                                        - (IData)(0xbU)));
+                                                        - (IData)(0xaU)));
                                             } else {
                                                 if (
-                                                    (0x800U 
+                                                    (0x1000U 
                                                      & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
                                                     vlTOPp->fexp__DOT__fm3__DOT__mantissa 
                                                         = 
-                                                        (0x7fffffU 
+                                                        (0xffffffU 
                                                          & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                                            << 0xdU));
+                                                            << 0xcU));
                                                     vlTOPp->fexp__DOT__fm3__DOT__expF 
                                                         = 
                                                         (0xffU 
                                                          & ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
-                                                            - (IData)(0xcU)));
+                                                            - (IData)(0xbU)));
                                                 } else {
                                                     if (
-                                                        (0x400U 
+                                                        (0x800U 
                                                          & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
                                                         vlTOPp->fexp__DOT__fm3__DOT__mantissa 
                                                             = 
-                                                            (0x7fffffU 
+                                                            (0xffffffU 
                                                              & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                                                << 0xeU));
+                                                                << 0xdU));
                                                         vlTOPp->fexp__DOT__fm3__DOT__expF 
                                                             = 
                                                             (0xffU 
                                                              & ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
-                                                                - (IData)(0xdU)));
+                                                                - (IData)(0xcU)));
                                                     } else {
                                                         if (
-                                                            (0x200U 
+                                                            (0x400U 
                                                              & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
                                                             vlTOPp->fexp__DOT__fm3__DOT__mantissa 
                                                                 = 
-                                                                (0x7fffffU 
+                                                                (0xffffffU 
                                                                  & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                                                    << 0xfU));
+                                                                    << 0xeU));
                                                             vlTOPp->fexp__DOT__fm3__DOT__expF 
                                                                 = 
                                                                 (0xffU 
                                                                  & ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
-                                                                    - (IData)(0xeU)));
+                                                                    - (IData)(0xdU)));
                                                         } else {
                                                             if (
-                                                                (0x100U 
+                                                                (0x200U 
                                                                  & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
                                                                 vlTOPp->fexp__DOT__fm3__DOT__mantissa 
                                                                     = 
-                                                                    (0x7fffffU 
+                                                                    (0xffffffU 
                                                                      & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                                                        << 0x10U));
+                                                                        << 0xfU));
                                                                 vlTOPp->fexp__DOT__fm3__DOT__expF 
                                                                     = 
                                                                     (0xffU 
                                                                      & ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
-                                                                        - (IData)(0xfU)));
+                                                                        - (IData)(0xeU)));
                                                             } else {
                                                                 if (
-                                                                    (0x80U 
+                                                                    (0x100U 
                                                                      & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
                                                                     vlTOPp->fexp__DOT__fm3__DOT__mantissa 
                                                                         = 
-                                                                        (0x7fffffU 
+                                                                        (0xffffffU 
                                                                          & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                                                            << 0x11U));
+                                                                            << 0x10U));
                                                                     vlTOPp->fexp__DOT__fm3__DOT__expF 
                                                                         = 
                                                                         (0xffU 
                                                                          & ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
-                                                                            - (IData)(0x10U)));
+                                                                            - (IData)(0xfU)));
                                                                 } else {
                                                                     if (
-                                                                        (0x40U 
+                                                                        (0x80U 
                                                                          & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
                                                                         vlTOPp->fexp__DOT__fm3__DOT__mantissa 
                                                                             = 
-                                                                            (0x7fffffU 
+                                                                            (0xffffffU 
                                                                              & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                                                                << 0x12U));
+                                                                                << 0x11U));
                                                                         vlTOPp->fexp__DOT__fm3__DOT__expF 
                                                                             = 
                                                                             (0xffU 
                                                                              & ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
-                                                                                - (IData)(0x11U)));
+                                                                                - (IData)(0x10U)));
                                                                     } else {
                                                                         if (
-                                                                            (0x20U 
+                                                                            (0x40U 
                                                                              & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
                                                                             vlTOPp->fexp__DOT__fm3__DOT__mantissa 
                                                                                 = 
-                                                                                (0x7fffffU 
+                                                                                (0xffffffU 
                                                                                 & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
-                                                                                << 0x13U));
+                                                                                << 0x12U));
                                                                             vlTOPp->fexp__DOT__fm3__DOT__expF 
                                                                                 = 
                                                                                 (0xffU 
                                                                                 & ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
-                                                                                - (IData)(0x12U)));
+                                                                                - (IData)(0x11U)));
                                                                         } else {
                                                                             if (
+                                                                                (0x20U 
+                                                                                & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
+                                                                                vlTOPp->fexp__DOT__fm3__DOT__mantissa 
+                                                                                = 
+                                                                                (0xffffffU 
+                                                                                & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
+                                                                                << 0x13U));
+                                                                                vlTOPp->fexp__DOT__fm3__DOT__expF 
+                                                                                = 
+                                                                                (0xffU 
+                                                                                & ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
+                                                                                - (IData)(0x12U)));
+                                                                            } else {
+                                                                                if (
                                                                                 (0x10U 
                                                                                 & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
                                                                                 vlTOPp->fexp__DOT__fm3__DOT__mantissa 
                                                                                 = 
-                                                                                (0x7fffffU 
+                                                                                (0xffffffU 
                                                                                 & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
                                                                                 << 0x14U));
                                                                                 vlTOPp->fexp__DOT__fm3__DOT__expF 
@@ -2320,13 +2379,13 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
                                                                                 (0xffU 
                                                                                 & ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
                                                                                 - (IData)(0x13U)));
-                                                                            } else {
+                                                                                } else {
                                                                                 if (
                                                                                 (8U 
                                                                                 & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
                                                                                 vlTOPp->fexp__DOT__fm3__DOT__mantissa 
                                                                                 = 
-                                                                                (0x7fffffU 
+                                                                                (0xffffffU 
                                                                                 & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
                                                                                 << 0x15U));
                                                                                 vlTOPp->fexp__DOT__fm3__DOT__expF 
@@ -2340,7 +2399,7 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
                                                                                 & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
                                                                                 vlTOPp->fexp__DOT__fm3__DOT__mantissa 
                                                                                 = 
-                                                                                (0x7fffffU 
+                                                                                (0xffffffU 
                                                                                 & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
                                                                                 << 0x16U));
                                                                                 vlTOPp->fexp__DOT__fm3__DOT__expF 
@@ -2352,14 +2411,19 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
                                                                                 if (
                                                                                 (2U 
                                                                                 & vlTOPp->fexp__DOT__fm3__DOT__mantissa)) {
+                                                                                vlTOPp->fexp__DOT__fm3__DOT__mantissa 
+                                                                                = 
+                                                                                (0xffffffU 
+                                                                                & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
+                                                                                << 0x17U));
                                                                                 vlTOPp->fexp__DOT__fm3__DOT__expF 
                                                                                 = 
                                                                                 (0xffU 
                                                                                 & ((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
                                                                                 - (IData)(0x16U)));
-                                                                                vlTOPp->fexp__DOT__fm3__DOT__mantissa = 0U;
                                                                                 } else {
                                                                                 vlTOPp->fexp__DOT__fm3__DOT__expF = 0xffU;
+                                                                                }
                                                                                 }
                                                                                 }
                                                                                 }
@@ -2384,12 +2448,12 @@ VL_INLINE_OPT void Vfexp::_combo__TOP__1(Vfexp__Syms* __restrict vlSymsp) {
     }
     vlTOPp->fexp__DOT__fm3__DOT__expF = (0xffU & ((IData)(1U) 
                                                   + (IData)(vlTOPp->fexp__DOT__fm3__DOT__expF)));
-    vlTOPp->fexp__DOT__fm3__DOT__expF = (0xffU & ((IData)(1U) 
-                                                  + (IData)(vlTOPp->fexp__DOT__fm3__DOT__expF)));
     vlTOPp->fexp__DOT__temp8 = ((0x80000000U & (vlTOPp->fexp__DOT__temp6 
                                                 ^ vlTOPp->exp)) 
                                 | (((IData)(vlTOPp->fexp__DOT__fm3__DOT__expF) 
-                                    << 0x17U) | vlTOPp->fexp__DOT__fm3__DOT__mantissa));
+                                    << 0x17U) | (0x7fffffU 
+                                                 & (vlTOPp->fexp__DOT__fm3__DOT__mantissa 
+                                                    >> 1U))));
     vlTOPp->fexp__DOT__temp3 = ((0x80000000U & ((~ (IData)(vlTOPp->fexp__DOT__fma0__DOT__sign_out)) 
                                                 << 0x1fU)) 
                                 | (((IData)(vlTOPp->fexp__DOT__fma0__DOT__final_exp) 

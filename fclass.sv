@@ -14,10 +14,10 @@ module fclass (
 		else if (in1 == 32'b11111111100000000000000000000000) begin // -inf case
 			result[0] = 1'b1;
 		end
-		else if (in1[31:23] == 9'b111111111 && in1[0] == 1'b1) begin //quiet NaN
+		else if (in1[30:22] == 9'b111111111) begin //quiet NaN
 			result[9] = 1'b1;
 		end
-		else if (in1 == 10'b1111111111) begin //signaling NaN
+		else if (in1[30:23] == 8'b11111111) begin //signaling NaN
 			result[8] = 1'b1;
 		end
 		else if (in1 == 32'b10000000000000000000000000000000) begin // -0
