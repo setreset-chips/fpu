@@ -110,15 +110,17 @@ module fpu_top (
 
 	logic [31:0] result;
 	logic [31:0] fma, fms, fnms, fnma, fad, fsu, fmu, fdi, fsq, fsj, fsn, fsx, fmi, fmx, fq, ft, fe, fcls;
-	fmadd fmadd1(operand_one, operand_two, operand_three, fma);
-	fmsub fmsub1(operand_one, operand_two, operand_three, fms);
-	fnmsub fnmsub1(operand_one, operand_two, operand_three, fnms);
-	fnmadd fnmadd1(operand_one, operand_two, operand_three, fnma);
-	fadd fadd1(operand_one, operand_two, fad);
-	fsub fsub1(operand_one, operand_two, fsu);
-	fmul fmul1(operand_one, operand_two, fmu);
-	fdiv fdiv1(operand_one, operand_two, fdi);
-	fsqrt fsqrt1(operand_one, fsq);
+	logic [2:0] rm;
+	assign rm = (ins_p2[14:12] == 3'b111) ? fcsr[7:5] : ins_p2[14:12];
+	fmadd fmadd1(operand_one, operand_two, operand_three, rm, fma);
+	fmsub fmsub1(operand_one, operand_two, operand_three, rm, fms);
+	fnmsub fnmsub1(operand_one, operand_two, operand_three, rm, fnms);
+	fnmadd fnmadd1(operand_one, operand_two, operand_three, rm, fnma);
+	fadd fadd1(operand_one, operand_two, rm, fad);
+	fsub fsub1(operand_one, operand_two, rm, fsu);
+	fmul fmul1(operand_one, operand_two, rm, fmu);
+	fdiv fdiv1(operand_one, operand_two, rm, fdi);
+	fsqrt fsqrt1(operand_one, rm, fsq);
 	fsgnj fsgnj1(operand_one, operand_two, fsj);
 	fsgnjn fsgnjn1(operand_one, operand_two, fsn);
 	fsgnjx fsgnjx1(operand_one, operand_two, fsx);

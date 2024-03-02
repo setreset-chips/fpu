@@ -24,10 +24,12 @@ VM_TRACE_FST_WRITER_THREAD = 0
 # Generated module classes, fast-path, compile with highest optimization
 VM_CLASSES_FAST += \
 	Vfpu_top \
+	Vfpu_top_fmul \
 
 # Generated module classes, non-fast-path, compile with low/medium optimization
 VM_CLASSES_SLOW += \
 	Vfpu_top__Slow \
+	Vfpu_top_fmul__Slow \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \

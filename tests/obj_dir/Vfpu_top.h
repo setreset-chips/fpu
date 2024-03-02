@@ -14,12 +14,23 @@
 
 class Vfpu_top__Syms;
 class Vfpu_top_VerilatedVcd;
+class Vfpu_top_fmul;
 
 
 //----------
 
 VL_MODULE(Vfpu_top) {
   public:
+    // CELLS
+    // Public to allow access to /*verilator_public*/ items;
+    // otherwise the application code can consider these internals.
+    Vfpu_top_fmul* __PVT__fpu_top__DOT__fmul1;
+    Vfpu_top_fmul* __PVT__fpu_top__DOT__fmadd1__DOT__fmul1;
+    Vfpu_top_fmul* __PVT__fpu_top__DOT__fmsub1__DOT__fmul1;
+    Vfpu_top_fmul* __PVT__fpu_top__DOT__fnmsub1__DOT__fmul1;
+    Vfpu_top_fmul* __PVT__fpu_top__DOT__fnmadd1__DOT__fmul1;
+    Vfpu_top_fmul* __PVT__fpu_top__DOT__fdiv1__DOT__fm0;
+    Vfpu_top_fmul* __PVT__fpu_top__DOT__fdiv1__DOT__fi0__DOT__f1;
     
     // PORTS
     // The application code writes and reads these signals to
@@ -34,7 +45,7 @@ VL_MODULE(Vfpu_top) {
     struct {
         CData/*4:0*/ fpu_top__DOT__curr_op;
         CData/*4:0*/ fpu_top__DOT__exec_op;
-        CData/*7:0*/ fpu_top__DOT__fmadd1__DOT__fmul1__DOT__expF;
+        CData/*2:0*/ fpu_top__DOT__rm;
         CData/*0:0*/ fpu_top__DOT__fmadd1__DOT__fadd1__DOT__largerMag;
         CData/*0:0*/ fpu_top__DOT__fmadd1__DOT__fadd1__DOT__finalSign;
         CData/*7:0*/ fpu_top__DOT__fmadd1__DOT__fadd1__DOT__num1Exp;
@@ -45,14 +56,11 @@ VL_MODULE(Vfpu_top) {
         CData/*7:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__num1Exp;
         CData/*7:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__num2Exp;
         CData/*7:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__finalExp;
-        CData/*7:0*/ fpu_top__DOT__fmsub1__DOT__fmul1__DOT__expF;
-        CData/*7:0*/ fpu_top__DOT__fnmsub1__DOT__fmul1__DOT__expF;
         CData/*0:0*/ fpu_top__DOT__fnmsub1__DOT__fsub1__DOT__f1__DOT__largerMag;
         CData/*0:0*/ fpu_top__DOT__fnmsub1__DOT__fsub1__DOT__f1__DOT__finalSign;
         CData/*7:0*/ fpu_top__DOT__fnmsub1__DOT__fsub1__DOT__f1__DOT__num1Exp;
         CData/*7:0*/ fpu_top__DOT__fnmsub1__DOT__fsub1__DOT__f1__DOT__num2Exp;
         CData/*7:0*/ fpu_top__DOT__fnmsub1__DOT__fsub1__DOT__f1__DOT__finalExp;
-        CData/*7:0*/ fpu_top__DOT__fnmadd1__DOT__fmul1__DOT__expF;
         CData/*0:0*/ fpu_top__DOT__fnmadd1__DOT__fadd1__DOT__largerMag;
         CData/*0:0*/ fpu_top__DOT__fnmadd1__DOT__fadd1__DOT__finalSign;
         CData/*7:0*/ fpu_top__DOT__fnmadd1__DOT__fadd1__DOT__num1Exp;
@@ -68,9 +76,6 @@ VL_MODULE(Vfpu_top) {
         CData/*7:0*/ fpu_top__DOT__fsub1__DOT__f1__DOT__num1Exp;
         CData/*7:0*/ fpu_top__DOT__fsub1__DOT__f1__DOT__num2Exp;
         CData/*7:0*/ fpu_top__DOT__fsub1__DOT__f1__DOT__finalExp;
-        CData/*7:0*/ fpu_top__DOT__fmul1__DOT__expF;
-        CData/*7:0*/ fpu_top__DOT__fdiv1__DOT__fi0__DOT__f1__DOT__expF;
-        CData/*7:0*/ fpu_top__DOT__fdiv1__DOT__fm0__DOT__expF;
         IData/*31:0*/ fpu_top__DOT__operand_1;
         IData/*31:0*/ fpu_top__DOT__operand_2;
         IData/*31:0*/ fpu_top__DOT__operand_3;
@@ -84,69 +89,97 @@ VL_MODULE(Vfpu_top) {
         IData/*31:0*/ fpu_top__DOT__operand_two;
         IData/*31:0*/ fpu_top__DOT__operand_three;
         IData/*31:0*/ fpu_top__DOT__result;
-        IData/*31:0*/ fpu_top__DOT__fmu;
-        IData/*31:0*/ fpu_top__DOT__fdi;
         IData/*31:0*/ fpu_top__DOT__writeback_data;
         IData/*31:0*/ fpu_top__DOT__ins_p3;
-        IData/*31:0*/ fpu_top__DOT__fmadd1__DOT__out;
-        IData/*23:0*/ fpu_top__DOT__fmadd1__DOT__fmul1__DOT__mantissa;
         IData/*23:0*/ fpu_top__DOT__fmadd1__DOT__fadd1__DOT__num1Mant;
         IData/*23:0*/ fpu_top__DOT__fmadd1__DOT__fadd1__DOT__num2Mant;
         IData/*23:0*/ fpu_top__DOT__fmadd1__DOT__fadd1__DOT__finalMant;
         IData/*24:0*/ fpu_top__DOT__fmadd1__DOT__fadd1__DOT__sumMants;
         IData/*31:0*/ fpu_top__DOT__fmadd1__DOT__fadd1__DOT__i;
-        IData/*31:0*/ fpu_top__DOT__fmsub1__DOT__out;
-    };
-    struct {
-        IData/*31:0*/ fpu_top__DOT__fmsub1__DOT__out2;
+        IData/*31:0*/ fpu_top__DOT__fmadd1__DOT__fadd1__DOT__unrounded;
+        IData/*31:0*/ fpu_top__DOT__fmadd1__DOT__fadd1__DOT__r0__DOT__rounded;
+        IData/*23:0*/ fpu_top__DOT__fmadd1__DOT__fadd1__DOT__r0__DOT__overflowCheck;
+        IData/*22:0*/ fpu_top__DOT__fmadd1__DOT__fadd1__DOT__r0__DOT__mask;
+        IData/*22:0*/ fpu_top__DOT__fmadd1__DOT__fadd1__DOT__r0__DOT__mask2;
+        IData/*31:0*/ fpu_top__DOT__fmadd1__DOT__fadd1__DOT__r0__DOT__i;
+        IData/*31:0*/ fpu_top__DOT__fmadd1__DOT__fadd1__DOT__r0__DOT__j;
         IData/*23:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__num1Mant;
         IData/*23:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__num2Mant;
         IData/*23:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__finalMant;
         IData/*24:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__sumMants;
+    };
+    struct {
         IData/*31:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__i;
-        IData/*23:0*/ fpu_top__DOT__fmsub1__DOT__fmul1__DOT__mantissa;
+        IData/*31:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__unrounded;
+        IData/*31:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__r0__DOT__rounded;
+        IData/*23:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__r0__DOT__overflowCheck;
+        IData/*22:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__r0__DOT__mask;
+        IData/*22:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__r0__DOT__mask2;
+        IData/*31:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__r0__DOT__i;
+        IData/*31:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__r0__DOT__j;
         IData/*31:0*/ fpu_top__DOT__fnmsub1__DOT__in1;
-        IData/*31:0*/ fpu_top__DOT__fnmsub1__DOT__out;
-        IData/*23:0*/ fpu_top__DOT__fnmsub1__DOT__fmul1__DOT__mantissa;
         IData/*23:0*/ fpu_top__DOT__fnmsub1__DOT__fsub1__DOT__f1__DOT__num1Mant;
         IData/*23:0*/ fpu_top__DOT__fnmsub1__DOT__fsub1__DOT__f1__DOT__num2Mant;
         IData/*23:0*/ fpu_top__DOT__fnmsub1__DOT__fsub1__DOT__f1__DOT__finalMant;
         IData/*24:0*/ fpu_top__DOT__fnmsub1__DOT__fsub1__DOT__f1__DOT__sumMants;
         IData/*31:0*/ fpu_top__DOT__fnmsub1__DOT__fsub1__DOT__f1__DOT__i;
-        IData/*31:0*/ fpu_top__DOT__fnmadd1__DOT__out;
-        IData/*23:0*/ fpu_top__DOT__fnmadd1__DOT__fmul1__DOT__mantissa;
+        IData/*31:0*/ fpu_top__DOT__fnmsub1__DOT__fsub1__DOT__f1__DOT__unrounded;
+        IData/*31:0*/ fpu_top__DOT__fnmsub1__DOT__fsub1__DOT__f1__DOT__r0__DOT__rounded;
+        IData/*23:0*/ fpu_top__DOT__fnmsub1__DOT__fsub1__DOT__f1__DOT__r0__DOT__overflowCheck;
+        IData/*22:0*/ fpu_top__DOT__fnmsub1__DOT__fsub1__DOT__f1__DOT__r0__DOT__mask;
+        IData/*22:0*/ fpu_top__DOT__fnmsub1__DOT__fsub1__DOT__f1__DOT__r0__DOT__mask2;
+        IData/*31:0*/ fpu_top__DOT__fnmsub1__DOT__fsub1__DOT__f1__DOT__r0__DOT__i;
+        IData/*31:0*/ fpu_top__DOT__fnmsub1__DOT__fsub1__DOT__f1__DOT__r0__DOT__j;
         IData/*23:0*/ fpu_top__DOT__fnmadd1__DOT__fadd1__DOT__num1Mant;
         IData/*23:0*/ fpu_top__DOT__fnmadd1__DOT__fadd1__DOT__num2Mant;
         IData/*23:0*/ fpu_top__DOT__fnmadd1__DOT__fadd1__DOT__finalMant;
         IData/*24:0*/ fpu_top__DOT__fnmadd1__DOT__fadd1__DOT__sumMants;
         IData/*31:0*/ fpu_top__DOT__fnmadd1__DOT__fadd1__DOT__i;
+        IData/*31:0*/ fpu_top__DOT__fnmadd1__DOT__fadd1__DOT__unrounded;
+        IData/*31:0*/ fpu_top__DOT__fnmadd1__DOT__fadd1__DOT__r0__DOT__rounded;
+        IData/*23:0*/ fpu_top__DOT__fnmadd1__DOT__fadd1__DOT__r0__DOT__overflowCheck;
+        IData/*22:0*/ fpu_top__DOT__fnmadd1__DOT__fadd1__DOT__r0__DOT__mask;
+        IData/*22:0*/ fpu_top__DOT__fnmadd1__DOT__fadd1__DOT__r0__DOT__mask2;
+        IData/*31:0*/ fpu_top__DOT__fnmadd1__DOT__fadd1__DOT__r0__DOT__i;
+        IData/*31:0*/ fpu_top__DOT__fnmadd1__DOT__fadd1__DOT__r0__DOT__j;
         IData/*23:0*/ fpu_top__DOT__fadd1__DOT__num1Mant;
         IData/*23:0*/ fpu_top__DOT__fadd1__DOT__num2Mant;
         IData/*23:0*/ fpu_top__DOT__fadd1__DOT__finalMant;
         IData/*24:0*/ fpu_top__DOT__fadd1__DOT__sumMants;
         IData/*31:0*/ fpu_top__DOT__fadd1__DOT__i;
+        IData/*31:0*/ fpu_top__DOT__fadd1__DOT__unrounded;
+        IData/*31:0*/ fpu_top__DOT__fadd1__DOT__r0__DOT__rounded;
+        IData/*23:0*/ fpu_top__DOT__fadd1__DOT__r0__DOT__overflowCheck;
+        IData/*22:0*/ fpu_top__DOT__fadd1__DOT__r0__DOT__mask;
+        IData/*22:0*/ fpu_top__DOT__fadd1__DOT__r0__DOT__mask2;
+        IData/*31:0*/ fpu_top__DOT__fadd1__DOT__r0__DOT__i;
+        IData/*31:0*/ fpu_top__DOT__fadd1__DOT__r0__DOT__j;
         IData/*23:0*/ fpu_top__DOT__fsub1__DOT__f1__DOT__num1Mant;
         IData/*23:0*/ fpu_top__DOT__fsub1__DOT__f1__DOT__num2Mant;
         IData/*23:0*/ fpu_top__DOT__fsub1__DOT__f1__DOT__finalMant;
         IData/*24:0*/ fpu_top__DOT__fsub1__DOT__f1__DOT__sumMants;
         IData/*31:0*/ fpu_top__DOT__fsub1__DOT__f1__DOT__i;
-        IData/*23:0*/ fpu_top__DOT__fmul1__DOT__mantissa;
-        IData/*31:0*/ fpu_top__DOT__fdiv1__DOT__temp_out;
-        IData/*23:0*/ fpu_top__DOT__fdiv1__DOT__fi0__DOT__f1__DOT__mantissa;
-        IData/*23:0*/ fpu_top__DOT__fdiv1__DOT__fm0__DOT__mantissa;
+        IData/*31:0*/ fpu_top__DOT__fsub1__DOT__f1__DOT__unrounded;
+        IData/*31:0*/ fpu_top__DOT__fsub1__DOT__f1__DOT__r0__DOT__rounded;
+        IData/*23:0*/ fpu_top__DOT__fsub1__DOT__f1__DOT__r0__DOT__overflowCheck;
+        IData/*22:0*/ fpu_top__DOT__fsub1__DOT__f1__DOT__r0__DOT__mask;
+        IData/*22:0*/ fpu_top__DOT__fsub1__DOT__f1__DOT__r0__DOT__mask2;
+        IData/*31:0*/ fpu_top__DOT__fsub1__DOT__f1__DOT__r0__DOT__i;
+        IData/*31:0*/ fpu_top__DOT__fsub1__DOT__f1__DOT__r0__DOT__j;
         IData/*31:0*/ fpu_top__DOT__fsqrt1__DOT__shifted_num;
+        IData/*31:0*/ fpu_top__DOT__fsqrt1__DOT__r0__DOT__rounded;
+        IData/*23:0*/ fpu_top__DOT__fsqrt1__DOT__r0__DOT__overflowCheck;
+        IData/*22:0*/ fpu_top__DOT__fsqrt1__DOT__r0__DOT__mask;
+        IData/*22:0*/ fpu_top__DOT__fsqrt1__DOT__r0__DOT__mask2;
+        IData/*31:0*/ fpu_top__DOT__fsqrt1__DOT__r0__DOT__i;
+        IData/*31:0*/ fpu_top__DOT__fsqrt1__DOT__r0__DOT__j;
+    };
+    struct {
         IData/*31:0*/ fpu_top__DOT__fmin1__DOT__out;
         IData/*31:0*/ fpu_top__DOT__fmax1__DOT__out;
         IData/*31:0*/ fpu_top__DOT__flt1__DOT__out;
         IData/*31:0*/ fpu_top__DOT__fle1__DOT__out;
         IData/*31:0*/ fpu_top__DOT__fclass1__DOT__result;
-        QData/*47:0*/ fpu_top__DOT__fmadd1__DOT__fmul1__DOT__mantissaProd;
-        QData/*47:0*/ fpu_top__DOT__fmsub1__DOT__fmul1__DOT__mantissaProd;
-        QData/*47:0*/ fpu_top__DOT__fnmsub1__DOT__fmul1__DOT__mantissaProd;
-        QData/*47:0*/ fpu_top__DOT__fnmadd1__DOT__fmul1__DOT__mantissaProd;
-        QData/*47:0*/ fpu_top__DOT__fmul1__DOT__mantissaProd;
-        QData/*47:0*/ fpu_top__DOT__fdiv1__DOT__fi0__DOT__f1__DOT__mantissaProd;
-        QData/*47:0*/ fpu_top__DOT__fdiv1__DOT__fm0__DOT__mantissaProd;
         IData/*31:0*/ fpu_top__DOT__regFile[32];
     };
     
@@ -155,7 +188,7 @@ VL_MODULE(Vfpu_top) {
     CData/*0:0*/ __Vclklast__TOP__clk;
     IData/*31:0*/ fpu_top__DOT__fmsub1__DOT____Vcellinp__f1__num2;
     IData/*31:0*/ __Vchglast__TOP__fpu_top__DOT__fsqrt1__DOT__shifted_num;
-    CData/*0:0*/ __Vm_traceActivity[2];
+    CData/*0:0*/ __Vm_traceActivity[3];
     
     // INTERNAL VARIABLES
     // Internals; generally not touched by application code
@@ -194,7 +227,7 @@ VL_MODULE(Vfpu_top) {
     static QData _change_request(Vfpu_top__Syms* __restrict vlSymsp);
     static QData _change_request_1(Vfpu_top__Syms* __restrict vlSymsp);
   public:
-    static void _combo__TOP__4(Vfpu_top__Syms* __restrict vlSymsp);
+    static void _combo__TOP__6(Vfpu_top__Syms* __restrict vlSymsp);
   private:
     void _ctor_var_reset() VL_ATTR_COLD;
   public:
@@ -208,7 +241,8 @@ VL_MODULE(Vfpu_top) {
     static void _eval_settle(Vfpu_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
     static void _initial__TOP__1(Vfpu_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
     static void _sequent__TOP__2(Vfpu_top__Syms* __restrict vlSymsp);
-    static void _settle__TOP__3(Vfpu_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
+    static void _sequent__TOP__3(Vfpu_top__Syms* __restrict vlSymsp);
+    static void _settle__TOP__4(Vfpu_top__Syms* __restrict vlSymsp) VL_ATTR_COLD;
   private:
     static void traceChgSub0(void* userp, VerilatedVcd* tracep);
     static void traceChgTop0(void* userp, VerilatedVcd* tracep);

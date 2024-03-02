@@ -98,7 +98,7 @@ VL_INLINE_OPT QData Vfsqrt::_change_request_1(Vfsqrt__Syms* __restrict vlSymsp) 
     // Change detection
     QData __req = false;  // Logically a bool
     __req |= ((vlTOPp->fsqrt__DOT__shifted_num ^ vlTOPp->__Vchglast__TOP__fsqrt__DOT__shifted_num));
-    VL_DEBUG_IF( if(__req && ((vlTOPp->fsqrt__DOT__shifted_num ^ vlTOPp->__Vchglast__TOP__fsqrt__DOT__shifted_num))) VL_DBG_MSGF("        CHANGE: ../fsqrt.sv:14: fsqrt.shifted_num\n"); );
+    VL_DEBUG_IF( if(__req && ((vlTOPp->fsqrt__DOT__shifted_num ^ vlTOPp->__Vchglast__TOP__fsqrt__DOT__shifted_num))) VL_DBG_MSGF("        CHANGE: ../fsqrt.sv:13: fsqrt.shifted_num\n"); );
     // Final
     vlTOPp->__Vchglast__TOP__fsqrt__DOT__shifted_num 
         = vlTOPp->fsqrt__DOT__shifted_num;

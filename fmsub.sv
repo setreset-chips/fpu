@@ -2,6 +2,7 @@ module fmsub (
 	input [31:0] var1,
 	input [31:0] var2,
 	input [31:0] var3,
+	input logic [2:0] rm,
 	output [31:0] res
 );
 
@@ -14,8 +15,8 @@ module fmsub (
 	assign in2 = var2;
 	assign in3 = var3;
 	
-		fadd f1(.num1(in1), .num2({~in2[31], in2[30:0]}), .out_num(out));
-		fmul fmul1(.num1(out), .num2(in3), .out_mul(out2));
+		fadd f1(.num1(in1), .num2({~in2[31], in2[30:0]}), rm, .out_num(out));
+		fmul fmul1(.num1(out), .num2(in3), rm, .out_mul(out2));
 
 		assign res = out2;
 

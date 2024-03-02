@@ -1,6 +1,7 @@
 module fmul (
 	input logic [31:0] num1,
 	input logic [31:0] num2,
+	input logic [2:0] rm,
 	output logic [31:0] out_mul
 );
 	
@@ -118,7 +119,7 @@ module fmul (
 		//mantissa = mantissa >> 1;
 		//expF = expF+1;
 		
-		out_mul = {sign, expF, mantissa[23:1]};
+		//out_mul = {sign, expF, mantissa[23:1]};
 	end
-
+	round r0({sign, expF, mantissa[23:1]}, rm, out_mul);
 endmodule

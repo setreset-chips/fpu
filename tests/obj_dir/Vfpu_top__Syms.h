@@ -11,6 +11,7 @@
 
 // INCLUDE MODULE CLASSES
 #include "Vfpu_top.h"
+#include "Vfpu_top_fmul.h"
 
 // SYMS CLASS
 class Vfpu_top__Syms : public VerilatedSyms {
@@ -24,6 +25,13 @@ class Vfpu_top__Syms : public VerilatedSyms {
     
     // SUBCELL STATE
     Vfpu_top*                      TOPp;
+    Vfpu_top_fmul                  TOP__fpu_top__DOT__fdiv1__DOT__fi0__DOT__f1;
+    Vfpu_top_fmul                  TOP__fpu_top__DOT__fdiv1__DOT__fm0;
+    Vfpu_top_fmul                  TOP__fpu_top__DOT__fmadd1__DOT__fmul1;
+    Vfpu_top_fmul                  TOP__fpu_top__DOT__fmsub1__DOT__fmul1;
+    Vfpu_top_fmul                  TOP__fpu_top__DOT__fmul1;
+    Vfpu_top_fmul                  TOP__fpu_top__DOT__fnmadd1__DOT__fmul1;
+    Vfpu_top_fmul                  TOP__fpu_top__DOT__fnmsub1__DOT__fmul1;
     
     // CREATORS
     Vfpu_top__Syms(Vfpu_top* topp, const char* namep);

@@ -1,9 +1,13 @@
 Need to implement the following modules:
 
-All of the Converts (CVRT_W_S, CVRT_WU_S, CVRT_S_W, SVRT_S_WU)
-Finish Pipeline
-Implement Roundings
+FRCSR and FSCSR
+Flags
+Denormalized Numbers -> simple just add a check -> if exp == 0 then leading bit = 0.
+All of the Converts (CVRT_W_S, CVRT_WU_S, CVRT_S_W, SVRT_S_WU) (Definitely need to be checked) 
+Strict FSQRT implementation - current one kinda sucks.
+Finish Pipeline (Done?)
+Implement Roundings (Done?)
 
 Later:
 Implement Memory Calls
-Implement Floating Point to Int and Vice Versa - Design is already implemented but it needs to be in the top leve.
+Implement Floating Point to Int and Vice Versa - Design is already implemented but it needs to be in the top level.

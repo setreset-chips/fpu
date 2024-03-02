@@ -2,6 +2,7 @@ module fnmsub (
 	input [31:0] var1,
 	input [31:0] var2,
 	input [31:0] var3,
+	input logic [2:0] rm,
 	output [31:0] res
 );
 
@@ -16,8 +17,8 @@ module fnmsub (
 		assign in3 = var3;
 	
 	
-		fmul fmul1(.num1(in1), .num2(in2), .out_mul(out));
-		fsub fsub1(.var1(in1), .var2(in2), .res(out2));
+		fmul fmul1(.num1(in1), .num2(in2), rm, .out_mul(out));
+		fsub fsub1(.var1(in1), .var2(in2), rm, .res(out2));
 
 		assign res = out2;
 

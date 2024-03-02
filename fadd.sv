@@ -1,6 +1,7 @@
 module fadd (
 	input logic [31:0] num1,
 	input logic [31:0] num2,
+	input logic [2:0] rm,
 	output logic [31:0] out_num
 );
 	logic largerMag, finalSign;
@@ -177,7 +178,8 @@ module fadd (
   	         finalExp = 8'b0;
   	      end	
 	end
-	
-	assign out_num = {~finalSign, finalExp, finalMant[23:1]}; //need to do sign bit stuff
+	logic [31:0] unrounded;
+	assign unrounded = {~finalSign, finalExp, finalMant[23:1]};
+	round r0(unrounded, rm, out_num);
 	
 endmodule
