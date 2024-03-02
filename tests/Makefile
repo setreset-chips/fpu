@@ -25,3 +25,7 @@ fexp:
 ftop:
 	verilator -I../ -Wall -Wno-fatal --trace --cc --exe --build tb_fpu_top.cpp ../fpu_top.sv 
 	./obj_dir/Vfpu_top
+	
+round:
+	verilator -I../ -Wall -Wno-fatal --trace --cc --exe --build tb_round.cpp ../round.sv 
+	./obj_dir/Vround
