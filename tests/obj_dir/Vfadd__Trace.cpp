@@ -32,10 +32,17 @@ void Vfadd::traceChgSub0(void* userp, VerilatedVcd* tracep) {
             tracep->chgIData(oldp+6,(vlTOPp->fadd__DOT__num2Mant),24);
             tracep->chgIData(oldp+7,(vlTOPp->fadd__DOT__finalMant),24);
             tracep->chgIData(oldp+8,(vlTOPp->fadd__DOT__sumMants),25);
+            tracep->chgIData(oldp+9,(vlTOPp->fadd__DOT__unrounded),32);
+            tracep->chgIData(oldp+10,(vlTOPp->fadd__DOT__r0__DOT__rounded),32);
+            tracep->chgIData(oldp+11,(vlTOPp->fadd__DOT__r0__DOT__overflowCheck),24);
+            tracep->chgIData(oldp+12,(vlTOPp->fadd__DOT__r0__DOT__mask),23);
+            tracep->chgIData(oldp+13,(vlTOPp->fadd__DOT__r0__DOT__mask2),23);
+            tracep->chgIData(oldp+14,(vlTOPp->fadd__DOT__r0__DOT__i),32);
         }
-        tracep->chgIData(oldp+9,(vlTOPp->num1),32);
-        tracep->chgIData(oldp+10,(vlTOPp->num2),32);
-        tracep->chgIData(oldp+11,(vlTOPp->out_num),32);
+        tracep->chgIData(oldp+15,(vlTOPp->num1),32);
+        tracep->chgIData(oldp+16,(vlTOPp->num2),32);
+        tracep->chgCData(oldp+17,(vlTOPp->rm),3);
+        tracep->chgIData(oldp+18,(vlTOPp->out_num),32);
     }
 }
 

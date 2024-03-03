@@ -71,15 +71,18 @@ VL_INLINE_OPT void Vfpu_top::_sequent__TOP__2(Vfpu_top__Syms* __restrict vlSymsp
     Vfpu_top* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Variables
     CData/*4:0*/ __Vdlyvdim0__fpu_top__DOT__regFile__v0;
+    CData/*0:0*/ __Vdlyvset__fpu_top__DOT__regFile__v0;
     IData/*31:0*/ __Vdlyvval__fpu_top__DOT__regFile__v0;
     // Body
+    __Vdlyvset__fpu_top__DOT__regFile__v0 = 0U;
+    vlTOPp->fpu_top__DOT__final_op = vlTOPp->fpu_top__DOT__exec_op;
     if ((4U == (7U & (vlTOPp->fpu_top__DOT__ins_p1 
                       >> 4U)))) {
         vlTOPp->fpu_top__DOT__curr_op = ((8U & vlTOPp->fpu_top__DOT__ins_p1)
                                           ? ((4U & vlTOPp->fpu_top__DOT__ins_p1)
-                                              ? 3U : 2U)
+                                              ? 4U : 3U)
                                           : ((4U & vlTOPp->fpu_top__DOT__ins_p1)
-                                              ? 1U : 0U));
+                                              ? 2U : 1U));
     } else {
         if ((5U == (7U & (vlTOPp->fpu_top__DOT__ins_p1 
                           >> 4U)))) {
@@ -96,65 +99,98 @@ VL_INLINE_OPT void Vfpu_top::_sequent__TOP__2(Vfpu_top__Syms* __restrict vlSymsp
                                                     ? 
                                                    ((0x8000000U 
                                                      & vlTOPp->fpu_top__DOT__ins_p1)
-                                                     ? 0x18U
-                                                     : 0x17U)
+                                                     ? 0x19U
+                                                     : 0x18U)
                                                     : 
                                                    ((0x8000000U 
                                                      & vlTOPp->fpu_top__DOT__ins_p1)
-                                                     ? 0x18U
+                                                     ? 0x19U
                                                      : 
                                                     ((0x1000U 
                                                       & vlTOPp->fpu_top__DOT__ins_p1)
-                                                      ? 0x14U
-                                                      : 0x10U)))
+                                                      ? 0x15U
+                                                      : 0x11U)))
                                                    : 
                                                   ((0x10000000U 
                                                     & vlTOPp->fpu_top__DOT__ins_p1)
                                                     ? 
                                                    ((0x8000000U 
                                                      & vlTOPp->fpu_top__DOT__ins_p1)
-                                                     ? 0x18U
+                                                     ? 0x19U
                                                      : 
                                                     ((0x100000U 
                                                       & vlTOPp->fpu_top__DOT__ins_p1)
-                                                      ? 0x16U
-                                                      : 0x15U))
+                                                      ? 0x17U
+                                                      : 0x16U))
                                                     : 
                                                    ((0x8000000U 
                                                      & vlTOPp->fpu_top__DOT__ins_p1)
-                                                     ? 0x18U
+                                                     ? 0x19U
                                                      : 
                                                     ((0x100000U 
                                                       & vlTOPp->fpu_top__DOT__ins_p1)
-                                                      ? 0xfU
-                                                      : 0xeU))))
+                                                      ? 0x10U
+                                                      : 0xfU))))
                                                   : 
                                                  ((0x20000000U 
                                                    & vlTOPp->fpu_top__DOT__ins_p1)
                                                    ? 
                                                   ((0x10000000U 
                                                     & vlTOPp->fpu_top__DOT__ins_p1)
-                                                    ? 0x18U
+                                                    ? 0x19U
                                                     : 
                                                    ((0x8000000U 
                                                      & vlTOPp->fpu_top__DOT__ins_p1)
-                                                     ? 0x18U
+                                                     ? 0x19U
                                                      : 
                                                     ((0x2000U 
                                                       & vlTOPp->fpu_top__DOT__ins_p1)
-                                                      ? 0x11U
+                                                      ? 0x12U
                                                       : 
                                                      ((0x1000U 
                                                        & vlTOPp->fpu_top__DOT__ins_p1)
-                                                       ? 0x12U
-                                                       : 0x13U))))
-                                                   : 0x18U))
+                                                       ? 0x13U
+                                                       : 0x14U))))
+                                                   : 0x19U))
                                               : ((0x40000000U 
                                                   & vlTOPp->fpu_top__DOT__ins_p1)
                                                   ? 
                                                  ((0x20000000U 
                                                    & vlTOPp->fpu_top__DOT__ins_p1)
-                                                   ? 0x18U
+                                                   ? 0x19U
+                                                   : 
+                                                  ((0x10000000U 
+                                                    & vlTOPp->fpu_top__DOT__ins_p1)
+                                                    ? 
+                                                   ((0x8000000U 
+                                                     & vlTOPp->fpu_top__DOT__ins_p1)
+                                                     ? 9U
+                                                     : 0x19U)
+                                                    : 0x19U))
+                                                  : 
+                                                 ((0x20000000U 
+                                                   & vlTOPp->fpu_top__DOT__ins_p1)
+                                                   ? 
+                                                  ((0x10000000U 
+                                                    & vlTOPp->fpu_top__DOT__ins_p1)
+                                                    ? 0x19U
+                                                    : 
+                                                   ((0x8000000U 
+                                                     & vlTOPp->fpu_top__DOT__ins_p1)
+                                                     ? 
+                                                    ((0x1000U 
+                                                      & vlTOPp->fpu_top__DOT__ins_p1)
+                                                      ? 0xeU
+                                                      : 0xdU)
+                                                     : 
+                                                    ((0x2000U 
+                                                      & vlTOPp->fpu_top__DOT__ins_p1)
+                                                      ? 0xcU
+                                                      : 
+                                                     ((0x1000U 
+                                                       & vlTOPp->fpu_top__DOT__ins_p1)
+                                                       ? 0xbU
+                                                       : 0xaU))))
                                                    : 
                                                   ((0x10000000U 
                                                     & vlTOPp->fpu_top__DOT__ins_p1)
@@ -162,45 +198,12 @@ VL_INLINE_OPT void Vfpu_top::_sequent__TOP__2(Vfpu_top__Syms* __restrict vlSymsp
                                                    ((0x8000000U 
                                                      & vlTOPp->fpu_top__DOT__ins_p1)
                                                      ? 8U
-                                                     : 0x18U)
-                                                    : 0x18U))
-                                                  : 
-                                                 ((0x20000000U 
-                                                   & vlTOPp->fpu_top__DOT__ins_p1)
-                                                   ? 
-                                                  ((0x10000000U 
-                                                    & vlTOPp->fpu_top__DOT__ins_p1)
-                                                    ? 0x18U
+                                                     : 7U)
                                                     : 
                                                    ((0x8000000U 
                                                      & vlTOPp->fpu_top__DOT__ins_p1)
-                                                     ? 
-                                                    ((0x1000U 
-                                                      & vlTOPp->fpu_top__DOT__ins_p1)
-                                                      ? 0xdU
-                                                      : 0xcU)
-                                                     : 
-                                                    ((0x2000U 
-                                                      & vlTOPp->fpu_top__DOT__ins_p1)
-                                                      ? 0xbU
-                                                      : 
-                                                     ((0x1000U 
-                                                       & vlTOPp->fpu_top__DOT__ins_p1)
-                                                       ? 0xaU
-                                                       : 9U))))
-                                                   : 
-                                                  ((0x10000000U 
-                                                    & vlTOPp->fpu_top__DOT__ins_p1)
-                                                    ? 
-                                                   ((0x8000000U 
-                                                     & vlTOPp->fpu_top__DOT__ins_p1)
-                                                     ? 7U
-                                                     : 6U)
-                                                    : 
-                                                   ((0x8000000U 
-                                                     & vlTOPp->fpu_top__DOT__ins_p1)
-                                                     ? 5U
-                                                     : 4U)))));
+                                                     ? 6U
+                                                     : 5U)))));
         }
     }
     vlTOPp->fpu_top__DOT__oper1 = vlTOPp->fpu_top__DOT__operand_1;
@@ -216,92 +219,96 @@ VL_INLINE_OPT void Vfpu_top::_sequent__TOP__2(Vfpu_top__Syms* __restrict vlSymsp
                                                  : 
                                                 ((1U 
                                                   & (IData)(vlTOPp->fpu_top__DOT__exec_op))
-                                                  ? 0x7fc00000U
-                                                  : 0U))
+                                                  ? 0U
+                                                  : vlTOPp->fpu_top__DOT__fle1__DOT__out))
                                              : ((2U 
                                                  & (IData)(vlTOPp->fpu_top__DOT__exec_op))
                                                  ? 
                                                 ((1U 
                                                   & (IData)(vlTOPp->fpu_top__DOT__exec_op))
-                                                  ? vlTOPp->fpu_top__DOT__fle1__DOT__out
-                                                  : vlTOPp->fpu_top__DOT__flt1__DOT__out)
-                                                 : 
-                                                ((1U 
-                                                  & (IData)(vlTOPp->fpu_top__DOT__exec_op))
-                                                  ? 
+                                                  ? vlTOPp->fpu_top__DOT__flt1__DOT__out
+                                                  : 
                                                  ((vlTOPp->fpu_top__DOT__operand_one 
                                                    == vlTOPp->fpu_top__DOT__operand_two)
                                                    ? 1U
-                                                   : 0U)
-                                                  : 0x7fc00000U))))
+                                                   : 0U))
+                                                 : 0x7fc00000U)))
                                      : ((8U & (IData)(vlTOPp->fpu_top__DOT__exec_op))
                                          ? ((4U & (IData)(vlTOPp->fpu_top__DOT__exec_op))
                                              ? ((2U 
                                                  & (IData)(vlTOPp->fpu_top__DOT__exec_op))
-                                                 ? 0x7fc00000U
+                                                 ? 
+                                                ((1U 
+                                                  & (IData)(vlTOPp->fpu_top__DOT__exec_op))
+                                                  ? 0x7fc00000U
+                                                  : vlTOPp->fpu_top__DOT__fmax1__DOT__out)
                                                  : 
                                                 ((1U 
                                                   & (IData)(vlTOPp->fpu_top__DOT__exec_op))
-                                                  ? vlTOPp->fpu_top__DOT__fmax1__DOT__out
-                                                  : vlTOPp->fpu_top__DOT__fmin1__DOT__out))
+                                                  ? vlTOPp->fpu_top__DOT__fmin1__DOT__out
+                                                  : 
+                                                 ((0x80000000U 
+                                                   & (vlTOPp->fpu_top__DOT__operand_two 
+                                                      ^ vlTOPp->fpu_top__DOT__operand_one)) 
+                                                  | (0x7fffffffU 
+                                                     & vlTOPp->fpu_top__DOT__operand_one))))
                                              : ((2U 
                                                  & (IData)(vlTOPp->fpu_top__DOT__exec_op))
                                                  ? 
                                                 ((1U 
                                                   & (IData)(vlTOPp->fpu_top__DOT__exec_op))
                                                   ? 
-                                                 ((0x80000000U 
-                                                   & (vlTOPp->fpu_top__DOT__operand_two 
-                                                      ^ vlTOPp->fpu_top__DOT__operand_one)) 
-                                                  | (0x7fffffffU 
-                                                     & vlTOPp->fpu_top__DOT__operand_one))
-                                                  : 
                                                  ((0x80000000U 
                                                    & ((~ 
                                                        (vlTOPp->fpu_top__DOT__operand_two 
                                                         >> 0x1fU)) 
                                                       << 0x1fU)) 
                                                   | (0x7fffffffU 
+                                                     & vlTOPp->fpu_top__DOT__operand_one))
+                                                  : 
+                                                 ((0x80000000U 
+                                                   & vlTOPp->fpu_top__DOT__operand_two) 
+                                                  | (0x7fffffffU 
                                                      & vlTOPp->fpu_top__DOT__operand_one)))
                                                  : 
                                                 ((1U 
                                                   & (IData)(vlTOPp->fpu_top__DOT__exec_op))
-                                                  ? 
-                                                 ((0x80000000U 
-                                                   & vlTOPp->fpu_top__DOT__operand_two) 
-                                                  | (0x7fffffffU 
-                                                     & vlTOPp->fpu_top__DOT__operand_one))
-                                                  : vlTOPp->fpu_top__DOT__fsqrt1__DOT__r0__DOT__rounded)))
+                                                  ? vlTOPp->fpu_top__DOT__fsqrt1__DOT__r0__DOT__rounded
+                                                  : vlSymsp->TOP__fpu_top__DOT__fdiv1__DOT__fm0.__PVT__r0__DOT__rounded)))
                                          : ((4U & (IData)(vlTOPp->fpu_top__DOT__exec_op))
                                              ? ((2U 
                                                  & (IData)(vlTOPp->fpu_top__DOT__exec_op))
                                                  ? 
                                                 ((1U 
                                                   & (IData)(vlTOPp->fpu_top__DOT__exec_op))
-                                                  ? vlSymsp->TOP__fpu_top__DOT__fdiv1__DOT__fm0.__PVT__r0__DOT__rounded
-                                                  : vlSymsp->TOP__fpu_top__DOT__fmul1.__PVT__r0__DOT__rounded)
+                                                  ? vlSymsp->TOP__fpu_top__DOT__fmul1.__PVT__r0__DOT__rounded
+                                                  : vlTOPp->fpu_top__DOT__fsub1__DOT__f1__DOT__r0__DOT__rounded)
                                                  : 
                                                 ((1U 
                                                   & (IData)(vlTOPp->fpu_top__DOT__exec_op))
-                                                  ? vlTOPp->fpu_top__DOT__fsub1__DOT__f1__DOT__r0__DOT__rounded
-                                                  : vlTOPp->fpu_top__DOT__fadd1__DOT__r0__DOT__rounded))
+                                                  ? vlTOPp->fpu_top__DOT__fadd1__DOT__r0__DOT__rounded
+                                                  : vlTOPp->fpu_top__DOT__fnmadd1__DOT__fadd1__DOT__r0__DOT__rounded))
                                              : ((2U 
                                                  & (IData)(vlTOPp->fpu_top__DOT__exec_op))
                                                  ? 
                                                 ((1U 
                                                   & (IData)(vlTOPp->fpu_top__DOT__exec_op))
-                                                  ? vlTOPp->fpu_top__DOT__fnmadd1__DOT__fadd1__DOT__r0__DOT__rounded
-                                                  : vlTOPp->fpu_top__DOT__fnmsub1__DOT__fsub1__DOT__f1__DOT__r0__DOT__rounded)
+                                                  ? vlTOPp->fpu_top__DOT__fnmsub1__DOT__fsub1__DOT__f1__DOT__r0__DOT__rounded
+                                                  : vlSymsp->TOP__fpu_top__DOT__fmsub1__DOT__fmul1.__PVT__r0__DOT__rounded)
                                                  : 
                                                 ((1U 
                                                   & (IData)(vlTOPp->fpu_top__DOT__exec_op))
-                                                  ? vlSymsp->TOP__fpu_top__DOT__fmsub1__DOT__fmul1.__PVT__r0__DOT__rounded
-                                                  : vlTOPp->fpu_top__DOT__fmadd1__DOT__fadd1__DOT__r0__DOT__rounded)))));
+                                                  ? vlTOPp->fpu_top__DOT__fmadd1__DOT__fadd1__DOT__r0__DOT__rounded
+                                                  : 0U)))));
     vlTOPp->fpu_top__DOT__operand_three = vlTOPp->fpu_top__DOT__oper3;
-    __Vdlyvval__fpu_top__DOT__regFile__v0 = vlTOPp->fpu_top__DOT__writeback_data;
-    __Vdlyvdim0__fpu_top__DOT__regFile__v0 = (0x1fU 
-                                              & (vlTOPp->fpu_top__DOT__ins_p3 
-                                                 >> 7U));
+    if (((0x19U != (IData)(vlTOPp->fpu_top__DOT__final_op)) 
+         & (0U != (IData)(vlTOPp->fpu_top__DOT__final_op)))) {
+        __Vdlyvval__fpu_top__DOT__regFile__v0 = vlTOPp->fpu_top__DOT__writeback_data;
+        __Vdlyvset__fpu_top__DOT__regFile__v0 = 1U;
+        __Vdlyvdim0__fpu_top__DOT__regFile__v0 = (0x1fU 
+                                                  & (vlTOPp->fpu_top__DOT__ins_p3 
+                                                     >> 7U));
+    }
     vlTOPp->fpu_top__DOT__operand_1 = vlTOPp->fpu_top__DOT__regFile
         [(0x1fU & (vlTOPp->instruction >> 0xfU))];
     vlTOPp->fpu_top__DOT__operand_2 = vlTOPp->fpu_top__DOT__regFile
@@ -313,8 +320,10 @@ VL_INLINE_OPT void Vfpu_top::_sequent__TOP__2(Vfpu_top__Syms* __restrict vlSymsp
     vlTOPp->fpu_top__DOT__operand_two = vlTOPp->fpu_top__DOT__oper2;
     vlTOPp->fpu_top__DOT__writeback_data = vlTOPp->fpu_top__DOT__result;
     vlTOPp->fpu_top__DOT__ins_p3 = vlTOPp->fpu_top__DOT__ins_p2;
-    vlTOPp->fpu_top__DOT__regFile[__Vdlyvdim0__fpu_top__DOT__regFile__v0] 
-        = __Vdlyvval__fpu_top__DOT__regFile__v0;
+    if (__Vdlyvset__fpu_top__DOT__regFile__v0) {
+        vlTOPp->fpu_top__DOT__regFile[__Vdlyvdim0__fpu_top__DOT__regFile__v0] 
+            = __Vdlyvval__fpu_top__DOT__regFile__v0;
+    }
     if ((0x7f800000U == vlTOPp->fpu_top__DOT__operand_one)) {
         vlTOPp->fpu_top__DOT__fclass1__DOT__result 
             = (0xffffff7fU & vlTOPp->fpu_top__DOT__fclass1__DOT__result);

@@ -8,13 +8,13 @@ module fpu_top (
 	logic [31:0] regFile [32];
 	logic [31:0] fcsr;
 	typedef enum logic [4:0] {
-		FMADD=5'b00000, FMSUB=5'b00001, FNMSUB=5'b00010, FNMADD=5'b00011, FADD=5'b00100, FSUB, FMUL, FDIV, 
+		FNOP=5'b0, FMADD, FMSUB, FNMSUB, FNMADD, FADD, FSUB, FMUL, FDIV, 
 		FSQRT, FSGNJ, FSGNJN, FSGNJX, FMIN, FMAX, FCVRTWS, FCVRTWUS, 
 		FMVXW, FEQ, FLT, FLE, FCLASS, FCVRTSW, FCVRTSWU, FMVWX,
 		FINVALID
 	} operations;
 	
-	assign regFile[0] = 32'h40000000;
+	assign regFile[2] = 32'h40000000;
 	assign regFile[3] = 32'h40000000;
 	assign regFile[15] = 32'h40000000;
 	
@@ -165,20 +165,25 @@ module fpu_top (
 			FLE: result = fe;
 			FCLASS: result = fcls;
 			FINVALID: result = 32'h7FC00000;
+			FNOP: result = 32'h0;
 			default: result = 32'h7FC00000;
 		endcase
 	end
 	
 	logic [31:0] writeback_data, ins_p3;
+	operations final_op;
 	
 	always_ff @ (posedge clk) begin // Pipeline Register -> Execution - Writeback
 		writeback_data <= result;
 		ins_p3 <= ins_p2;
+		final_op = exec_op;
 	end
 	
 	// Stage 4: Writeback
 	always_ff @ (posedge clk) begin
-		regFile[ins_p3[11:7]] <= writeback_data;
+		if (final_op != FINVALID && final_op != FNOP) begin
+			regFile[ins_p3[11:7]] <= writeback_data;
+		end
 	end
 	assign fpu_out = writeback_data;
 

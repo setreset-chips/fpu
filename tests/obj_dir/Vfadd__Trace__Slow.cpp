@@ -44,12 +44,14 @@ void Vfadd::traceInitSub0(void* userp, VerilatedVcd* tracep) {
     if (false && tracep && c) {}  // Prevent unused
     // Body
     {
-        tracep->declBus(c+10,"num1", false,-1, 31,0);
-        tracep->declBus(c+11,"num2", false,-1, 31,0);
-        tracep->declBus(c+12,"out_num", false,-1, 31,0);
-        tracep->declBus(c+10,"fadd num1", false,-1, 31,0);
-        tracep->declBus(c+11,"fadd num2", false,-1, 31,0);
-        tracep->declBus(c+12,"fadd out_num", false,-1, 31,0);
+        tracep->declBus(c+16,"num1", false,-1, 31,0);
+        tracep->declBus(c+17,"num2", false,-1, 31,0);
+        tracep->declBus(c+18,"rm", false,-1, 2,0);
+        tracep->declBus(c+19,"out_num", false,-1, 31,0);
+        tracep->declBus(c+16,"fadd num1", false,-1, 31,0);
+        tracep->declBus(c+17,"fadd num2", false,-1, 31,0);
+        tracep->declBus(c+18,"fadd rm", false,-1, 2,0);
+        tracep->declBus(c+19,"fadd out_num", false,-1, 31,0);
         tracep->declBit(c+1,"fadd largerMag", false,-1);
         tracep->declBit(c+2,"fadd finalSign", false,-1);
         tracep->declBus(c+3,"fadd num1Exp", false,-1, 7,0);
@@ -59,7 +61,17 @@ void Vfadd::traceInitSub0(void* userp, VerilatedVcd* tracep) {
         tracep->declBus(c+7,"fadd num2Mant", false,-1, 23,0);
         tracep->declBus(c+8,"fadd finalMant", false,-1, 23,0);
         tracep->declBus(c+9,"fadd sumMants", false,-1, 24,0);
-        tracep->declBus(c+13,"fadd i", false,-1, 31,0);
+        tracep->declBus(c+20,"fadd i", false,-1, 31,0);
+        tracep->declBus(c+10,"fadd unrounded", false,-1, 31,0);
+        tracep->declBus(c+10,"fadd r0 num1", false,-1, 31,0);
+        tracep->declBus(c+18,"fadd r0 rm", false,-1, 2,0);
+        tracep->declBus(c+19,"fadd r0 rounded_num", false,-1, 31,0);
+        tracep->declBus(c+11,"fadd r0 rounded", false,-1, 31,0);
+        tracep->declBus(c+12,"fadd r0 overflowCheck", false,-1, 23,0);
+        tracep->declBus(c+13,"fadd r0 mask", false,-1, 22,0);
+        tracep->declBus(c+14,"fadd r0 mask2", false,-1, 22,0);
+        tracep->declBus(c+15,"fadd r0 i", false,-1, 31,0);
+        tracep->declBus(c+21,"fadd r0 j", false,-1, 31,0);
     }
 }
 
@@ -97,9 +109,17 @@ void Vfadd::traceFullSub0(void* userp, VerilatedVcd* tracep) {
         tracep->fullIData(oldp+7,(vlTOPp->fadd__DOT__num2Mant),24);
         tracep->fullIData(oldp+8,(vlTOPp->fadd__DOT__finalMant),24);
         tracep->fullIData(oldp+9,(vlTOPp->fadd__DOT__sumMants),25);
-        tracep->fullIData(oldp+10,(vlTOPp->num1),32);
-        tracep->fullIData(oldp+11,(vlTOPp->num2),32);
-        tracep->fullIData(oldp+12,(vlTOPp->out_num),32);
-        tracep->fullIData(oldp+13,(vlTOPp->fadd__DOT__i),32);
+        tracep->fullIData(oldp+10,(vlTOPp->fadd__DOT__unrounded),32);
+        tracep->fullIData(oldp+11,(vlTOPp->fadd__DOT__r0__DOT__rounded),32);
+        tracep->fullIData(oldp+12,(vlTOPp->fadd__DOT__r0__DOT__overflowCheck),24);
+        tracep->fullIData(oldp+13,(vlTOPp->fadd__DOT__r0__DOT__mask),23);
+        tracep->fullIData(oldp+14,(vlTOPp->fadd__DOT__r0__DOT__mask2),23);
+        tracep->fullIData(oldp+15,(vlTOPp->fadd__DOT__r0__DOT__i),32);
+        tracep->fullIData(oldp+16,(vlTOPp->num1),32);
+        tracep->fullIData(oldp+17,(vlTOPp->num2),32);
+        tracep->fullCData(oldp+18,(vlTOPp->rm),3);
+        tracep->fullIData(oldp+19,(vlTOPp->out_num),32);
+        tracep->fullIData(oldp+20,(vlTOPp->fadd__DOT__i),32);
+        tracep->fullIData(oldp+21,(vlTOPp->fadd__DOT__r0__DOT__j),32);
     }
 }

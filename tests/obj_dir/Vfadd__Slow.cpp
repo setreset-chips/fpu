@@ -54,6 +54,7 @@ void Vfadd::_ctor_var_reset() {
     // Body
     num1 = VL_RAND_RESET_I(32);
     num2 = VL_RAND_RESET_I(32);
+    rm = VL_RAND_RESET_I(3);
     out_num = VL_RAND_RESET_I(32);
     fadd__DOT__largerMag = VL_RAND_RESET_I(1);
     fadd__DOT__finalSign = VL_RAND_RESET_I(1);
@@ -65,6 +66,13 @@ void Vfadd::_ctor_var_reset() {
     fadd__DOT__finalMant = VL_RAND_RESET_I(24);
     fadd__DOT__sumMants = VL_RAND_RESET_I(25);
     fadd__DOT__i = 0;
+    fadd__DOT__unrounded = VL_RAND_RESET_I(32);
+    fadd__DOT__r0__DOT__rounded = VL_RAND_RESET_I(32);
+    fadd__DOT__r0__DOT__overflowCheck = VL_RAND_RESET_I(24);
+    fadd__DOT__r0__DOT__mask = VL_RAND_RESET_I(23);
+    fadd__DOT__r0__DOT__mask2 = VL_RAND_RESET_I(23);
+    fadd__DOT__r0__DOT__i = 0;
+    fadd__DOT__r0__DOT__j = 0;
     { int __Vi0=0; for (; __Vi0<2; ++__Vi0) {
             __Vm_traceActivity[__Vi0] = VL_RAND_RESET_I(1);
     }}

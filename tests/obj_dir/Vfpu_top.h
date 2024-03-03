@@ -46,6 +46,7 @@ VL_MODULE(Vfpu_top) {
         CData/*4:0*/ fpu_top__DOT__curr_op;
         CData/*4:0*/ fpu_top__DOT__exec_op;
         CData/*2:0*/ fpu_top__DOT__rm;
+        CData/*4:0*/ fpu_top__DOT__final_op;
         CData/*0:0*/ fpu_top__DOT__fmadd1__DOT__fadd1__DOT__largerMag;
         CData/*0:0*/ fpu_top__DOT__fmadd1__DOT__fadd1__DOT__finalSign;
         CData/*7:0*/ fpu_top__DOT__fmadd1__DOT__fadd1__DOT__num1Exp;
@@ -106,9 +107,9 @@ VL_MODULE(Vfpu_top) {
         IData/*23:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__num1Mant;
         IData/*23:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__num2Mant;
         IData/*23:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__finalMant;
-        IData/*24:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__sumMants;
     };
     struct {
+        IData/*24:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__sumMants;
         IData/*31:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__i;
         IData/*31:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__unrounded;
         IData/*31:0*/ fpu_top__DOT__fmsub1__DOT__f1__DOT__r0__DOT__rounded;
@@ -172,9 +173,9 @@ VL_MODULE(Vfpu_top) {
         IData/*22:0*/ fpu_top__DOT__fsqrt1__DOT__r0__DOT__mask;
         IData/*22:0*/ fpu_top__DOT__fsqrt1__DOT__r0__DOT__mask2;
         IData/*31:0*/ fpu_top__DOT__fsqrt1__DOT__r0__DOT__i;
-        IData/*31:0*/ fpu_top__DOT__fsqrt1__DOT__r0__DOT__j;
     };
     struct {
+        IData/*31:0*/ fpu_top__DOT__fsqrt1__DOT__r0__DOT__j;
         IData/*31:0*/ fpu_top__DOT__fmin1__DOT__out;
         IData/*31:0*/ fpu_top__DOT__fmax1__DOT__out;
         IData/*31:0*/ fpu_top__DOT__flt1__DOT__out;

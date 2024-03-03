@@ -46,7 +46,7 @@ void Vfpu_top::_settle__TOP__4(Vfpu_top__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vfpu_top::_settle__TOP__4\n"); );
     Vfpu_top* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    vlTOPp->fpu_top__DOT__regFile[0U] = 0x40000000U;
+    vlTOPp->fpu_top__DOT__regFile[2U] = 0x40000000U;
     vlTOPp->fpu_top__DOT__regFile[3U] = 0x40000000U;
     vlTOPp->fpu_top__DOT__regFile[0xfU] = 0x40000000U;
     if ((1U & ((vlTOPp->fpu_top__DOT__operand_one >> 0x1fU) 
@@ -3862,6 +3862,7 @@ void Vfpu_top::_ctor_var_reset() {
     fpu_top__DOT__rm = VL_RAND_RESET_I(3);
     fpu_top__DOT__writeback_data = VL_RAND_RESET_I(32);
     fpu_top__DOT__ins_p3 = VL_RAND_RESET_I(32);
+    fpu_top__DOT__final_op = VL_RAND_RESET_I(5);
     fpu_top__DOT__fmadd1__DOT__fadd1__DOT__largerMag = VL_RAND_RESET_I(1);
     fpu_top__DOT__fmadd1__DOT__fadd1__DOT__finalSign = VL_RAND_RESET_I(1);
     fpu_top__DOT__fmadd1__DOT__fadd1__DOT__num1Exp = VL_RAND_RESET_I(8);

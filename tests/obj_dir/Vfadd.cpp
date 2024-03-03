@@ -467,11 +467,366 @@ VL_INLINE_OPT void Vfadd::_combo__TOP__1(Vfadd__Syms* __restrict vlSymsp) {
         vlTOPp->fadd__DOT__finalMant = 0U;
         vlTOPp->fadd__DOT__finalExp = 0U;
     }
-    vlTOPp->out_num = ((0x80000000U & ((~ (IData)(vlTOPp->fadd__DOT__finalSign)) 
-                                       << 0x1fU)) | 
-                       (((IData)(vlTOPp->fadd__DOT__finalExp) 
-                         << 0x17U) | (0x7fffffU & (vlTOPp->fadd__DOT__finalMant 
-                                                   >> 1U))));
+    vlTOPp->fadd__DOT__unrounded = ((0x80000000U & 
+                                     ((~ (IData)(vlTOPp->fadd__DOT__finalSign)) 
+                                      << 0x1fU)) | 
+                                    (((IData)(vlTOPp->fadd__DOT__finalExp) 
+                                      << 0x17U) | (0x7fffffU 
+                                                   & (vlTOPp->fadd__DOT__finalMant 
+                                                      >> 1U))));
+    if ((0U == (IData)(vlTOPp->rm))) {
+        if ((4U & vlTOPp->fadd__DOT__unrounded)) {
+            if ((0U == (3U & vlTOPp->fadd__DOT__unrounded))) {
+                if ((8U & vlTOPp->fadd__DOT__unrounded)) {
+                    vlTOPp->fadd__DOT__r0__DOT__overflowCheck 
+                        = (0x7fffffU & vlTOPp->fadd__DOT__unrounded);
+                    vlTOPp->fadd__DOT__r0__DOT__overflowCheck 
+                        = (0xffffffU & ((IData)(1U) 
+                                        + vlTOPp->fadd__DOT__r0__DOT__overflowCheck));
+                    vlTOPp->fadd__DOT__r0__DOT__rounded 
+                        = ((0x800000U & vlTOPp->fadd__DOT__r0__DOT__overflowCheck)
+                            ? ((0x80000000U & vlTOPp->fadd__DOT__unrounded) 
+                               | ((0x7f800000U & (((IData)(1U) 
+                                                   + 
+                                                   (vlTOPp->fadd__DOT__unrounded 
+                                                    >> 0x17U)) 
+                                                  << 0x17U)) 
+                                  | (0x7fffffU & vlTOPp->fadd__DOT__r0__DOT__overflowCheck)))
+                            : ((0xff800000U & vlTOPp->fadd__DOT__unrounded) 
+                               | (0x7fffffU & vlTOPp->fadd__DOT__r0__DOT__overflowCheck)));
+                } else {
+                    vlTOPp->fadd__DOT__r0__DOT__rounded 
+                        = vlTOPp->fadd__DOT__unrounded;
+                }
+            } else {
+                vlTOPp->fadd__DOT__r0__DOT__overflowCheck 
+                    = (0x7fffffU & vlTOPp->fadd__DOT__unrounded);
+                vlTOPp->fadd__DOT__r0__DOT__overflowCheck 
+                    = (0xffffffU & ((IData)(1U) + vlTOPp->fadd__DOT__r0__DOT__overflowCheck));
+                vlTOPp->fadd__DOT__r0__DOT__rounded 
+                    = ((0x800000U & vlTOPp->fadd__DOT__r0__DOT__overflowCheck)
+                        ? ((0x80000000U & vlTOPp->fadd__DOT__unrounded) 
+                           | ((0x7f800000U & (((IData)(1U) 
+                                               + (vlTOPp->fadd__DOT__unrounded 
+                                                  >> 0x17U)) 
+                                              << 0x17U)) 
+                              | (0x7fffffU & vlTOPp->fadd__DOT__r0__DOT__overflowCheck)))
+                        : ((0xff800000U & vlTOPp->fadd__DOT__unrounded) 
+                           | (0x7fffffU & vlTOPp->fadd__DOT__r0__DOT__overflowCheck)));
+            }
+        } else {
+            vlTOPp->fadd__DOT__r0__DOT__rounded = vlTOPp->fadd__DOT__unrounded;
+        }
+    } else {
+        if ((1U == (IData)(vlTOPp->rm))) {
+            vlTOPp->fadd__DOT__r0__DOT__i = VL_EXTENDS_II(32,8, 
+                                                          (0xffU 
+                                                           & ((vlTOPp->fadd__DOT__unrounded 
+                                                               >> 0x17U) 
+                                                              - (IData)(0x7fU))));
+            if ((VL_LTS_III(1,32,32, 0U, vlTOPp->fadd__DOT__r0__DOT__i) 
+                 & VL_GTS_III(1,32,32, 0x17U, vlTOPp->fadd__DOT__r0__DOT__i))) {
+                vlTOPp->fadd__DOT__r0__DOT__mask = 
+                    ((0x16U >= vlTOPp->fadd__DOT__r0__DOT__i)
+                      ? (0x7fffffU & (0x7fffffU >> vlTOPp->fadd__DOT__r0__DOT__i))
+                      : 0U);
+                vlTOPp->fadd__DOT__r0__DOT__mask = 
+                    (0x7fffffU & (~ vlTOPp->fadd__DOT__r0__DOT__mask));
+                vlTOPp->fadd__DOT__r0__DOT__rounded 
+                    = ((0xff800000U & vlTOPp->fadd__DOT__unrounded) 
+                       | (vlTOPp->fadd__DOT__unrounded 
+                          & vlTOPp->fadd__DOT__r0__DOT__mask));
+            } else {
+                vlTOPp->fadd__DOT__r0__DOT__rounded 
+                    = ((0U == vlTOPp->fadd__DOT__r0__DOT__i)
+                        ? 0x3f800000U : (VL_LTS_III(1,32,32, 0x17U, vlTOPp->fadd__DOT__r0__DOT__i)
+                                          ? vlTOPp->fadd__DOT__unrounded
+                                          : 0U));
+            }
+        } else {
+            if ((2U == (IData)(vlTOPp->rm))) {
+                if ((0x80000000U & vlTOPp->fadd__DOT__unrounded)) {
+                    vlTOPp->fadd__DOT__r0__DOT__i = 
+                        VL_EXTENDS_II(32,8, (0xffU 
+                                             & ((vlTOPp->fadd__DOT__unrounded 
+                                                 >> 0x17U) 
+                                                - (IData)(0x7fU))));
+                    if ((VL_LTS_III(1,32,32, 0U, vlTOPp->fadd__DOT__r0__DOT__i) 
+                         & VL_GTS_III(1,32,32, 0x17U, vlTOPp->fadd__DOT__r0__DOT__i))) {
+                        vlTOPp->fadd__DOT__r0__DOT__mask 
+                            = ((0x16U >= vlTOPp->fadd__DOT__r0__DOT__i)
+                                ? (0x7fffffU & (0x7fffffU 
+                                                >> vlTOPp->fadd__DOT__r0__DOT__i))
+                                : 0U);
+                        vlTOPp->fadd__DOT__r0__DOT__mask2 
+                            = ((0x16U >= (vlTOPp->fadd__DOT__r0__DOT__i 
+                                          - (IData)(1U)))
+                                ? (0x7fffffU & (0x400000U 
+                                                >> 
+                                                (vlTOPp->fadd__DOT__r0__DOT__i 
+                                                 - (IData)(1U))))
+                                : 0U);
+                        vlTOPp->fadd__DOT__r0__DOT__mask 
+                            = (0x7fffffU & (~ vlTOPp->fadd__DOT__r0__DOT__mask));
+                        vlTOPp->fadd__DOT__r0__DOT__mask 
+                            = (vlTOPp->fadd__DOT__unrounded 
+                               & vlTOPp->fadd__DOT__r0__DOT__mask);
+                        vlTOPp->fadd__DOT__r0__DOT__overflowCheck 
+                            = vlTOPp->fadd__DOT__r0__DOT__mask;
+                        vlTOPp->fadd__DOT__r0__DOT__overflowCheck 
+                            = (0xffffffU & (vlTOPp->fadd__DOT__r0__DOT__overflowCheck 
+                                            + vlTOPp->fadd__DOT__r0__DOT__mask2));
+                        vlTOPp->fadd__DOT__r0__DOT__rounded 
+                            = ((0x800000U & vlTOPp->fadd__DOT__r0__DOT__overflowCheck)
+                                ? ((0x80000000U & vlTOPp->fadd__DOT__unrounded) 
+                                   | ((0x7f800000U 
+                                       & (((IData)(1U) 
+                                           + (vlTOPp->fadd__DOT__unrounded 
+                                              >> 0x17U)) 
+                                          << 0x17U)) 
+                                      | (0x7fffffU 
+                                         & vlTOPp->fadd__DOT__unrounded)))
+                                : ((0xff800000U & vlTOPp->fadd__DOT__unrounded) 
+                                   | (0x7fffffU & vlTOPp->fadd__DOT__r0__DOT__overflowCheck)));
+                    } else {
+                        vlTOPp->fadd__DOT__r0__DOT__rounded 
+                            = ((0U == vlTOPp->fadd__DOT__r0__DOT__i)
+                                ? 0x40000000U : (VL_LTS_III(1,32,32, 0x17U, vlTOPp->fadd__DOT__r0__DOT__i)
+                                                  ? vlTOPp->fadd__DOT__unrounded
+                                                  : 0U));
+                    }
+                } else {
+                    vlTOPp->fadd__DOT__r0__DOT__i = 
+                        VL_EXTENDS_II(32,8, (0xffU 
+                                             & ((vlTOPp->fadd__DOT__unrounded 
+                                                 >> 0x17U) 
+                                                - (IData)(0x7fU))));
+                    if ((VL_LTS_III(1,32,32, 0U, vlTOPp->fadd__DOT__r0__DOT__i) 
+                         & VL_GTS_III(1,32,32, 0x17U, vlTOPp->fadd__DOT__r0__DOT__i))) {
+                        vlTOPp->fadd__DOT__r0__DOT__mask 
+                            = ((0x16U >= vlTOPp->fadd__DOT__r0__DOT__i)
+                                ? (0x7fffffU & (0x7fffffU 
+                                                >> vlTOPp->fadd__DOT__r0__DOT__i))
+                                : 0U);
+                        vlTOPp->fadd__DOT__r0__DOT__mask 
+                            = (0x7fffffU & (~ vlTOPp->fadd__DOT__r0__DOT__mask));
+                        vlTOPp->fadd__DOT__r0__DOT__rounded 
+                            = ((0xff800000U & vlTOPp->fadd__DOT__unrounded) 
+                               | (vlTOPp->fadd__DOT__unrounded 
+                                  & vlTOPp->fadd__DOT__r0__DOT__mask));
+                    } else {
+                        vlTOPp->fadd__DOT__r0__DOT__rounded 
+                            = ((0U == vlTOPp->fadd__DOT__r0__DOT__i)
+                                ? 0x3f800000U : (VL_LTS_III(1,32,32, 0x17U, vlTOPp->fadd__DOT__r0__DOT__i)
+                                                  ? vlTOPp->fadd__DOT__unrounded
+                                                  : 0U));
+                    }
+                }
+            } else {
+                if ((3U == (IData)(vlTOPp->rm))) {
+                    if ((0x80000000U & vlTOPp->fadd__DOT__unrounded)) {
+                        vlTOPp->fadd__DOT__r0__DOT__i 
+                            = VL_EXTENDS_II(32,8, (0xffU 
+                                                   & ((vlTOPp->fadd__DOT__unrounded 
+                                                       >> 0x17U) 
+                                                      - (IData)(0x7fU))));
+                        if ((VL_LTS_III(1,32,32, 0U, vlTOPp->fadd__DOT__r0__DOT__i) 
+                             & VL_GTS_III(1,32,32, 0x17U, vlTOPp->fadd__DOT__r0__DOT__i))) {
+                            vlTOPp->fadd__DOT__r0__DOT__mask 
+                                = ((0x16U >= vlTOPp->fadd__DOT__r0__DOT__i)
+                                    ? (0x7fffffU & 
+                                       (0x7fffffU >> vlTOPp->fadd__DOT__r0__DOT__i))
+                                    : 0U);
+                            vlTOPp->fadd__DOT__r0__DOT__mask 
+                                = (0x7fffffU & (~ vlTOPp->fadd__DOT__r0__DOT__mask));
+                            vlTOPp->fadd__DOT__r0__DOT__rounded 
+                                = ((0xff800000U & vlTOPp->fadd__DOT__unrounded) 
+                                   | (vlTOPp->fadd__DOT__unrounded 
+                                      & vlTOPp->fadd__DOT__r0__DOT__mask));
+                        } else {
+                            vlTOPp->fadd__DOT__r0__DOT__rounded 
+                                = ((0U == vlTOPp->fadd__DOT__r0__DOT__i)
+                                    ? 0x3f800000U : 
+                                   (VL_LTS_III(1,32,32, 0x17U, vlTOPp->fadd__DOT__r0__DOT__i)
+                                     ? vlTOPp->fadd__DOT__unrounded
+                                     : 0U));
+                        }
+                    } else {
+                        vlTOPp->fadd__DOT__r0__DOT__i 
+                            = VL_EXTENDS_II(32,8, (0xffU 
+                                                   & ((vlTOPp->fadd__DOT__unrounded 
+                                                       >> 0x17U) 
+                                                      - (IData)(0x7fU))));
+                        if ((VL_LTS_III(1,32,32, 0U, vlTOPp->fadd__DOT__r0__DOT__i) 
+                             & VL_GTS_III(1,32,32, 0x17U, vlTOPp->fadd__DOT__r0__DOT__i))) {
+                            vlTOPp->fadd__DOT__r0__DOT__mask 
+                                = ((0x16U >= vlTOPp->fadd__DOT__r0__DOT__i)
+                                    ? (0x7fffffU & 
+                                       (0x7fffffU >> vlTOPp->fadd__DOT__r0__DOT__i))
+                                    : 0U);
+                            vlTOPp->fadd__DOT__r0__DOT__mask2 
+                                = ((0x16U >= (vlTOPp->fadd__DOT__r0__DOT__i 
+                                              - (IData)(1U)))
+                                    ? (0x7fffffU & 
+                                       (0x400000U >> 
+                                        (vlTOPp->fadd__DOT__r0__DOT__i 
+                                         - (IData)(1U))))
+                                    : 0U);
+                            vlTOPp->fadd__DOT__r0__DOT__mask 
+                                = (0x7fffffU & (~ vlTOPp->fadd__DOT__r0__DOT__mask));
+                            vlTOPp->fadd__DOT__r0__DOT__mask 
+                                = (vlTOPp->fadd__DOT__unrounded 
+                                   & vlTOPp->fadd__DOT__r0__DOT__mask);
+                            vlTOPp->fadd__DOT__r0__DOT__overflowCheck 
+                                = vlTOPp->fadd__DOT__r0__DOT__mask;
+                            vlTOPp->fadd__DOT__r0__DOT__overflowCheck 
+                                = (0xffffffU & (vlTOPp->fadd__DOT__r0__DOT__overflowCheck 
+                                                + vlTOPp->fadd__DOT__r0__DOT__mask2));
+                            vlTOPp->fadd__DOT__r0__DOT__rounded 
+                                = ((0x800000U & vlTOPp->fadd__DOT__r0__DOT__overflowCheck)
+                                    ? ((0x80000000U 
+                                        & vlTOPp->fadd__DOT__unrounded) 
+                                       | ((0x7f800000U 
+                                           & (((IData)(1U) 
+                                               + (vlTOPp->fadd__DOT__unrounded 
+                                                  >> 0x17U)) 
+                                              << 0x17U)) 
+                                          | (0x7fffffU 
+                                             & vlTOPp->fadd__DOT__unrounded)))
+                                    : ((0xff800000U 
+                                        & vlTOPp->fadd__DOT__unrounded) 
+                                       | (0x7fffffU 
+                                          & vlTOPp->fadd__DOT__r0__DOT__overflowCheck)));
+                        } else {
+                            vlTOPp->fadd__DOT__r0__DOT__rounded 
+                                = ((0U == vlTOPp->fadd__DOT__r0__DOT__i)
+                                    ? 0x40000000U : 
+                                   (VL_LTS_III(1,32,32, 0x17U, vlTOPp->fadd__DOT__r0__DOT__i)
+                                     ? vlTOPp->fadd__DOT__unrounded
+                                     : 0U));
+                        }
+                    }
+                } else {
+                    if ((4U == (IData)(vlTOPp->rm))) {
+                        vlTOPp->fadd__DOT__r0__DOT__i 
+                            = VL_EXTENDS_II(32,8, (0xffU 
+                                                   & ((vlTOPp->fadd__DOT__unrounded 
+                                                       >> 0x17U) 
+                                                      - (IData)(0x7fU))));
+                        if ((VL_LTS_III(1,32,32, 0U, vlTOPp->fadd__DOT__r0__DOT__i) 
+                             & VL_GTS_III(1,32,32, 0x17U, vlTOPp->fadd__DOT__r0__DOT__i))) {
+                            vlTOPp->fadd__DOT__r0__DOT__mask 
+                                = ((0x16U >= vlTOPp->fadd__DOT__r0__DOT__i)
+                                    ? (0x7fffffU & 
+                                       (0x7fffffU >> vlTOPp->fadd__DOT__r0__DOT__i))
+                                    : 0U);
+                            vlTOPp->fadd__DOT__r0__DOT__mask2 
+                                = ((0x16U >= (vlTOPp->fadd__DOT__r0__DOT__i 
+                                              - (IData)(1U)))
+                                    ? (0x7fffffU & 
+                                       (0x400000U >> 
+                                        (vlTOPp->fadd__DOT__r0__DOT__i 
+                                         - (IData)(1U))))
+                                    : 0U);
+                            vlTOPp->fadd__DOT__r0__DOT__mask 
+                                = (0x7fffffU & (~ vlTOPp->fadd__DOT__r0__DOT__mask));
+                            vlTOPp->fadd__DOT__r0__DOT__mask 
+                                = (vlTOPp->fadd__DOT__unrounded 
+                                   & vlTOPp->fadd__DOT__r0__DOT__mask);
+                            vlTOPp->fadd__DOT__r0__DOT__overflowCheck 
+                                = vlTOPp->fadd__DOT__r0__DOT__mask;
+                            vlTOPp->fadd__DOT__r0__DOT__overflowCheck 
+                                = (0xffffffU & (vlTOPp->fadd__DOT__r0__DOT__overflowCheck 
+                                                + vlTOPp->fadd__DOT__r0__DOT__mask2));
+                            vlTOPp->fadd__DOT__r0__DOT__rounded 
+                                = ((0x800000U & vlTOPp->fadd__DOT__r0__DOT__overflowCheck)
+                                    ? ((0x80000000U 
+                                        & vlTOPp->fadd__DOT__unrounded) 
+                                       | ((0x7f800000U 
+                                           & (((IData)(1U) 
+                                               + (vlTOPp->fadd__DOT__unrounded 
+                                                  >> 0x17U)) 
+                                              << 0x17U)) 
+                                          | (0x7fffffU 
+                                             & vlTOPp->fadd__DOT__unrounded)))
+                                    : ((0xff800000U 
+                                        & vlTOPp->fadd__DOT__unrounded) 
+                                       | (0x7fffffU 
+                                          & vlTOPp->fadd__DOT__r0__DOT__overflowCheck)));
+                        } else {
+                            vlTOPp->fadd__DOT__r0__DOT__rounded 
+                                = ((0U == vlTOPp->fadd__DOT__r0__DOT__i)
+                                    ? 0x40000000U : 
+                                   (VL_LTS_III(1,32,32, 0x17U, vlTOPp->fadd__DOT__r0__DOT__i)
+                                     ? vlTOPp->fadd__DOT__unrounded
+                                     : 0U));
+                        }
+                    } else {
+                        if ((4U & vlTOPp->fadd__DOT__unrounded)) {
+                            if ((0U == (3U & vlTOPp->fadd__DOT__unrounded))) {
+                                if ((8U & vlTOPp->fadd__DOT__unrounded)) {
+                                    vlTOPp->fadd__DOT__r0__DOT__overflowCheck 
+                                        = (0x7fffffU 
+                                           & vlTOPp->fadd__DOT__unrounded);
+                                    vlTOPp->fadd__DOT__r0__DOT__overflowCheck 
+                                        = (0xffffffU 
+                                           & ((IData)(1U) 
+                                              + vlTOPp->fadd__DOT__r0__DOT__overflowCheck));
+                                    vlTOPp->fadd__DOT__r0__DOT__rounded 
+                                        = ((0x800000U 
+                                            & vlTOPp->fadd__DOT__r0__DOT__overflowCheck)
+                                            ? ((0x80000000U 
+                                                & vlTOPp->fadd__DOT__unrounded) 
+                                               | ((0x7f800000U 
+                                                   & (((IData)(1U) 
+                                                       + 
+                                                       (vlTOPp->fadd__DOT__unrounded 
+                                                        >> 0x17U)) 
+                                                      << 0x17U)) 
+                                                  | (0x7fffffU 
+                                                     & vlTOPp->fadd__DOT__r0__DOT__overflowCheck)))
+                                            : ((0xff800000U 
+                                                & vlTOPp->fadd__DOT__unrounded) 
+                                               | (0x7fffffU 
+                                                  & vlTOPp->fadd__DOT__r0__DOT__overflowCheck)));
+                                } else {
+                                    vlTOPp->fadd__DOT__r0__DOT__rounded 
+                                        = vlTOPp->fadd__DOT__unrounded;
+                                }
+                            } else {
+                                vlTOPp->fadd__DOT__r0__DOT__overflowCheck 
+                                    = (0x7fffffU & vlTOPp->fadd__DOT__unrounded);
+                                vlTOPp->fadd__DOT__r0__DOT__overflowCheck 
+                                    = (0xffffffU & 
+                                       ((IData)(1U) 
+                                        + vlTOPp->fadd__DOT__r0__DOT__overflowCheck));
+                                vlTOPp->fadd__DOT__r0__DOT__rounded 
+                                    = ((0x800000U & vlTOPp->fadd__DOT__r0__DOT__overflowCheck)
+                                        ? ((0x80000000U 
+                                            & vlTOPp->fadd__DOT__unrounded) 
+                                           | ((0x7f800000U 
+                                               & (((IData)(1U) 
+                                                   + 
+                                                   (vlTOPp->fadd__DOT__unrounded 
+                                                    >> 0x17U)) 
+                                                  << 0x17U)) 
+                                              | (0x7fffffU 
+                                                 & vlTOPp->fadd__DOT__r0__DOT__overflowCheck)))
+                                        : ((0xff800000U 
+                                            & vlTOPp->fadd__DOT__unrounded) 
+                                           | (0x7fffffU 
+                                              & vlTOPp->fadd__DOT__r0__DOT__overflowCheck)));
+                            }
+                        } else {
+                            vlTOPp->fadd__DOT__r0__DOT__rounded 
+                                = vlTOPp->fadd__DOT__unrounded;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    vlTOPp->out_num = vlTOPp->fadd__DOT__r0__DOT__rounded;
 }
 
 void Vfadd::_eval(Vfadd__Syms* __restrict vlSymsp) {
@@ -501,5 +856,8 @@ VL_INLINE_OPT QData Vfadd::_change_request_1(Vfadd__Syms* __restrict vlSymsp) {
 #ifdef VL_DEBUG
 void Vfadd::_eval_debug_assertions() {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vfadd::_eval_debug_assertions\n"); );
+    // Body
+    if (VL_UNLIKELY((rm & 0xf8U))) {
+        Verilated::overWidthError("rm");}
 }
 #endif  // VL_DEBUG

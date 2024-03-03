@@ -18,7 +18,7 @@ float int32_to_float_32(uint32_t val) {
  int main (int argc, char** argv, char** env) {
  	Vfpu_top *vdq = new Vfpu_top;
  	float f_a = 2.0;
- 	uint32_t instr = 0x18078083; 
+ 	uint32_t instr = 0x10F180C3; 
  	//x180780C3 -> fmadd rs0 x rs15 + rs3 -> rs1
  	//x000780C3 = 0x0000 0000 0000 0111 1000 0000 1101 0011
  	// fadd -> rs0 + rs15 -> rs1
@@ -34,6 +34,9 @@ float int32_to_float_32(uint32_t val) {
  	l_trace->open("Waveform.vcd");
 		
  	while (cnt < MAX_TIME) {
+ 		if (cnt > 4) {
+ 			vdq->instruction = 0x0;
+ 		}
  		vdq->clk ^= 1;
  		vdq->eval();
  		l_trace->dump(cnt);
