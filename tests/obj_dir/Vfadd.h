@@ -8,7 +8,7 @@
 #ifndef _VFADD_H_
 #define _VFADD_H_  // guard
 
-#include "verilated.h"
+#include "verilated_heavy.h"
 
 //==========
 
@@ -33,6 +33,9 @@ VL_MODULE(Vfadd) {
     // Internals; generally not touched by application code
     CData/*0:0*/ fadd__DOT__largerMag;
     CData/*0:0*/ fadd__DOT__finalSign;
+    CData/*0:0*/ fadd__DOT__leadMantBit1;
+    CData/*0:0*/ fadd__DOT__leadMantBit2;
+    CData/*0:0*/ fadd__DOT__subnormal;
     CData/*7:0*/ fadd__DOT__num1Exp;
     CData/*7:0*/ fadd__DOT__num2Exp;
     CData/*7:0*/ fadd__DOT__finalExp;

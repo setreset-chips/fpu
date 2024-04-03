@@ -76,10 +76,16 @@ VL_INLINE_OPT void Vfadd::_combo__TOP__1(Vfadd__Syms* __restrict vlSymsp) {
                                            >> 0x17U));
     vlTOPp->fadd__DOT__num2Exp = (0xffU & (vlTOPp->num2 
                                            >> 0x17U));
-    vlTOPp->fadd__DOT__num1Mant = (0x800000U | (0x7fffffU 
-                                                & vlTOPp->num1));
-    vlTOPp->fadd__DOT__num2Mant = (0x800000U | (0x7fffffU 
-                                                & vlTOPp->num2));
+    vlTOPp->fadd__DOT__leadMantBit1 = (0U != (IData)(vlTOPp->fadd__DOT__num1Exp));
+    vlTOPp->fadd__DOT__leadMantBit2 = (0U != (IData)(vlTOPp->fadd__DOT__num2Exp));
+    vlTOPp->fadd__DOT__num1Mant = (((IData)(vlTOPp->fadd__DOT__leadMantBit1) 
+                                    << 0x17U) | (0x7fffffU 
+                                                 & vlTOPp->num1));
+    vlTOPp->fadd__DOT__num2Mant = (((IData)(vlTOPp->fadd__DOT__leadMantBit2) 
+                                    << 0x17U) | (0x7fffffU 
+                                                 & vlTOPp->num2));
+    vlTOPp->fadd__DOT__subnormal = (1U & (~ ((IData)(vlTOPp->fadd__DOT__leadMantBit1) 
+                                             & (IData)(vlTOPp->fadd__DOT__leadMantBit2))));
     if (((IData)(vlTOPp->fadd__DOT__num1Exp) < (IData)(vlTOPp->fadd__DOT__num2Exp))) {
         vlTOPp->fadd__DOT__finalExp = vlTOPp->fadd__DOT__num2Exp;
         vlTOPp->fadd__DOT__num1Mant = ((0x17U >= (0xffU 
@@ -117,8 +123,11 @@ VL_INLINE_OPT void Vfadd::_combo__TOP__1(Vfadd__Syms* __restrict vlSymsp) {
         vlTOPp->fadd__DOT__sumMants = (0x1ffffffU & 
                                        (vlTOPp->fadd__DOT__num2Mant 
                                         + vlTOPp->fadd__DOT__num1Mant));
-        vlTOPp->fadd__DOT__finalExp = (0xffU & ((IData)(1U) 
-                                                + (IData)(vlTOPp->fadd__DOT__finalExp)));
+        vlTOPp->fadd__DOT__finalExp = (0xffU & ((IData)(vlTOPp->fadd__DOT__subnormal)
+                                                 ? (IData)(vlTOPp->fadd__DOT__finalExp)
+                                                 : 
+                                                ((IData)(1U) 
+                                                 + (IData)(vlTOPp->fadd__DOT__finalExp))));
         vlTOPp->fadd__DOT__finalSign = 0U;
         vlTOPp->fadd__DOT__finalMant = (0xffffffU & 
                                         (vlTOPp->fadd__DOT__sumMants 
@@ -160,8 +169,11 @@ VL_INLINE_OPT void Vfadd::_combo__TOP__1(Vfadd__Syms* __restrict vlSymsp) {
                                                & (vlTOPp->fadd__DOT__num2Mant 
                                                   + vlTOPp->fadd__DOT__num1Mant));
                 vlTOPp->fadd__DOT__finalExp = (0xffU 
-                                               & ((IData)(1U) 
-                                                  + (IData)(vlTOPp->fadd__DOT__finalExp)));
+                                               & ((IData)(vlTOPp->fadd__DOT__subnormal)
+                                                   ? (IData)(vlTOPp->fadd__DOT__finalExp)
+                                                   : 
+                                                  ((IData)(1U) 
+                                                   + (IData)(vlTOPp->fadd__DOT__finalExp))));
                 vlTOPp->fadd__DOT__finalSign = 1U;
                 vlTOPp->fadd__DOT__finalMant = (0xffffffU 
                                                 & (vlTOPp->fadd__DOT__sumMants 
@@ -169,203 +181,210 @@ VL_INLINE_OPT void Vfadd::_combo__TOP__1(Vfadd__Syms* __restrict vlSymsp) {
             }
         }
     }
-    if ((0x800000U & vlTOPp->fadd__DOT__finalMant)) {
-        vlTOPp->fadd__DOT__finalMant = (0xffffffU & 
-                                        (vlTOPp->fadd__DOT__finalMant 
-                                         << 1U));
-    } else {
-        if ((0x400000U & vlTOPp->fadd__DOT__finalMant)) {
+    if ((1U & (~ (IData)(vlTOPp->fadd__DOT__subnormal)))) {
+        if ((0x800000U & vlTOPp->fadd__DOT__finalMant)) {
             vlTOPp->fadd__DOT__finalMant = (0xffffffU 
                                             & (vlTOPp->fadd__DOT__finalMant 
-                                               << 2U));
-            vlTOPp->fadd__DOT__finalExp = (0xffU & 
-                                           ((IData)(vlTOPp->fadd__DOT__finalExp) 
-                                            - (IData)(1U)));
+                                               << 1U));
         } else {
-            if ((0x200000U & vlTOPp->fadd__DOT__finalMant)) {
+            if ((0x400000U & vlTOPp->fadd__DOT__finalMant)) {
                 vlTOPp->fadd__DOT__finalMant = (0xffffffU 
                                                 & (vlTOPp->fadd__DOT__finalMant 
-                                                   << 3U));
+                                                   << 2U));
                 vlTOPp->fadd__DOT__finalExp = (0xffU 
                                                & ((IData)(vlTOPp->fadd__DOT__finalExp) 
-                                                  - (IData)(2U)));
+                                                  - (IData)(1U)));
             } else {
-                if ((0x100000U & vlTOPp->fadd__DOT__finalMant)) {
+                if ((0x200000U & vlTOPp->fadd__DOT__finalMant)) {
                     vlTOPp->fadd__DOT__finalMant = 
                         (0xffffffU & (vlTOPp->fadd__DOT__finalMant 
-                                      << 4U));
+                                      << 3U));
                     vlTOPp->fadd__DOT__finalExp = (0xffU 
                                                    & ((IData)(vlTOPp->fadd__DOT__finalExp) 
-                                                      - (IData)(3U)));
+                                                      - (IData)(2U)));
                 } else {
-                    if ((0x80000U & vlTOPp->fadd__DOT__finalMant)) {
+                    if ((0x100000U & vlTOPp->fadd__DOT__finalMant)) {
                         vlTOPp->fadd__DOT__finalMant 
                             = (0xffffffU & (vlTOPp->fadd__DOT__finalMant 
-                                            << 5U));
+                                            << 4U));
                         vlTOPp->fadd__DOT__finalExp 
                             = (0xffU & ((IData)(vlTOPp->fadd__DOT__finalExp) 
-                                        - (IData)(4U)));
+                                        - (IData)(3U)));
                     } else {
-                        if ((0x40000U & vlTOPp->fadd__DOT__finalMant)) {
+                        if ((0x80000U & vlTOPp->fadd__DOT__finalMant)) {
                             vlTOPp->fadd__DOT__finalMant 
                                 = (0xffffffU & (vlTOPp->fadd__DOT__finalMant 
-                                                << 6U));
+                                                << 5U));
                             vlTOPp->fadd__DOT__finalExp 
                                 = (0xffU & ((IData)(vlTOPp->fadd__DOT__finalExp) 
-                                            - (IData)(5U)));
+                                            - (IData)(4U)));
                         } else {
-                            if ((0x20000U & vlTOPp->fadd__DOT__finalMant)) {
+                            if ((0x40000U & vlTOPp->fadd__DOT__finalMant)) {
                                 vlTOPp->fadd__DOT__finalMant 
                                     = (0xffffffU & 
                                        (vlTOPp->fadd__DOT__finalMant 
-                                        << 7U));
+                                        << 6U));
                                 vlTOPp->fadd__DOT__finalExp 
                                     = (0xffU & ((IData)(vlTOPp->fadd__DOT__finalExp) 
-                                                - (IData)(6U)));
+                                                - (IData)(5U)));
                             } else {
-                                if ((0x10000U & vlTOPp->fadd__DOT__finalMant)) {
+                                if ((0x20000U & vlTOPp->fadd__DOT__finalMant)) {
                                     vlTOPp->fadd__DOT__finalMant 
                                         = (0xffffffU 
                                            & (vlTOPp->fadd__DOT__finalMant 
-                                              << 8U));
+                                              << 7U));
                                     vlTOPp->fadd__DOT__finalExp 
                                         = (0xffU & 
                                            ((IData)(vlTOPp->fadd__DOT__finalExp) 
-                                            - (IData)(7U)));
+                                            - (IData)(6U)));
                                 } else {
-                                    if ((0x8000U & vlTOPp->fadd__DOT__finalMant)) {
+                                    if ((0x10000U & vlTOPp->fadd__DOT__finalMant)) {
                                         vlTOPp->fadd__DOT__finalMant 
                                             = (0xffffffU 
                                                & (vlTOPp->fadd__DOT__finalMant 
-                                                  << 9U));
+                                                  << 8U));
                                         vlTOPp->fadd__DOT__finalExp 
                                             = (0xffU 
                                                & ((IData)(vlTOPp->fadd__DOT__finalExp) 
-                                                  - (IData)(8U)));
+                                                  - (IData)(7U)));
                                     } else {
-                                        if ((0x4000U 
+                                        if ((0x8000U 
                                              & vlTOPp->fadd__DOT__finalMant)) {
                                             vlTOPp->fadd__DOT__finalMant 
                                                 = (0xffffffU 
                                                    & (vlTOPp->fadd__DOT__finalMant 
-                                                      << 0xaU));
+                                                      << 9U));
                                             vlTOPp->fadd__DOT__finalExp 
                                                 = (0xffU 
                                                    & ((IData)(vlTOPp->fadd__DOT__finalExp) 
-                                                      - (IData)(9U)));
+                                                      - (IData)(8U)));
                                         } else {
-                                            if ((0x2000U 
+                                            if ((0x4000U 
                                                  & vlTOPp->fadd__DOT__finalMant)) {
                                                 vlTOPp->fadd__DOT__finalMant 
                                                     = 
                                                     (0xffffffU 
                                                      & (vlTOPp->fadd__DOT__finalMant 
-                                                        << 0xbU));
+                                                        << 0xaU));
                                                 vlTOPp->fadd__DOT__finalExp 
                                                     = 
                                                     (0xffU 
                                                      & ((IData)(vlTOPp->fadd__DOT__finalExp) 
-                                                        - (IData)(0xaU)));
+                                                        - (IData)(9U)));
                                             } else {
                                                 if (
-                                                    (0x1000U 
+                                                    (0x2000U 
                                                      & vlTOPp->fadd__DOT__finalMant)) {
                                                     vlTOPp->fadd__DOT__finalMant 
                                                         = 
                                                         (0xffffffU 
                                                          & (vlTOPp->fadd__DOT__finalMant 
-                                                            << 0xcU));
+                                                            << 0xbU));
                                                     vlTOPp->fadd__DOT__finalExp 
                                                         = 
                                                         (0xffU 
                                                          & ((IData)(vlTOPp->fadd__DOT__finalExp) 
-                                                            - (IData)(0xbU)));
+                                                            - (IData)(0xaU)));
                                                 } else {
                                                     if (
-                                                        (0x800U 
+                                                        (0x1000U 
                                                          & vlTOPp->fadd__DOT__finalMant)) {
                                                         vlTOPp->fadd__DOT__finalMant 
                                                             = 
                                                             (0xffffffU 
                                                              & (vlTOPp->fadd__DOT__finalMant 
-                                                                << 0xdU));
+                                                                << 0xcU));
                                                         vlTOPp->fadd__DOT__finalExp 
                                                             = 
                                                             (0xffU 
                                                              & ((IData)(vlTOPp->fadd__DOT__finalExp) 
-                                                                - (IData)(0xcU)));
+                                                                - (IData)(0xbU)));
                                                     } else {
                                                         if (
-                                                            (0x400U 
+                                                            (0x800U 
                                                              & vlTOPp->fadd__DOT__finalMant)) {
                                                             vlTOPp->fadd__DOT__finalMant 
                                                                 = 
                                                                 (0xffffffU 
                                                                  & (vlTOPp->fadd__DOT__finalMant 
-                                                                    << 0xeU));
+                                                                    << 0xdU));
                                                             vlTOPp->fadd__DOT__finalExp 
                                                                 = 
                                                                 (0xffU 
                                                                  & ((IData)(vlTOPp->fadd__DOT__finalExp) 
-                                                                    - (IData)(0xdU)));
+                                                                    - (IData)(0xcU)));
                                                         } else {
                                                             if (
-                                                                (0x200U 
+                                                                (0x400U 
                                                                  & vlTOPp->fadd__DOT__finalMant)) {
                                                                 vlTOPp->fadd__DOT__finalMant 
                                                                     = 
                                                                     (0xffffffU 
                                                                      & (vlTOPp->fadd__DOT__finalMant 
-                                                                        << 0xfU));
+                                                                        << 0xeU));
                                                                 vlTOPp->fadd__DOT__finalExp 
                                                                     = 
                                                                     (0xffU 
                                                                      & ((IData)(vlTOPp->fadd__DOT__finalExp) 
-                                                                        - (IData)(0xeU)));
+                                                                        - (IData)(0xdU)));
                                                             } else {
                                                                 if (
-                                                                    (0x100U 
+                                                                    (0x200U 
                                                                      & vlTOPp->fadd__DOT__finalMant)) {
                                                                     vlTOPp->fadd__DOT__finalMant 
                                                                         = 
                                                                         (0xffffffU 
                                                                          & (vlTOPp->fadd__DOT__finalMant 
-                                                                            << 0x10U));
+                                                                            << 0xfU));
                                                                     vlTOPp->fadd__DOT__finalExp 
                                                                         = 
                                                                         (0xffU 
                                                                          & ((IData)(vlTOPp->fadd__DOT__finalExp) 
-                                                                            - (IData)(0xfU)));
+                                                                            - (IData)(0xeU)));
                                                                 } else {
                                                                     if (
-                                                                        (0x80U 
+                                                                        (0x100U 
                                                                          & vlTOPp->fadd__DOT__finalMant)) {
                                                                         vlTOPp->fadd__DOT__finalMant 
                                                                             = 
                                                                             (0xffffffU 
                                                                              & (vlTOPp->fadd__DOT__finalMant 
-                                                                                << 0x11U));
+                                                                                << 0x10U));
                                                                         vlTOPp->fadd__DOT__finalExp 
                                                                             = 
                                                                             (0xffU 
                                                                              & ((IData)(vlTOPp->fadd__DOT__finalExp) 
-                                                                                - (IData)(0x10U)));
+                                                                                - (IData)(0xfU)));
                                                                     } else {
                                                                         if (
-                                                                            (0x40U 
+                                                                            (0x80U 
                                                                              & vlTOPp->fadd__DOT__finalMant)) {
                                                                             vlTOPp->fadd__DOT__finalMant 
                                                                                 = 
                                                                                 (0xffffffU 
                                                                                 & (vlTOPp->fadd__DOT__finalMant 
-                                                                                << 0x12U));
+                                                                                << 0x11U));
                                                                             vlTOPp->fadd__DOT__finalExp 
                                                                                 = 
                                                                                 (0xffU 
                                                                                 & ((IData)(vlTOPp->fadd__DOT__finalExp) 
-                                                                                - (IData)(0x11U)));
+                                                                                - (IData)(0x10U)));
                                                                         } else {
                                                                             if (
+                                                                                (0x40U 
+                                                                                & vlTOPp->fadd__DOT__finalMant)) {
+                                                                                vlTOPp->fadd__DOT__finalMant 
+                                                                                = 
+                                                                                (0xffffffU 
+                                                                                & (vlTOPp->fadd__DOT__finalMant 
+                                                                                << 0x12U));
+                                                                                vlTOPp->fadd__DOT__finalExp 
+                                                                                = 
+                                                                                (0xffU 
+                                                                                & ((IData)(vlTOPp->fadd__DOT__finalExp) 
+                                                                                - (IData)(0x11U)));
+                                                                            } else {
+                                                                                if (
                                                                                 (0x20U 
                                                                                 & vlTOPp->fadd__DOT__finalMant)) {
                                                                                 vlTOPp->fadd__DOT__finalMant 
@@ -378,7 +397,7 @@ VL_INLINE_OPT void Vfadd::_combo__TOP__1(Vfadd__Syms* __restrict vlSymsp) {
                                                                                 (0xffU 
                                                                                 & ((IData)(vlTOPp->fadd__DOT__finalExp) 
                                                                                 - (IData)(0x12U)));
-                                                                            } else {
+                                                                                } else {
                                                                                 if (
                                                                                 (0x10U 
                                                                                 & vlTOPp->fadd__DOT__finalMant)) {
@@ -444,6 +463,7 @@ VL_INLINE_OPT void Vfadd::_combo__TOP__1(Vfadd__Syms* __restrict vlSymsp) {
                                                                                 }
                                                                                 }
                                                                                 }
+                                                                                }
                                                                             }
                                                                         }
                                                                     }
@@ -467,13 +487,27 @@ VL_INLINE_OPT void Vfadd::_combo__TOP__1(Vfadd__Syms* __restrict vlSymsp) {
         vlTOPp->fadd__DOT__finalMant = 0U;
         vlTOPp->fadd__DOT__finalExp = 0U;
     }
+    VL_WRITEF("%b\n",32,((0x80000000U & ((~ (IData)(vlTOPp->fadd__DOT__finalSign)) 
+                                         << 0x1fU)) 
+                         | (((IData)(vlTOPp->fadd__DOT__finalExp) 
+                             << 0x17U) | (0x7fffffU 
+                                          & ((IData)(vlTOPp->fadd__DOT__subnormal)
+                                              ? (vlTOPp->fadd__DOT__finalMant 
+                                                 << 1U)
+                                              : (vlTOPp->fadd__DOT__finalMant 
+                                                 >> 1U))))));
     vlTOPp->fadd__DOT__unrounded = ((0x80000000U & 
                                      ((~ (IData)(vlTOPp->fadd__DOT__finalSign)) 
                                       << 0x1fU)) | 
                                     (((IData)(vlTOPp->fadd__DOT__finalExp) 
                                       << 0x17U) | (0x7fffffU 
-                                                   & (vlTOPp->fadd__DOT__finalMant 
-                                                      >> 1U))));
+                                                   & ((IData)(vlTOPp->fadd__DOT__subnormal)
+                                                       ? 
+                                                      (vlTOPp->fadd__DOT__finalMant 
+                                                       << 1U)
+                                                       : 
+                                                      (vlTOPp->fadd__DOT__finalMant 
+                                                       >> 1U)))));
     if ((0U == (IData)(vlTOPp->rm))) {
         if ((4U & vlTOPp->fadd__DOT__unrounded)) {
             if ((0U == (3U & vlTOPp->fadd__DOT__unrounded))) {

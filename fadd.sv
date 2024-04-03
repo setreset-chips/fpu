@@ -4,20 +4,23 @@ module fadd (
 	input logic [2:0] rm,
 	output logic [31:0] out_num
 );
-	logic largerMag, finalSign;
+	logic largerMag, finalSign, leadMantBit1, leadMantBit2, subnormal;
 	logic [7:0] num1Exp, num2Exp, finalExp;
 	logic [23:0] num1Mant, num2Mant, finalMant;
 	logic [24:0] sumMants;
 	int i;
-	 
 	
 	always_comb begin
+	
 		finalSign = 1'b0;
 		largerMag = 1'b0;
    		num1Exp = num1[30:23]; //mul
    		num2Exp = num2[30:23]; //add
-   		num1Mant = {1'b1, num1[22:0]};
-   		num2Mant = {1'b1, num2[22:0]};
+   		leadMantBit1 = num1Exp == 8'h00 ? 1'b0 : 1'b1;
+		leadMantBit2 = num2Exp == 8'h00 ? 1'b0 : 1'b1;
+   		num1Mant = {leadMantBit1, num1[22:0]};
+   		num2Mant = {leadMantBit2, num2[22:0]};
+   		subnormal = ~(leadMantBit1 & leadMantBit2);
       
    		if(num1Exp < num2Exp) begin
    			finalExp = num2Exp;
@@ -35,13 +38,15 @@ module fadd (
    				largerMag = 1'b0;
    			end
   	 	end
+  	 	
+  	 	// Don't ask me how the sign logic works (I fixed it but it is extremely jank).
    	
-  	 	if ((num1[31] == 1'b1) && (num2[31] == 1'b1)) begin // two positive so add
+  	 	if ((num1[31] == 1'b1) && (num2[31] == 1'b1)) begin 
    			sumMants = num2Mant + num1Mant;
    			finalSign = 1'b0;
    		
    			finalMant = sumMants[24:1];
-   	   		finalExp = finalExp+1;
+   	   		finalExp = subnormal ? finalExp : finalExp+1;
   	 	end else if ((num1[31] == 1'b1) && (num2[31] == 1'b0)) begin
   	 		sumMants = num1Mant - num2Mant;
   	 		finalSign = largerMag ? 1'b1 : 1'b0;
@@ -59,12 +64,15 @@ module fadd (
   	 		finalSign = 1'b1;
   	 		
   	 		finalMant = sumMants[24:1];
-  	 		finalExp = finalExp+1;
+  	 		finalExp = subnormal ? finalExp : finalExp+1;
   	 	end
    	
   	 	//sumMants = addMant + mulMant; //have to change sign instead of two's complementing
   	 	
 //	   	$display("%b", sumMants);
+
+
+		if (!subnormal) begin
 
 		if (finalMant[23]) begin
 			finalMant = finalMant << 1;
@@ -159,6 +167,10 @@ module fadd (
 		else begin
 			finalExp = finalExp - 1;
 		end
+		end
+		/*if (num1Exp == 8'h00 && num2Exp == 8'h00) begin
+			finalExp = 8'h00;
+		end*/
    	
   	 	/*for (i = 0; i < 23; i++) begin //do this routine a max of 23 times in case the answer is zero
 			if (finalMant[23] == 1'b1) begin // if we have encountered a one we are done bc we can make the final silent bit
@@ -173,13 +185,15 @@ module fadd (
   	   	finalMant = finalMant << 1;
   	   	//finalExp = finalExp - 1;*/
   	      //"rounding" denormalized values like 1e-34 (which is returned for some 0+n computations, down to zero
-  	      if(num1 == 0 && num2Exp == 0) begin
+  	      if(num1 == 0 && num2Exp == 0) begin // Remove this code it should be redundant now/
   	         finalMant = 24'b0;
   	         finalExp = 8'b0;
   	      end	
+  	      $display("%b", {~finalSign, finalExp, subnormal ? finalMant[22:0]<<1 : finalMant[23:1]});
 	end
 	logic [31:0] unrounded;
-	assign unrounded = {~finalSign, finalExp, finalMant[23:1]};
+	assign unrounded = {~finalSign, finalExp, subnormal ? finalMant[22:0]<<1 : finalMant[23:1]};
+	//assign out_num = unrounded;
 	round r0(unrounded, rm, out_num);
 	
 endmodule

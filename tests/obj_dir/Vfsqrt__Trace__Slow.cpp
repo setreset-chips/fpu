@@ -44,11 +44,22 @@ void Vfsqrt::traceInitSub0(void* userp, VerilatedVcd* tracep) {
     if (false && tracep && c) {}  // Prevent unused
     // Body
     {
-        tracep->declBus(c+1,"var1", false,-1, 31,0);
-        tracep->declBus(c+2,"res", false,-1, 31,0);
-        tracep->declBus(c+1,"fsqrt var1", false,-1, 31,0);
-        tracep->declBus(c+2,"fsqrt res", false,-1, 31,0);
-        tracep->declBus(c+3,"fsqrt shifted_num", false,-1, 31,0);
+        tracep->declBus(c+7,"var1", false,-1, 31,0);
+        tracep->declBus(c+8,"rm", false,-1, 2,0);
+        tracep->declBus(c+9,"res", false,-1, 31,0);
+        tracep->declBus(c+7,"fsqrt var1", false,-1, 31,0);
+        tracep->declBus(c+8,"fsqrt rm", false,-1, 2,0);
+        tracep->declBus(c+9,"fsqrt res", false,-1, 31,0);
+        tracep->declBus(c+1,"fsqrt shifted_num", false,-1, 31,0);
+        tracep->declBus(c+1,"fsqrt r0 num1", false,-1, 31,0);
+        tracep->declBus(c+8,"fsqrt r0 rm", false,-1, 2,0);
+        tracep->declBus(c+9,"fsqrt r0 rounded_num", false,-1, 31,0);
+        tracep->declBus(c+2,"fsqrt r0 rounded", false,-1, 31,0);
+        tracep->declBus(c+3,"fsqrt r0 overflowCheck", false,-1, 23,0);
+        tracep->declBus(c+4,"fsqrt r0 mask", false,-1, 22,0);
+        tracep->declBus(c+5,"fsqrt r0 mask2", false,-1, 22,0);
+        tracep->declBus(c+6,"fsqrt r0 i", false,-1, 31,0);
+        tracep->declBus(c+10,"fsqrt r0 j", false,-1, 31,0);
     }
 }
 
@@ -77,8 +88,15 @@ void Vfsqrt::traceFullSub0(void* userp, VerilatedVcd* tracep) {
     if (false && oldp) {}  // Prevent unused
     // Body
     {
-        tracep->fullIData(oldp+1,(vlTOPp->var1),32);
-        tracep->fullIData(oldp+2,(vlTOPp->res),32);
-        tracep->fullIData(oldp+3,(vlTOPp->fsqrt__DOT__shifted_num),32);
+        tracep->fullIData(oldp+1,(vlTOPp->fsqrt__DOT__shifted_num),32);
+        tracep->fullIData(oldp+2,(vlTOPp->fsqrt__DOT__r0__DOT__rounded),32);
+        tracep->fullIData(oldp+3,(vlTOPp->fsqrt__DOT__r0__DOT__overflowCheck),24);
+        tracep->fullIData(oldp+4,(vlTOPp->fsqrt__DOT__r0__DOT__mask),23);
+        tracep->fullIData(oldp+5,(vlTOPp->fsqrt__DOT__r0__DOT__mask2),23);
+        tracep->fullIData(oldp+6,(vlTOPp->fsqrt__DOT__r0__DOT__i),32);
+        tracep->fullIData(oldp+7,(vlTOPp->var1),32);
+        tracep->fullCData(oldp+8,(vlTOPp->rm),3);
+        tracep->fullIData(oldp+9,(vlTOPp->res),32);
+        tracep->fullIData(oldp+10,(vlTOPp->fsqrt__DOT__r0__DOT__j),32);
     }
 }

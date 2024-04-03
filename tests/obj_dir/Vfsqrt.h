@@ -24,17 +24,24 @@ VL_MODULE(Vfsqrt) {
     // PORTS
     // The application code writes and reads these signals to
     // propagate new values into/out from the Verilated model.
+    VL_IN8(rm,2,0);
     VL_IN(var1,31,0);
     VL_OUT(res,31,0);
     
     // LOCAL SIGNALS
     // Internals; generally not touched by application code
     IData/*31:0*/ fsqrt__DOT__shifted_num;
+    IData/*31:0*/ fsqrt__DOT__r0__DOT__rounded;
+    IData/*23:0*/ fsqrt__DOT__r0__DOT__overflowCheck;
+    IData/*22:0*/ fsqrt__DOT__r0__DOT__mask;
+    IData/*22:0*/ fsqrt__DOT__r0__DOT__mask2;
+    IData/*31:0*/ fsqrt__DOT__r0__DOT__i;
+    IData/*31:0*/ fsqrt__DOT__r0__DOT__j;
     
     // LOCAL VARIABLES
     // Internals; generally not touched by application code
     IData/*31:0*/ __Vchglast__TOP__fsqrt__DOT__shifted_num;
-    CData/*0:0*/ __Vm_traceActivity[1];
+    CData/*0:0*/ __Vm_traceActivity[2];
     
     // INTERNAL VARIABLES
     // Internals; generally not touched by application code

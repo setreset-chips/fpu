@@ -17,8 +17,9 @@ float int32_to_float_32(uint32_t val) {
 
  int main (int argc, char** argv, char** env) {
  	Vfadd *vdq = new Vfadd;
- 	float f_a = 6.9;
- 	float f_b = 4.0;
+ 	float f_a = 5e-43;
+ 	float f_b = 9.23e-45;
+ 	float f_c = f_a+f_b;
  	
 	vdq->num1 = *((uint32_t*)(&f_a));
 	vdq->num2 = *((uint32_t*)(&f_b));
@@ -29,8 +30,8 @@ float int32_to_float_32(uint32_t val) {
  	}
  	
 	uint32_t output = vdq->out_num;
-
-	printf("Calculated: %f\n", int32_to_float_32(output));
-	printf("Actual: %f\n", f_a+f_b);
+	std::scientific;
+	printf("Calculated: %e\n", int32_to_float_32(output));
+	printf("Actual    : %e\n", f_c);
  	exit(0);
  }

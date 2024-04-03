@@ -58,6 +58,9 @@ void Vfadd::_ctor_var_reset() {
     out_num = VL_RAND_RESET_I(32);
     fadd__DOT__largerMag = VL_RAND_RESET_I(1);
     fadd__DOT__finalSign = VL_RAND_RESET_I(1);
+    fadd__DOT__leadMantBit1 = VL_RAND_RESET_I(1);
+    fadd__DOT__leadMantBit2 = VL_RAND_RESET_I(1);
+    fadd__DOT__subnormal = VL_RAND_RESET_I(1);
     fadd__DOT__num1Exp = VL_RAND_RESET_I(8);
     fadd__DOT__num2Exp = VL_RAND_RESET_I(8);
     fadd__DOT__finalExp = VL_RAND_RESET_I(8);

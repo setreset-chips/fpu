@@ -17,7 +17,7 @@ float int32_to_float_32(uint32_t val) {
 
  int main (int argc, char** argv, char** env) {
  	Vfexp *vdq = new Vfexp;
- 	float f_a = 4.97;
+ 	float f_a = 1;
  	
 	vdq->exp = *((uint32_t*)(&f_a));
 	//vdq->num2 = *((uint32_t*)(&f_b));

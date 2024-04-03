@@ -56,38 +56,66 @@ VL_MODULE(Vfexp) {
         CData/*0:0*/ fexp__DOT__fma3__DOT__largerMag;
         CData/*7:0*/ fexp__DOT__fma3__DOT__exp_out;
         CData/*7:0*/ fexp__DOT__fma3__DOT__final_exp;
-        IData/*31:0*/ fexp__DOT__temp1;
-        IData/*31:0*/ fexp__DOT__temp2;
         IData/*31:0*/ fexp__DOT__temp3;
-        IData/*31:0*/ fexp__DOT__temp4;
         IData/*31:0*/ fexp__DOT__temp5;
-        IData/*31:0*/ fexp__DOT__temp6;
         IData/*31:0*/ fexp__DOT__temp7;
-        IData/*31:0*/ fexp__DOT__temp8;
         IData/*23:0*/ fexp__DOT__fa0__DOT__num1Mant;
         IData/*23:0*/ fexp__DOT__fa0__DOT__num2Mant;
         IData/*23:0*/ fexp__DOT__fa0__DOT__finalMant;
         IData/*24:0*/ fexp__DOT__fa0__DOT__sumMants;
         IData/*31:0*/ fexp__DOT__fa0__DOT__i;
+        IData/*31:0*/ fexp__DOT__fa0__DOT__unrounded;
+        IData/*31:0*/ fexp__DOT__fa0__DOT__r0__DOT__rounded;
+        IData/*23:0*/ fexp__DOT__fa0__DOT__r0__DOT__overflowCheck;
+        IData/*22:0*/ fexp__DOT__fa0__DOT__r0__DOT__mask;
+        IData/*22:0*/ fexp__DOT__fa0__DOT__r0__DOT__mask2;
+        IData/*31:0*/ fexp__DOT__fa0__DOT__r0__DOT__i;
+        IData/*31:0*/ fexp__DOT__fa0__DOT__r0__DOT__j;
         IData/*23:0*/ fexp__DOT__fm0__DOT__mantissa;
+        IData/*31:0*/ fexp__DOT__fm0__DOT__r0__DOT__rounded;
+        IData/*23:0*/ fexp__DOT__fm0__DOT__r0__DOT__overflowCheck;
+        IData/*22:0*/ fexp__DOT__fm0__DOT__r0__DOT__mask;
+        IData/*22:0*/ fexp__DOT__fm0__DOT__r0__DOT__mask2;
+        IData/*31:0*/ fexp__DOT__fm0__DOT__r0__DOT__i;
+        IData/*31:0*/ fexp__DOT__fm0__DOT__r0__DOT__j;
         IData/*23:0*/ fexp__DOT__fma0__DOT__mantissa_a;
         IData/*23:0*/ fexp__DOT__fma0__DOT__mantissa_c;
         IData/*23:0*/ fexp__DOT__fma0__DOT__mantissa_mul_norm;
         IData/*23:0*/ fexp__DOT__fma0__DOT__final_mantissa;
         IData/*24:0*/ fexp__DOT__fma0__DOT__sum_mants;
         IData/*23:0*/ fexp__DOT__fm1__DOT__mantissa;
+        IData/*31:0*/ fexp__DOT__fm1__DOT__r0__DOT__rounded;
+        IData/*23:0*/ fexp__DOT__fm1__DOT__r0__DOT__overflowCheck;
+        IData/*22:0*/ fexp__DOT__fm1__DOT__r0__DOT__mask;
+        IData/*22:0*/ fexp__DOT__fm1__DOT__r0__DOT__mask2;
+        IData/*31:0*/ fexp__DOT__fm1__DOT__r0__DOT__i;
+        IData/*31:0*/ fexp__DOT__fm1__DOT__r0__DOT__j;
         IData/*23:0*/ fexp__DOT__fma1__DOT__mantissa_a;
         IData/*23:0*/ fexp__DOT__fma1__DOT__mantissa_c;
         IData/*23:0*/ fexp__DOT__fma1__DOT__mantissa_mul_norm;
         IData/*23:0*/ fexp__DOT__fma1__DOT__final_mantissa;
         IData/*24:0*/ fexp__DOT__fma1__DOT__sum_mants;
+    };
+    struct {
         IData/*23:0*/ fexp__DOT__fm2__DOT__mantissa;
+        IData/*31:0*/ fexp__DOT__fm2__DOT__r0__DOT__rounded;
+        IData/*23:0*/ fexp__DOT__fm2__DOT__r0__DOT__overflowCheck;
+        IData/*22:0*/ fexp__DOT__fm2__DOT__r0__DOT__mask;
+        IData/*22:0*/ fexp__DOT__fm2__DOT__r0__DOT__mask2;
+        IData/*31:0*/ fexp__DOT__fm2__DOT__r0__DOT__i;
+        IData/*31:0*/ fexp__DOT__fm2__DOT__r0__DOT__j;
         IData/*23:0*/ fexp__DOT__fma2__DOT__mantissa_a;
         IData/*23:0*/ fexp__DOT__fma2__DOT__mantissa_c;
         IData/*23:0*/ fexp__DOT__fma2__DOT__mantissa_mul_norm;
         IData/*23:0*/ fexp__DOT__fma2__DOT__final_mantissa;
         IData/*24:0*/ fexp__DOT__fma2__DOT__sum_mants;
         IData/*23:0*/ fexp__DOT__fm3__DOT__mantissa;
+        IData/*31:0*/ fexp__DOT__fm3__DOT__r0__DOT__rounded;
+        IData/*23:0*/ fexp__DOT__fm3__DOT__r0__DOT__overflowCheck;
+        IData/*22:0*/ fexp__DOT__fm3__DOT__r0__DOT__mask;
+        IData/*22:0*/ fexp__DOT__fm3__DOT__r0__DOT__mask2;
+        IData/*31:0*/ fexp__DOT__fm3__DOT__r0__DOT__i;
+        IData/*31:0*/ fexp__DOT__fm3__DOT__r0__DOT__j;
         IData/*23:0*/ fexp__DOT__fma3__DOT__mantissa_a;
         IData/*23:0*/ fexp__DOT__fma3__DOT__mantissa_c;
         IData/*23:0*/ fexp__DOT__fma3__DOT__mantissa_mul_norm;
@@ -95,8 +123,6 @@ VL_MODULE(Vfexp) {
         IData/*24:0*/ fexp__DOT__fma3__DOT__sum_mants;
         QData/*47:0*/ fexp__DOT__fm0__DOT__mantissaProd;
         QData/*47:0*/ fexp__DOT__fma0__DOT__mantissa_mul_out;
-    };
-    struct {
         QData/*47:0*/ fexp__DOT__fm1__DOT__mantissaProd;
         QData/*47:0*/ fexp__DOT__fma1__DOT__mantissa_mul_out;
         QData/*47:0*/ fexp__DOT__fm2__DOT__mantissaProd;
@@ -107,6 +133,10 @@ VL_MODULE(Vfexp) {
     
     // LOCAL VARIABLES
     // Internals; generally not touched by application code
+    IData/*31:0*/ fexp__DOT__fm0__DOT____Vcellinp__r0____pinNumber1;
+    IData/*31:0*/ fexp__DOT__fm1__DOT____Vcellinp__r0____pinNumber1;
+    IData/*31:0*/ fexp__DOT__fm2__DOT____Vcellinp__r0____pinNumber1;
+    IData/*31:0*/ fexp__DOT__fm3__DOT____Vcellinp__r0____pinNumber1;
     CData/*0:0*/ __Vm_traceActivity[2];
     
     // INTERNAL VARIABLES

@@ -14,12 +14,22 @@
 
 class Vfln__Syms;
 class Vfln_VerilatedVcd;
+class Vfln_fmul;
 
 
 //----------
 
 VL_MODULE(Vfln) {
   public:
+    // CELLS
+    // Public to allow access to /*verilator_public*/ items;
+    // otherwise the application code can consider these internals.
+    Vfln_fmul* __PVT__fln__DOT__fm0;
+    Vfln_fmul* __PVT__fln__DOT__fm1;
+    Vfln_fmul* __PVT__fln__DOT__fm2;
+    Vfln_fmul* __PVT__fln__DOT__fm3;
+    Vfln_fmul* __PVT__fln__DOT__fm4;
+    Vfln_fmul* __PVT__fln__DOT__fm5;
     
     // PORTS
     // The application code writes and reads these signals to
@@ -36,11 +46,6 @@ VL_MODULE(Vfln) {
         CData/*7:0*/ fln__DOT__fa0__DOT__num1Exp;
         CData/*7:0*/ fln__DOT__fa0__DOT__num2Exp;
         CData/*7:0*/ fln__DOT__fa0__DOT__finalExp;
-        CData/*7:0*/ fln__DOT__fm0__DOT__expF;
-        CData/*7:0*/ fln__DOT__fm1__DOT__expF;
-        CData/*7:0*/ fln__DOT__fm2__DOT__expF;
-        CData/*7:0*/ fln__DOT__fm3__DOT__expF;
-        CData/*7:0*/ fln__DOT__fm4__DOT__expF;
         CData/*0:0*/ fln__DOT__fma1__DOT__sign_out;
         CData/*0:0*/ fln__DOT__fma1__DOT__largerMag;
         CData/*7:0*/ fln__DOT__fma1__DOT__exp_out;
@@ -55,36 +60,23 @@ VL_MODULE(Vfln) {
         CData/*7:0*/ fln__DOT__fa2__DOT__num1Exp;
         CData/*7:0*/ fln__DOT__fa2__DOT__num2Exp;
         CData/*7:0*/ fln__DOT__fa2__DOT__finalExp;
-        CData/*7:0*/ fln__DOT__fm5__DOT__expF;
         CData/*0:0*/ fln__DOT__fma2__DOT__sign_out;
         CData/*0:0*/ fln__DOT__fma2__DOT__largerMag;
         CData/*7:0*/ fln__DOT__fma2__DOT__exp_out;
         CData/*7:0*/ fln__DOT__fma2__DOT__final_exp;
-        IData/*31:0*/ fln__DOT__temp1;
-        IData/*31:0*/ fln__DOT__temp2;
-        IData/*31:0*/ fln__DOT__temp3;
-        IData/*31:0*/ fln__DOT__temp4;
-        IData/*31:0*/ fln__DOT__temp5;
         IData/*31:0*/ fln__DOT__temp6;
-        IData/*31:0*/ fln__DOT__temp7;
-        IData/*31:0*/ fln__DOT__temp8;
-        IData/*31:0*/ fln__DOT__op1i;
-        IData/*31:0*/ fln__DOT__temp9;
         IData/*23:0*/ fln__DOT__fa0__DOT__num1Mant;
         IData/*23:0*/ fln__DOT__fa0__DOT__num2Mant;
         IData/*23:0*/ fln__DOT__fa0__DOT__finalMant;
         IData/*24:0*/ fln__DOT__fa0__DOT__sumMants;
         IData/*31:0*/ fln__DOT__fa0__DOT__i;
-        IData/*22:0*/ fln__DOT__fm0__DOT__mantissa;
-        IData/*31:0*/ fln__DOT__fm0__DOT__i;
-        IData/*22:0*/ fln__DOT__fm1__DOT__mantissa;
-        IData/*31:0*/ fln__DOT__fm1__DOT__i;
-        IData/*22:0*/ fln__DOT__fm2__DOT__mantissa;
-        IData/*31:0*/ fln__DOT__fm2__DOT__i;
-        IData/*22:0*/ fln__DOT__fm3__DOT__mantissa;
-        IData/*31:0*/ fln__DOT__fm3__DOT__i;
-        IData/*22:0*/ fln__DOT__fm4__DOT__mantissa;
-        IData/*31:0*/ fln__DOT__fm4__DOT__i;
+        IData/*31:0*/ fln__DOT__fa0__DOT__unrounded;
+        IData/*31:0*/ fln__DOT__fa0__DOT__r0__DOT__rounded;
+        IData/*23:0*/ fln__DOT__fa0__DOT__r0__DOT__overflowCheck;
+        IData/*22:0*/ fln__DOT__fa0__DOT__r0__DOT__mask;
+        IData/*22:0*/ fln__DOT__fa0__DOT__r0__DOT__mask2;
+        IData/*31:0*/ fln__DOT__fa0__DOT__r0__DOT__i;
+        IData/*31:0*/ fln__DOT__fa0__DOT__r0__DOT__j;
         IData/*23:0*/ fln__DOT__fma1__DOT__mantissa_a;
         IData/*23:0*/ fln__DOT__fma1__DOT__mantissa_c;
         IData/*23:0*/ fln__DOT__fma1__DOT__mantissa_mul_norm;
@@ -95,27 +87,33 @@ VL_MODULE(Vfln) {
         IData/*23:0*/ fln__DOT__fa1__DOT__finalMant;
         IData/*24:0*/ fln__DOT__fa1__DOT__sumMants;
         IData/*31:0*/ fln__DOT__fa1__DOT__i;
-    };
-    struct {
+        IData/*31:0*/ fln__DOT__fa1__DOT__unrounded;
+        IData/*31:0*/ fln__DOT__fa1__DOT__r0__DOT__rounded;
+        IData/*23:0*/ fln__DOT__fa1__DOT__r0__DOT__overflowCheck;
+        IData/*22:0*/ fln__DOT__fa1__DOT__r0__DOT__mask;
+        IData/*22:0*/ fln__DOT__fa1__DOT__r0__DOT__mask2;
+        IData/*31:0*/ fln__DOT__fa1__DOT__r0__DOT__i;
+        IData/*31:0*/ fln__DOT__fa1__DOT__r0__DOT__j;
         IData/*23:0*/ fln__DOT__fa2__DOT__num1Mant;
         IData/*23:0*/ fln__DOT__fa2__DOT__num2Mant;
         IData/*23:0*/ fln__DOT__fa2__DOT__finalMant;
         IData/*24:0*/ fln__DOT__fa2__DOT__sumMants;
         IData/*31:0*/ fln__DOT__fa2__DOT__i;
-        IData/*22:0*/ fln__DOT__fm5__DOT__mantissa;
-        IData/*31:0*/ fln__DOT__fm5__DOT__i;
+        IData/*31:0*/ fln__DOT__fa2__DOT__unrounded;
+        IData/*31:0*/ fln__DOT__fa2__DOT__r0__DOT__rounded;
+        IData/*23:0*/ fln__DOT__fa2__DOT__r0__DOT__overflowCheck;
+        IData/*22:0*/ fln__DOT__fa2__DOT__r0__DOT__mask;
+        IData/*22:0*/ fln__DOT__fa2__DOT__r0__DOT__mask2;
+        IData/*31:0*/ fln__DOT__fa2__DOT__r0__DOT__i;
+    };
+    struct {
+        IData/*31:0*/ fln__DOT__fa2__DOT__r0__DOT__j;
         IData/*23:0*/ fln__DOT__fma2__DOT__mantissa_a;
         IData/*23:0*/ fln__DOT__fma2__DOT__mantissa_c;
         IData/*23:0*/ fln__DOT__fma2__DOT__mantissa_mul_norm;
         IData/*23:0*/ fln__DOT__fma2__DOT__final_mantissa;
         IData/*24:0*/ fln__DOT__fma2__DOT__sum_mants;
-        QData/*47:0*/ fln__DOT__fm0__DOT__mantissaProd;
-        QData/*47:0*/ fln__DOT__fm1__DOT__mantissaProd;
-        QData/*47:0*/ fln__DOT__fm2__DOT__mantissaProd;
-        QData/*47:0*/ fln__DOT__fm3__DOT__mantissaProd;
-        QData/*47:0*/ fln__DOT__fm4__DOT__mantissaProd;
         QData/*47:0*/ fln__DOT__fma1__DOT__mantissa_mul_out;
-        QData/*47:0*/ fln__DOT__fm5__DOT__mantissaProd;
         QData/*47:0*/ fln__DOT__fma2__DOT__mantissa_mul_out;
     };
     
@@ -161,6 +159,7 @@ VL_MODULE(Vfln) {
     static QData _change_request_1(Vfln__Syms* __restrict vlSymsp);
   public:
     static void _combo__TOP__1(Vfln__Syms* __restrict vlSymsp);
+    static void _combo__TOP__2(Vfln__Syms* __restrict vlSymsp);
   private:
     void _ctor_var_reset() VL_ATTR_COLD;
   public:

@@ -22,9 +22,17 @@ void Vfsqrt::traceChgSub0(void* userp, VerilatedVcd* tracep) {
     if (false && oldp) {}  // Prevent unused
     // Body
     {
-        tracep->chgIData(oldp+0,(vlTOPp->var1),32);
-        tracep->chgIData(oldp+1,(vlTOPp->res),32);
-        tracep->chgIData(oldp+2,(vlTOPp->fsqrt__DOT__shifted_num),32);
+        if (VL_UNLIKELY(vlTOPp->__Vm_traceActivity[1U])) {
+            tracep->chgIData(oldp+0,(vlTOPp->fsqrt__DOT__shifted_num),32);
+            tracep->chgIData(oldp+1,(vlTOPp->fsqrt__DOT__r0__DOT__rounded),32);
+            tracep->chgIData(oldp+2,(vlTOPp->fsqrt__DOT__r0__DOT__overflowCheck),24);
+            tracep->chgIData(oldp+3,(vlTOPp->fsqrt__DOT__r0__DOT__mask),23);
+            tracep->chgIData(oldp+4,(vlTOPp->fsqrt__DOT__r0__DOT__mask2),23);
+            tracep->chgIData(oldp+5,(vlTOPp->fsqrt__DOT__r0__DOT__i),32);
+        }
+        tracep->chgIData(oldp+6,(vlTOPp->var1),32);
+        tracep->chgCData(oldp+7,(vlTOPp->rm),3);
+        tracep->chgIData(oldp+8,(vlTOPp->res),32);
     }
 }
 
@@ -35,5 +43,6 @@ void Vfsqrt::traceCleanup(void* userp, VerilatedVcd* /*unused*/) {
     {
         vlSymsp->__Vm_activity = false;
         vlTOPp->__Vm_traceActivity[0U] = 0U;
+        vlTOPp->__Vm_traceActivity[1U] = 0U;
     }
 }

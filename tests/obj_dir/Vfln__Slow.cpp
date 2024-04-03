@@ -10,6 +10,12 @@
 VL_CTOR_IMP(Vfln) {
     Vfln__Syms* __restrict vlSymsp = __VlSymsp = new Vfln__Syms(this, name());
     Vfln* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
+    VL_CELL(__PVT__fln__DOT__fm0, Vfln_fmul);
+    VL_CELL(__PVT__fln__DOT__fm1, Vfln_fmul);
+    VL_CELL(__PVT__fln__DOT__fm2, Vfln_fmul);
+    VL_CELL(__PVT__fln__DOT__fm3, Vfln_fmul);
+    VL_CELL(__PVT__fln__DOT__fm4, Vfln_fmul);
+    VL_CELL(__PVT__fln__DOT__fm5, Vfln_fmul);
     // Reset internal values
     
     // Reset structure values
@@ -47,6 +53,13 @@ void Vfln::_eval_settle(Vfln__Syms* __restrict vlSymsp) {
     vlTOPp->_combo__TOP__1(vlSymsp);
     vlTOPp->__Vm_traceActivity[1U] = 1U;
     vlTOPp->__Vm_traceActivity[0U] = 1U;
+    vlSymsp->TOP__fln__DOT__fm0._combo__TOP__fln__DOT__fm0__1(vlSymsp);
+    vlSymsp->TOP__fln__DOT__fm1._combo__TOP__fln__DOT__fm1__2(vlSymsp);
+    vlSymsp->TOP__fln__DOT__fm2._combo__TOP__fln__DOT__fm2__3(vlSymsp);
+    vlSymsp->TOP__fln__DOT__fm4._combo__TOP__fln__DOT__fm4__4(vlSymsp);
+    vlSymsp->TOP__fln__DOT__fm3._combo__TOP__fln__DOT__fm3__5(vlSymsp);
+    vlSymsp->TOP__fln__DOT__fm5._combo__TOP__fln__DOT__fm5__6(vlSymsp);
+    vlTOPp->_combo__TOP__2(vlSymsp);
 }
 
 void Vfln::_ctor_var_reset() {
@@ -54,16 +67,7 @@ void Vfln::_ctor_var_reset() {
     // Body
     num1 = VL_RAND_RESET_I(32);
     out1 = VL_RAND_RESET_I(32);
-    fln__DOT__temp1 = VL_RAND_RESET_I(32);
-    fln__DOT__temp2 = VL_RAND_RESET_I(32);
-    fln__DOT__temp3 = VL_RAND_RESET_I(32);
-    fln__DOT__temp4 = VL_RAND_RESET_I(32);
-    fln__DOT__temp5 = VL_RAND_RESET_I(32);
     fln__DOT__temp6 = VL_RAND_RESET_I(32);
-    fln__DOT__temp7 = VL_RAND_RESET_I(32);
-    fln__DOT__temp8 = VL_RAND_RESET_I(32);
-    fln__DOT__op1i = VL_RAND_RESET_I(32);
-    fln__DOT__temp9 = VL_RAND_RESET_I(32);
     fln__DOT__fa0__DOT__largerMag = VL_RAND_RESET_I(1);
     fln__DOT__fa0__DOT__finalSign = VL_RAND_RESET_I(1);
     fln__DOT__fa0__DOT__num1Exp = VL_RAND_RESET_I(8);
@@ -74,26 +78,13 @@ void Vfln::_ctor_var_reset() {
     fln__DOT__fa0__DOT__finalMant = VL_RAND_RESET_I(24);
     fln__DOT__fa0__DOT__sumMants = VL_RAND_RESET_I(25);
     fln__DOT__fa0__DOT__i = 0;
-    fln__DOT__fm0__DOT__expF = VL_RAND_RESET_I(8);
-    fln__DOT__fm0__DOT__mantissa = VL_RAND_RESET_I(23);
-    fln__DOT__fm0__DOT__mantissaProd = VL_RAND_RESET_Q(48);
-    fln__DOT__fm0__DOT__i = 0;
-    fln__DOT__fm1__DOT__expF = VL_RAND_RESET_I(8);
-    fln__DOT__fm1__DOT__mantissa = VL_RAND_RESET_I(23);
-    fln__DOT__fm1__DOT__mantissaProd = VL_RAND_RESET_Q(48);
-    fln__DOT__fm1__DOT__i = 0;
-    fln__DOT__fm2__DOT__expF = VL_RAND_RESET_I(8);
-    fln__DOT__fm2__DOT__mantissa = VL_RAND_RESET_I(23);
-    fln__DOT__fm2__DOT__mantissaProd = VL_RAND_RESET_Q(48);
-    fln__DOT__fm2__DOT__i = 0;
-    fln__DOT__fm3__DOT__expF = VL_RAND_RESET_I(8);
-    fln__DOT__fm3__DOT__mantissa = VL_RAND_RESET_I(23);
-    fln__DOT__fm3__DOT__mantissaProd = VL_RAND_RESET_Q(48);
-    fln__DOT__fm3__DOT__i = 0;
-    fln__DOT__fm4__DOT__expF = VL_RAND_RESET_I(8);
-    fln__DOT__fm4__DOT__mantissa = VL_RAND_RESET_I(23);
-    fln__DOT__fm4__DOT__mantissaProd = VL_RAND_RESET_Q(48);
-    fln__DOT__fm4__DOT__i = 0;
+    fln__DOT__fa0__DOT__unrounded = VL_RAND_RESET_I(32);
+    fln__DOT__fa0__DOT__r0__DOT__rounded = VL_RAND_RESET_I(32);
+    fln__DOT__fa0__DOT__r0__DOT__overflowCheck = VL_RAND_RESET_I(24);
+    fln__DOT__fa0__DOT__r0__DOT__mask = VL_RAND_RESET_I(23);
+    fln__DOT__fa0__DOT__r0__DOT__mask2 = VL_RAND_RESET_I(23);
+    fln__DOT__fa0__DOT__r0__DOT__i = 0;
+    fln__DOT__fa0__DOT__r0__DOT__j = 0;
     fln__DOT__fma1__DOT__sign_out = VL_RAND_RESET_I(1);
     fln__DOT__fma1__DOT__largerMag = VL_RAND_RESET_I(1);
     fln__DOT__fma1__DOT__exp_out = VL_RAND_RESET_I(8);
@@ -114,6 +105,13 @@ void Vfln::_ctor_var_reset() {
     fln__DOT__fa1__DOT__finalMant = VL_RAND_RESET_I(24);
     fln__DOT__fa1__DOT__sumMants = VL_RAND_RESET_I(25);
     fln__DOT__fa1__DOT__i = 0;
+    fln__DOT__fa1__DOT__unrounded = VL_RAND_RESET_I(32);
+    fln__DOT__fa1__DOT__r0__DOT__rounded = VL_RAND_RESET_I(32);
+    fln__DOT__fa1__DOT__r0__DOT__overflowCheck = VL_RAND_RESET_I(24);
+    fln__DOT__fa1__DOT__r0__DOT__mask = VL_RAND_RESET_I(23);
+    fln__DOT__fa1__DOT__r0__DOT__mask2 = VL_RAND_RESET_I(23);
+    fln__DOT__fa1__DOT__r0__DOT__i = 0;
+    fln__DOT__fa1__DOT__r0__DOT__j = 0;
     fln__DOT__fa2__DOT__largerMag = VL_RAND_RESET_I(1);
     fln__DOT__fa2__DOT__finalSign = VL_RAND_RESET_I(1);
     fln__DOT__fa2__DOT__num1Exp = VL_RAND_RESET_I(8);
@@ -124,10 +122,13 @@ void Vfln::_ctor_var_reset() {
     fln__DOT__fa2__DOT__finalMant = VL_RAND_RESET_I(24);
     fln__DOT__fa2__DOT__sumMants = VL_RAND_RESET_I(25);
     fln__DOT__fa2__DOT__i = 0;
-    fln__DOT__fm5__DOT__expF = VL_RAND_RESET_I(8);
-    fln__DOT__fm5__DOT__mantissa = VL_RAND_RESET_I(23);
-    fln__DOT__fm5__DOT__mantissaProd = VL_RAND_RESET_Q(48);
-    fln__DOT__fm5__DOT__i = 0;
+    fln__DOT__fa2__DOT__unrounded = VL_RAND_RESET_I(32);
+    fln__DOT__fa2__DOT__r0__DOT__rounded = VL_RAND_RESET_I(32);
+    fln__DOT__fa2__DOT__r0__DOT__overflowCheck = VL_RAND_RESET_I(24);
+    fln__DOT__fa2__DOT__r0__DOT__mask = VL_RAND_RESET_I(23);
+    fln__DOT__fa2__DOT__r0__DOT__mask2 = VL_RAND_RESET_I(23);
+    fln__DOT__fa2__DOT__r0__DOT__i = 0;
+    fln__DOT__fa2__DOT__r0__DOT__j = 0;
     fln__DOT__fma2__DOT__sign_out = VL_RAND_RESET_I(1);
     fln__DOT__fma2__DOT__largerMag = VL_RAND_RESET_I(1);
     fln__DOT__fma2__DOT__exp_out = VL_RAND_RESET_I(8);

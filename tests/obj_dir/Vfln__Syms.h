@@ -11,6 +11,7 @@
 
 // INCLUDE MODULE CLASSES
 #include "Vfln.h"
+#include "Vfln_fmul.h"
 
 // SYMS CLASS
 class Vfln__Syms : public VerilatedSyms {
@@ -24,6 +25,12 @@ class Vfln__Syms : public VerilatedSyms {
     
     // SUBCELL STATE
     Vfln*                          TOPp;
+    Vfln_fmul                      TOP__fln__DOT__fm0;
+    Vfln_fmul                      TOP__fln__DOT__fm1;
+    Vfln_fmul                      TOP__fln__DOT__fm2;
+    Vfln_fmul                      TOP__fln__DOT__fm3;
+    Vfln_fmul                      TOP__fln__DOT__fm4;
+    Vfln_fmul                      TOP__fln__DOT__fm5;
     
     // CREATORS
     Vfln__Syms(Vfln* topp, const char* namep);
