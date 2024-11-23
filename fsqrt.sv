@@ -11,7 +11,7 @@ module fsqrt (
 	assign temp_out = ((magic_number - var1) >> 1);
 	finv i0(temp_out, res);*/
        logic [31:0] shifted_num;
-       assign shifted_num = var1 + (127 << 23);
-       assign shifted_num = shifted_num >> 1;
+       assign shifted_num = (var1 + (127 << 23)) >> 1;
+       //assign shifted_num = shifted_num >> 1;
        round r0(shifted_num, rm, res);
 endmodule

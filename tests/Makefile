@@ -33,3 +33,7 @@ round:
 fsqrt_new:
 	verilator -I../ -Wall -Wno-fatal --trace --cc --exe --build tb_fsqrt_new.cpp ../fsqrt_new.sv
 	./obj_dir/Vfsqrt_new
+
+fmul_tot:
+	verilator -I../ -Wall -Wno-fatal --trace --cc --exe --build tb_fmul_t.cpp ../fmul_new_total.sv
+	./obj_dir/Vfmul_new_total

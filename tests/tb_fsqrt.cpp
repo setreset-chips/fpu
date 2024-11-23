@@ -24,6 +24,7 @@ float int32_to_float_32(uint32_t val) {
  	l_trace->open("vfsqrt.vcd");
  	
 	vdq->var1 = *((uint32_t*)(&sc));
+	vdq->rm = 0;
 
  	while (cnt < MAX_TIME) {
  		vdq->eval();

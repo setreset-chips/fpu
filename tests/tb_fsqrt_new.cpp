@@ -23,7 +23,7 @@ float int32_to_float_32(uint32_t val) {
  	vdq->trace(l_trace, 5);
  	l_trace->open("vfsqrt.vcd");
 
-	vdq->var1 = *((uint32_t*)(&sc));
+	vdq->num1 = *((uint32_t*)(&sc));
 
  	while (cnt < MAX_TIME) {
  		vdq->eval();
@@ -31,7 +31,7 @@ float int32_to_float_32(uint32_t val) {
  		cnt++;
  	}
 
-	uint32_t output = vdq->res;
+	uint32_t output = vdq->sqrt_num;
 
 	//printf("Actual: %f\n", s);
 	printf("Calculated: %f\n", int32_to_float_32(output));
