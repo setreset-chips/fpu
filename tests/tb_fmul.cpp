@@ -17,8 +17,8 @@ float int32_to_float_32(uint32_t val) {
 
  int main (int argc, char** argv, char** env) {
  	Vfmul *vdq = new Vfmul;
- 	float f_a = 0.0021;
- 	float f_b = 1.8e35;
+ 	float f_a = 21;
+ 	float f_b = 1.83330987345;
  	
 	vdq->num1 = *((uint32_t*)(&f_a));
 	vdq->num2 = *((uint32_t*)(&f_b));
