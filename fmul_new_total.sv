@@ -5,7 +5,7 @@ module fmul_new_total (
 	output logic [31:0] out_mul
 );
 	
-	logic sign, sticky, rnd;
+	logic sign, guard, sticky, round, did_round;
 	logic [7:0] expF;
 	logic [23:0] mantissa;
 	logic [23:0] mantissa1, mantissa2;
@@ -21,7 +21,9 @@ module fmul_new_total (
 		mantissaProd = mantissa1*mantissa2;
 		expF = (num1[30:23] + num2[30:23]) - 8'h7F;
 		mantissa = mantissaProd[47:24];
-		sticky = |mantissaProd[23:0];
+		guard = mantissaProd[23];
+		round = mantissaProd[22];
+		sticky = |mantissaProd[21:0];
         //$display("%b\n%b\n", mantissa, expF);
 
 		
@@ -146,7 +148,32 @@ module fmul_new_total (
 		expF = expF + 1;
 		// mantissa = mantissa >> 1;
 		// expF = expF+1;
-		
+		if (!guard) begin // round down
+			mantissa_end = mantissa[23:1];
+			did_round = 1'b0;
+		end
+		else if (guard && !round && !sticky) begin // tie
+			if (mantissa[0]) begin
+				mantissa_end = mantissa[23:1] + 1'b1;
+				did_round = 1'b1;
+			end
+			else begin
+				mantissa_end = mantissa[23:1];
+				did_round = 1'b0;
+			end
+		end
+		else begin // round up
+			mantissa_end = mantissa[23:1] + 1'b1;
+			did_round = 1'b1;
+		end
+		if (did_round && |mantissa_end == 1'b0) begin
+			out_mul = {sign, expF+1, 23'b0};
+		end
+		else begin
+			out_mul = {sign, expF, mantissa_end};
+		end
+
+
 		//out_mul = {sign, expF, mantissa[23:1]};
 		// if (mantissa[1] == 1'b0) begin // round down
 		// 	mantissa_end = mantissa[23:1];
@@ -175,7 +202,7 @@ module fmul_new_total (
 		// end
 
 	end
-	round r0({sign, expF, mantissa[23:1]}, rm, out_mul);
+	//round r0({sign, expF, mantissa[23:1]}, rm, out_mul);
     //assign out_mul = {sign, expF, mantissa[23:1]};
 endmodule
 
